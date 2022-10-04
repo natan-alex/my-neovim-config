@@ -44,5 +44,5 @@ map("n", "$", "g$", default_options)
 map("n", "^", "g^", default_options)
 
 -- Space mappings
-map("n", "<Space>q", ":q<CR>", default_options)
-map("n", "<Space>Q", ":qa<CR>", default_options)
+map("n", "<Leader>qq", ":q<CR>", default_options)
+map("n", "<Leader>Q", ":qa<CR>", default_options)
