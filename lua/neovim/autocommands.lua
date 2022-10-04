@@ -1,10 +1,11 @@
 local create_autogroup = vim.api.nvim_create_augroup
 local create_autocommand = vim.api.nvim_create_autocmd
 
+local group_options = { clear = true }
 local groups = {
-    build_and_run_related = create_autogroup("BuildAndRunRelated", { clear = true }),
-    indentation_related = create_autogroup("IndentationRelated", { clear = true }),
-    terminal_related = create_autogroup("TerminalRelated", { clear = true }),
+    build_and_run_related = create_autogroup("BuildAndRunRelated", group_options),
+    indentation_related = create_autogroup("IndentationRelated", group_options),
+    terminal_related = create_autogroup("TerminalRelated", group_options),
 }
 
 local map = vim.keymap.set
@@ -37,7 +38,7 @@ create_autocommand("FileType", {
     group = groups.build_and_run_related,
     callback = function()
         map("n", "<Leader><Leader>r", term_exec("dotnet run"), map_options)
-        map("n", "<Leader><Leader>wr", term_exec("dotnet watch run"), map_options)
+        map("n", "<Leader><Leader>w", term_exec("dotnet watch run"), map_options)
         map("n", "<Leader><Leader>b", term_exec("dotnet build"), map_options)
     end,
 })
@@ -47,7 +48,7 @@ create_autocommand("FileType", {
     group = groups.build_and_run_related,
     callback = function()
         map("n", "<Leader><Leader>r", term_exec("cargo run"), map_options)
-        map("n", "<Leader><Leader>wr", term_exec("cargo watch -x run"), map_options)
+        map("n", "<Leader><Leader>w", term_exec("cargo watch -x run"), map_options)
         map("n", "<Leader><Leader>b", term_exec("cargo build"), map_options)
     end,
 })
