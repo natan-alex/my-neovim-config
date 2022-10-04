@@ -1,6 +1,7 @@
 local sessions_dir = vim.fn.stdpath("data") .. "/sessions"
 local session_file_name = "session.vim"
-local path_separator = "__"
+local unwanted_symbols = { ":", "%/", "\\", "-" }
+local symbol_replacement = "__"
 
 -- set the options for saving a session
 vim.cmd("set sessionoptions=tabpages,folds,curdir,buffers")
@@ -11,10 +12,15 @@ if vim.fn.isdirectory(sessions_dir) == 0 then
 end
 
 -- the file name will be the current folder name 
--- with path_separator instead of / plus session_file_name
+-- with symbol_replacement instead of / plus session_file_name
 local function create_session_file_name() 
-    local cwd = string.gsub(vim.fn.getcwd(), "%/", path_separator)
-    local file_name = cwd .. path_separator .. session_file_name
+    local cwd = vim.fn.getcwd()
+
+    for _, symbol in pairs(unwanted_symbols) do
+        cwd = cwd:gsub(symbol, symbol_replacement)
+    end
+
+    local file_name = cwd .. symbol_replacement .. session_file_name
     return sessions_dir .. "/" .. file_name
 end
 
