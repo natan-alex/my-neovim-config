@@ -1,9 +1,6 @@
 local map = vim.keymap.set
 
-local default_options = { 
-    noremap = true, 
-    silent = true 
-}
+local default_options = { noremap = true }
 
 -- Leader
 vim.g.mapleader = ";"
@@ -12,9 +9,11 @@ vim.g.mapleader = ";"
 map("i", "jk", "<ESC>", default_options)
 map("i", "kj", "<ESC>", default_options)
 
--- Tabs navigation
+-- Tabs related
 map("n", "<A-l>", ":tabnext<CR>", default_options)
 map("n", "<A-h>", ":tabprevious<CR>", default_options)
+map("n", "<A-L>", ":tabmove +1<CR>", default_options)
+map("n", "<A-H>", ":tabmove -1<CR>", default_options)
 
 -- Delete without changing registers
 map({"n", "x"}, "x", "\"_x", default_options)
@@ -46,3 +45,4 @@ map("n", "^", "g^", default_options)
 
 -- Space mappings
 map("n", "<Space>q", ":q<CR>", default_options)
+map("n", "<Space>Q", ":qa<CR>", default_options)
