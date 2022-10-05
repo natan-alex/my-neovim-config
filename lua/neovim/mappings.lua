@@ -53,7 +53,7 @@ map("n", "<Leader>qA", "<CMD>qa!<CR>", default_options)
 map("n", "<Leader>g", ":Git", default_options)
 
 -- Debugging related
-map("n", "<Leader>bb", "<CMD>lua require('dap').toggle_breakpoint()<CR>", default_options)
+map("n", "<Leader>B", "<CMD>lua require('dap').toggle_breakpoint()<CR>", default_options)
 map("n", "<F5>", "<CMD>lua require('dap').continue()<CR>", default_options)
 map("n", "<F10>", "<CMD>lua require('dap').step_over()<CR>", default_options)
 map("n", "<F11>", "<CMD>lua require('dap').step_into()<CR>", default_options)

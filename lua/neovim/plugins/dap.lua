@@ -95,7 +95,7 @@ dap.configurations.cs = {
         request = "launch",
         program = function()
             local default_path = vim.fn.getcwd() .. '/bin/Debug/'
-            return vim.fn.input('Path to dll: ', default_path)
+            return vim.fn.input('Path to dll: ', default_path, "file")
         end,
     },
 }
