@@ -48,4 +48,4 @@ map("n", "<Leader>qq", ":q<CR>", default_options)
 map("n", "<Leader>Q", ":qa<CR>", default_options)
 
 -- Fugitive mappings
-map("n", "<Leader>g", "<CMD>Git<CR>", default_options)
+map("n", "<Leader>g", ":Git", default_options)
