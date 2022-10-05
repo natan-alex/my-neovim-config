@@ -92,6 +92,10 @@ local start_packer_up = function(use)
     -- Git wrapper
     use "tpope/vim-fugitive"
 
+    -- Debugging
+    use "mfussenegger/nvim-dap"
+    use "rcarriga/nvim-dap-ui"
+
     if can_sync_packer then
         packer.sync()
     end
@@ -102,15 +106,16 @@ packer.startup(start_packer_up)
 
 
 -- call plugins configurations
-require("neovim.plugins.lualine")
-require("neovim.plugins.comment")
 require("neovim.plugins.cmp")
-require("neovim.plugins.toggleterm")
-require("neovim.plugins.nvim-tree")
-require("neovim.plugins.treesitter")
-require("neovim.plugins.telescope")
-require("neovim.plugins.which-key")
+require("neovim.plugins.comment")
+require("neovim.plugins.dap")
+require("neovim.plugins.lualine")
 require("neovim.plugins.luasnip")
+require("neovim.plugins.nvim-tree")
+require("neovim.plugins.telescope")
+require("neovim.plugins.toggleterm")
+require("neovim.plugins.treesitter")
+require("neovim.plugins.which-key")
 
 
 -- packer commands
