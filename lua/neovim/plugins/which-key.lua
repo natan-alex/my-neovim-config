@@ -6,7 +6,7 @@ end
 
 which_key.register({
     ["<Leader>"] = {
-        f = {
+        t = {
             name = "files",
             f = { "<CMD>Telescope find_files<CR>", "Find File" },
             r = { "<CMD>Telescope oldfiles<CR>", "Open Recent File" },

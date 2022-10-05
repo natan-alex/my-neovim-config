@@ -89,6 +89,9 @@ local start_packer_up = function(use)
     -- For floating menus with mappings
     use "folke/which-key.nvim"
 
+    -- Git wrapper
+    use "tpope/vim-fugitive"
+
     if can_sync_packer then
         packer.sync()
     end
