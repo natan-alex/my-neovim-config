@@ -12,7 +12,13 @@ local map = vim.keymap.set
 local map_options = { noremap = true, silent = true }
 
 local function term_exec(command)
-    return string.format(":TermExec cmd=\"%s\"<CR>", command)
+    return function()
+        local was_toggleterm_module_found, toggleterm = pcall(require, "toggleterm")
+        if not was_toggleterm_module_found then return end
+        local term = require("toggleterm.terminal").get(1)
+        if term ~= nil then term:shutdown() end
+        toggleterm.exec(command)
+    end
 end
 
 create_autocommand("TermOpen", {
