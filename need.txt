@@ -1,0 +1,5 @@
+// install ripgrep for telescope live-grep
+cargo install ripgrep
+
+// install neovim package globally
+pip install neovim
