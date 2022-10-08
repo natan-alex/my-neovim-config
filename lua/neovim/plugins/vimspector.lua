@@ -1,7 +1,5 @@
 vim.g.vimspector_enable_mappings = "HUMAN"
 
-vim.opt.buftype = ""
-
 local create_command = vim.api.nvim_create_user_command
 
 local config_path = vim.fn.stdpath("config")
@@ -48,6 +46,8 @@ local function generate_vimspector_file(params)
             vim.api.nvim_buf_set_name(new_buffer, ".vimspector.json")
             vim.api.nvim_buf_set_lines(new_buffer, 0, 0, true, get_file_lines(value))
 
+            vim.opt.buftype = ""
+
             return
         end
     end
@@ -63,6 +63,40 @@ create_command(
         end 
     }
 )
+
+local was_which_key_module_found, which_key = pcall(require, "which-key")
+
+if not was_which_key_module_found then return end
+
+local mapping_options = {
+    mode = "n",
+    prefix = "<Leader>",
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = true,
+}
+
+local mappings = {
+    v = {
+        name = "Vimspector",
+        G = { ":GenerateVimspectorFile ", "Generate vimspector file" },
+        U = { "<CMD>VimspectorUpdate<CR>", "Update" },
+        b = { "<CMD>call vimspector#ToggleBreakpoint()<CR>", "Toggle Breakpoint" },
+        c = { "<CMD>call vimspector#Continue()<CR>", "Continue" },
+        C = { "<CMD>call vimspector#RunToCursor()<CR>", "Run to Cursor" },
+        o = { "<CMD>call vimspector#StepOver()<CR>", "Step Over" },
+        O = { "<CMD>call vimspector#StepOut()<CR>", "Step Out" },
+        s = { "<CMD>call vimspector#Launch()<CR>", "Start" },
+        S = { "<CMD>call vimspector#Stop()<CR>", "Stop" },
+        r = { "<CMD>call vimspector#Restart()<CR>", "Restart" },
+        R = { "<CMD>VimspectorReset<CR>", "Reset" },
+        i = { "<CMD>call vimspector#StepInto()<CR>", "Step Into" },
+        I = { "<CMD>VimspectorInstall<CR>", "Install" },
+    }
+}
+
+which_key.register(mappings, mapping_options)
 
 --      HUMAN MAPPINGS
 -- F5	        <Plug>VimspectorContinue	                When debugging, continue. Otherwise start debugging.
