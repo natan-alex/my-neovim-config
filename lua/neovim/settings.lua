@@ -45,7 +45,7 @@ local settings = {
 
     lazyredraw = true,
 
-    timeoutlen = 200,
+    timeoutlen = 500,
 }
 
 -- Set the options based on table
