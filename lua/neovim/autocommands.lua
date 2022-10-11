@@ -6,7 +6,7 @@ local group_options = { clear = true }
 local indentation_group = create_autogroup("IndentationRelated", group_options)
 
 create_autocommand("FileType", {
-    pattern = { "js", "ts", "css", "html" },
+    pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact", "css", "html" },
     group = indentation_group,
     callback = function()
         vim.opt_local.shiftwidth = 2
