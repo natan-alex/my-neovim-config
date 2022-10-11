@@ -74,6 +74,8 @@ local start_packer_up = function(use)
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
 
+    use 'simrat39/rust-tools.nvim'
+
     -- Floating terminal
     use 'akinsho/toggleterm.nvim'
 
@@ -115,6 +117,7 @@ require("neovim.plugins.toggleterm")
 require("neovim.plugins.treesitter")
 require("neovim.plugins.vimspector")
 require("neovim.plugins.which-key")
+require("neovim.plugins.rust-tools")
 
 
 -- packer commands
