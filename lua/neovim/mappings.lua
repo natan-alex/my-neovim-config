@@ -44,4 +44,4 @@ map("n", "$", "g$", default_options)
 map("n", "^", "g^", default_options)
 
 -- Fugitive mappings
-map("n", "<Leader>g", ":Git", default_options)
+map("n", "<Leader>G", ":Git", default_options)
