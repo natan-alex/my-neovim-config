@@ -3,7 +3,7 @@ local map = vim.keymap.set
 local default_options = { noremap = true }
 
 -- Leader
-vim.g.mapleader = ";"
+vim.g.mapleader = ","
 
 -- Leave insert mode
 map("i", "jk", "<ESC>", default_options)
