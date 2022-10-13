@@ -118,6 +118,7 @@ require("neovim.plugins.telescope")
 require("neovim.plugins.toggleterm")
 require("neovim.plugins.treesitter")
 require("neovim.plugins.vimspector")
+require("neovim.plugins.vim-visual-multi")
 require("neovim.plugins.which-key")
 
 

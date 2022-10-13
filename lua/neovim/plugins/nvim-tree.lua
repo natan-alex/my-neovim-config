@@ -17,7 +17,7 @@ local mappings = {
 }
 
 nvim_tree.setup({
-    sort_by= "case_sensitive",
+    sort_by = "case_sensitive",
     view = {
         adaptive_size = true,
         mappings = { list = mappings },
