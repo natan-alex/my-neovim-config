@@ -16,6 +16,7 @@ which_key.register({
             name = "sessions",
             s = { "<CMD>SaveSession<CR>", "Save session" },
             l = { "<CMD>LoadSession<CR>", "Load session" },
+            d = { "<CMD>DeleteSession<CR>", "Delete session" },
         },
     }
 }, options)

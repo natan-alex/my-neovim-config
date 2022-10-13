@@ -4,7 +4,7 @@ local unwanted_symbols = { ":", "%/", "\\", "-" }
 local symbol_replacement = "__"
 
 -- set the options for saving a session
-vim.cmd("set sessionoptions=tabpages,folds,curdir,buffers")
+vim.opt.sessionoptions = { "tabpages", "folds", "curdir", "buffers" }
 
 -- create sessions dir if does not exist
 if vim.fn.isdirectory(sessions_dir) == 0 then
