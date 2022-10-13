@@ -1,3 +1,9 @@
+local was_module_found, rust_tools = pcall(require, "rust-tools")
+
+if not was_module_found then
+    return
+end
+
 local opts = {
     tools = {
         autoSetHints = true,
@@ -20,4 +26,4 @@ local opts = {
     },
 }
 
-require('rust-tools').setup(opts)
+rust_tools.setup(opts)
