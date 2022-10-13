@@ -22,7 +22,7 @@ end
 local was_packer_module_found, packer = pcall(require, "packer")
 
 if not was_packer_module_found then
-  return
+    return
 end
 
 -- Use packer popup window
@@ -59,15 +59,15 @@ local start_packer_up = function(use)
     use 'numToStr/Comment.nvim'
 
     -- Completion plugins
-    use 'hrsh7th/nvim-cmp'              -- completion plugin
-    use 'hrsh7th/cmp-buffer'            -- buffer completions
-    use 'hrsh7th/cmp-path'              -- path completions
-    use 'hrsh7th/cmp-cmdline'           -- cmdline completions
+    use 'hrsh7th/nvim-cmp' -- completion plugin
+    use 'hrsh7th/cmp-buffer' -- buffer completions
+    use 'hrsh7th/cmp-path' -- path completions
+    use 'hrsh7th/cmp-cmdline' -- cmdline completions
     use 'hrsh7th/cmp-nvim-lsp'
-    use 'saadparwaiz1/cmp_luasnip'      -- snippet completions
+    use 'saadparwaiz1/cmp_luasnip' -- snippet completions
 
     -- Snippets
-    use 'L3MON4D3/LuaSnip'              -- snippet engine
+    use 'L3MON4D3/LuaSnip' -- snippet engine
     use 'rafamadriz/friendly-snippets'
 
     -- Lsp related
@@ -85,7 +85,7 @@ local start_packer_up = function(use)
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     -- For floating menus with mappings
@@ -112,12 +112,13 @@ require("neovim.plugins.comment")
 require("neovim.plugins.lualine")
 require("neovim.plugins.luasnip")
 require("neovim.plugins.nvim-tree")
+require("neovim.plugins.nvim-web-devicons")
+require("neovim.plugins.rust-tools")
 require("neovim.plugins.telescope")
 require("neovim.plugins.toggleterm")
 require("neovim.plugins.treesitter")
 require("neovim.plugins.vimspector")
 require("neovim.plugins.which-key")
-require("neovim.plugins.rust-tools")
 
 
 -- packer commands
