@@ -9,18 +9,13 @@ local types_and_corresponding_templates = {
     rust = config_path .. "/vimspector-configs/rust.json",
 }
 
-local function get_table_keys(t)
-    local keys = {}
-
-    for key, _ in pairs(t) do
-        table.insert(keys, key)
-    end
-
-    return keys
-end
-
 local function get_file_lines(path)
     local file = io.open(path, "r")
+
+    if not file then
+        return
+    end
+
     local lines = {}
 
     for line in file:lines() do
@@ -31,14 +26,14 @@ local function get_file_lines(path)
     return lines
 end
 
-local function generate_vimspector_file(params) 
+local function generate_vimspector_file(params)
     local file_type = params.args
 
     for key, value in pairs(types_and_corresponding_templates) do
         if file_type == key then
             local new_buffer = vim.api.nvim_create_buf({}, {})
 
-            if new_buffer == 0 then 
+            if new_buffer == 0 then
                 print("Failed to generate file")
                 return
             end
@@ -55,13 +50,13 @@ local function generate_vimspector_file(params)
 end
 
 create_command(
-    "GenerateVimspectorFile", 
-    generate_vimspector_file, 
-    { 
-        nargs = 1, 
-        complete = function() 
-            return get_table_keys(types_and_corresponding_templates)
-        end 
+    "GenerateVimspectorFile",
+    generate_vimspector_file,
+    {
+        nargs = 1,
+        complete = function()
+            return vim.tbl_keys(types_and_corresponding_templates)
+        end
     }
 )
 
