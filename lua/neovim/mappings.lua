@@ -25,12 +25,6 @@ map({"n", "x"}, "<A-p>", "\"+p", default_options)
 -- Explorer
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", default_options)
 
--- Better window navigation
-map("n", "<C-h>", "<C-w>h", default_options)
-map("n", "<C-j>", "<C-w>j", default_options)
-map("n", "<C-k>", "<C-w>k", default_options)
-map("n", "<C-l>", "<C-w>l", default_options)
-
 -- Resize windows with arrows
 map("n", "<C-S-Up>", ":horizontal resize +2<CR>", default_options)
 map("n", "<C-S-Down>", ":horizontal resize -2<CR>", default_options)

@@ -8,16 +8,16 @@ luasnip.config.set_config({
     enable_autosnippets = true,
 })
 
-local map = vim.keymap.set
+local mapping_options = { noremap = true, silent = true }
 
-map({ "i", "s" }, "<C-l>", function()
+vim.keymap.set({ "i", "s" }, "<C-l>", function()
     if luasnip.jumpable(1) then
         luasnip.jump(1)
     end
-end, { noremap = true, silent = true })
+end, mapping_options)
 
-map({ "i", "s" }, "<C-h>", function()
+vim.keymap.set({ "i", "s" }, "<C-h>", function()
     if luasnip.jumpable(-1) then
         luasnip.jump(-1)
     end
-end, { noremap = true, silent = true })
+end, mapping_options)

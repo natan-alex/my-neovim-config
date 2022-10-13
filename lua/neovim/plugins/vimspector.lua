@@ -6,6 +6,7 @@ local config_path = vim.fn.stdpath("config")
 
 local types_and_corresponding_templates = {
     dotnet = config_path .. "/vimspector-configs/dotnet.json",
+    rust = config_path .. "/vimspector-configs/rust.json",
 }
 
 local function get_table_keys(t)
