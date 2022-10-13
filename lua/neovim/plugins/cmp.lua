@@ -10,8 +10,6 @@ if not was_luasnip_module_found then
     return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
-
 local icons = {
     Text = "",
     Method = "m",
