@@ -5,7 +5,7 @@ if not was_module_found then
 end
 
 lualine.setup({
-  options = {
-    icons_enabled = true,
-  }
+    options = {
+        icons_enabled = true,
+    }
 })
