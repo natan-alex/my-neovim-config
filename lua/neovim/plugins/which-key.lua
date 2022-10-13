@@ -28,13 +28,14 @@ end
 
 which_key.register({
     ["<Leader>"] = {
-        f = {
+        t = {
             name = "telescope files",
             f = { telescope.find_files, "Telescope Find file" },
             r = { telescope.oldfiles, "Telescope Open recent file" },
             g = { telescope.live_grep, "Telescope Live grep" },
             b = { telescope.buffers, "Telescope List buffers" },
             d = { telescope.diagnostics, "Telescope Diagnostics" },
+            h = { telescope.help_tags, "Telescope Help tags" },
             c = {
                 function()
                     local opt = { sorting_strategy = "ascending" }
