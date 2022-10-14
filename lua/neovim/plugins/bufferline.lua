@@ -9,6 +9,6 @@ bufferline.setup({
         mode = "tabs",
         close_command = "bdelete! %d",
         right_mouse_command = "bdelete! %d",
-        enforce_regular_tabs = true,
+        diagnostics = "nvim_lsp",
     },
 })
