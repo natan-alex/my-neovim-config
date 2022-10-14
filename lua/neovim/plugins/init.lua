@@ -101,7 +101,7 @@ local start_packer_up = function(use)
     use "puremourning/vimspector"
 
     -- For nice tab display
-    use "romgrk/barbar.nvim"
+    use "akinsho/bufferline.nvim"
 
     if can_sync_packer then
         packer.sync()
@@ -113,7 +113,7 @@ packer.startup(start_packer_up)
 
 
 -- call plugins configurations
-require("neovim.plugins.barbar")
+require("neovim.plugins.bufferline")
 require("neovim.plugins.cmp")
 require("neovim.plugins.comment")
 require("neovim.plugins.lualine")
