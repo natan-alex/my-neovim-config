@@ -8,5 +8,3 @@ vscode.setup({
     -- Enable italic comment
     italic_comments = true,
 })
-
-vscode.change_style("dark")
