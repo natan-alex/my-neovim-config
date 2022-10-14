@@ -38,57 +38,57 @@ packer.init {
 -- Add plugins here
 local start_packer_up = function(use)
     -- For packer to update itself
-    use 'wbthomason/packer.nvim'
+    use "wbthomason/packer.nvim"
 
     -- Theme inspired by Atom
-    use 'joshdick/onedark.vim'
+    use "joshdick/onedark.vim"
 
-    use 'kyazdani42/nvim-tree.lua'
-    use 'kyazdani42/nvim-web-devicons' -- for file icons
+    use "kyazdani42/nvim-tree.lua"
+    use "kyazdani42/nvim-web-devicons" -- for file icons
 
     -- Surround things
-    use 'tpope/vim-surround'
+    use "tpope/vim-surround"
 
     -- Multiple cursors
-    use 'mg979/vim-visual-multi'
+    use "mg979/vim-visual-multi"
 
     -- Nice bar
-    use 'nvim-lualine/lualine.nvim'
+    use "nvim-lualine/lualine.nvim"
 
     -- To comment code
-    use 'numToStr/Comment.nvim'
+    use "numToStr/Comment.nvim"
 
     -- Completion plugins
-    use 'hrsh7th/nvim-cmp' -- completion plugin
-    use 'hrsh7th/cmp-buffer' -- buffer completions
-    use 'hrsh7th/cmp-path' -- path completions
-    use 'hrsh7th/cmp-cmdline' -- cmdline completions
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'saadparwaiz1/cmp_luasnip' -- snippet completions
+    use "hrsh7th/nvim-cmp" -- completion plugin
+    use "hrsh7th/cmp-buffer" -- buffer completions
+    use "hrsh7th/cmp-path" -- path completions
+    use "hrsh7th/cmp-cmdline" -- cmdline completions
+    use "hrsh7th/cmp-nvim-lsp"
+    use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
     -- For nice completion menu
-    use 'onsails/lspkind.nvim'
+    use "onsails/lspkind.nvim"
 
     -- Snippets
-    use 'L3MON4D3/LuaSnip' -- snippet engine
-    use 'rafamadriz/friendly-snippets'
+    use "L3MON4D3/LuaSnip" -- snippet engine
+    use "rafamadriz/friendly-snippets"
 
     -- Lsp related
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
+    use "neovim/nvim-lspconfig"
+    use "williamboman/nvim-lsp-installer"
 
-    use 'simrat39/rust-tools.nvim'
+    use "simrat39/rust-tools.nvim"
 
     -- Floating terminal
-    use 'akinsho/toggleterm.nvim'
+    use "akinsho/toggleterm.nvim"
 
     -- Syntax highlighting
-    use 'nvim-treesitter/nvim-treesitter'
+    use "nvim-treesitter/nvim-treesitter"
 
     -- Fuzzy finder
     use {
-        'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        "nvim-telescope/telescope.nvim",
+        requires = { { "nvim-lua/plenary.nvim" } }
     }
 
     -- For floating menus with mappings
@@ -100,6 +100,9 @@ local start_packer_up = function(use)
     -- Debugging
     use "puremourning/vimspector"
 
+    -- For nice tab display
+    use "romgrk/barbar.nvim"
+
     if can_sync_packer then
         packer.sync()
     end
@@ -110,6 +113,7 @@ packer.startup(start_packer_up)
 
 
 -- call plugins configurations
+require("neovim.plugins.barbar")
 require("neovim.plugins.cmp")
 require("neovim.plugins.comment")
 require("neovim.plugins.lualine")

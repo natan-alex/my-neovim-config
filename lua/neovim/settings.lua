@@ -19,26 +19,24 @@ local settings = {
 
     termguicolors = true,
 
-    undofile = true,            -- enable persistent undo
+    undofile = true, -- enable persistent undo
 
-    cursorline = true,          -- highlight the current line
+    cursorline = true, -- highlight the current line
 
-    mouse = "a",                -- use mouse for selections and scroll
+    mouse = "a", -- use mouse for selections and scroll
 
-    backup = false,             -- dont create a backup file
+    backup = false, -- dont create a backup file
 
-    cmdheight = 2,              -- more space in the neovim command line for displaying messages
-    fileencoding = "utf-8",     -- the encoding written to a file
-
-    showtabline = 2,            -- always show tabs
+    cmdheight = 2, -- more space in the neovim command line for displaying messages
+    fileencoding = "utf-8", -- the encoding written to a file
 
     smartindent = true,
     autoindent = true,
 
-    splitbelow = true,          -- force all horizontal splits to go below current window
-    splitright = true,          -- force all vertical splits to go to the right of current window
+    splitbelow = true, -- force all horizontal splits to go below current window
+    splitright = true, -- force all vertical splits to go to the right of current window
 
-    swapfile = false,           -- creates a swapfile
+    swapfile = false, -- creates a swapfile
 
     scrolloff = 2,
     sidescrolloff = 2,

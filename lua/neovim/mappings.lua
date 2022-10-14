@@ -10,17 +10,19 @@ map("i", "jk", "<ESC>", default_options)
 map("i", "kj", "<ESC>", default_options)
 
 -- Tabs related
-map("n", "<A-l>", ":tabnext<CR>", default_options)
-map("n", "<A-h>", ":tabprevious<CR>", default_options)
-map("n", "<A-L>", ":tabmove +1<CR>", default_options)
-map("n", "<A-H>", ":tabmove -1<CR>", default_options)
+map("n", "<A-l>", "<CMD>BufferNext<CR>", default_options)
+map("n", "<A-h>", "<CMD>BufferPrevious<CR>", default_options)
+
+-- Bufferline related
+map("n", "<A-L>", "<CMD>BufferMoveNext<CR>", default_options)
+map("n", "<A-H>", "<CMD>BufferMovePrevious<CR>", default_options)
 
 -- Delete without changing registers
-map({"n", "x"}, "x", "\"_x", default_options)
+map({ "n", "x" }, "x", "\"_x", default_options)
 
 -- Clipboard related
-map({"n", "x"}, "<A-y>", "\"+y", default_options)
-map({"n", "x"}, "<A-p>", "\"+p", default_options)
+map({ "n", "x" }, "<A-y>", "\"+y", default_options)
+map({ "n", "x" }, "<A-p>", "\"+p", default_options)
 
 -- Explorer
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", default_options)
