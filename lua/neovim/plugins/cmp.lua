@@ -24,14 +24,7 @@ cmp.setup {
     },
     formatting = {
         format = lspkind.cmp_format({
-            with_text = true,
-            menu = {
-                nvim_lsp = "[LSP]",
-                luasnip = "[Snippet]",
-                buffer = "[Buffer]",
-                path = "[Path]",
-                cmdline = "[Cmdline]",
-            },
+            mode = "symbol_text",
         })
     },
     sources = {

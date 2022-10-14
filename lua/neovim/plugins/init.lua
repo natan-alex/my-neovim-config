@@ -110,6 +110,7 @@ packer.startup(start_packer_up)
 
 
 -- call plugins configurations
+require("neovim.plugins.cmp")
 require("neovim.plugins.comment")
 require("neovim.plugins.lualine")
 require("neovim.plugins.luasnip")
@@ -122,8 +123,6 @@ require("neovim.plugins.treesitter")
 require("neovim.plugins.vim-visual-multi")
 require("neovim.plugins.vimspector")
 require("neovim.plugins.which-key")
-require("neovim.plugins.lsp-kind")
-require("neovim.plugins.cmp")
 
 
 -- packer commands
