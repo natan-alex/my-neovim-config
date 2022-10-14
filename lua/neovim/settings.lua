@@ -1,5 +1,6 @@
--- Theme
-pcall(vim.cmd, "colorscheme onedark")
+-- Colorscheme
+-- pcall(vim.cmd, "colorscheme onedark")
+pcall(vim.cmd, "colorscheme vscode")
 
 local settings = {
     number = true,

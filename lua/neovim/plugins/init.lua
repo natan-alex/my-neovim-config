@@ -40,8 +40,9 @@ local start_packer_up = function(use)
     -- For packer to update itself
     use "wbthomason/packer.nvim"
 
-    -- Theme inspired by Atom
+    -- Colorschemes
     use "joshdick/onedark.vim"
+    use 'Mofiqul/vscode.nvim'
 
     use "kyazdani42/nvim-tree.lua"
     use "kyazdani42/nvim-web-devicons" -- for file icons
@@ -127,6 +128,7 @@ require("neovim.plugins.treesitter")
 require("neovim.plugins.vim-visual-multi")
 require("neovim.plugins.vimspector")
 require("neovim.plugins.which-key")
+require("neovim.plugins.colorschemes.vscode")
 
 
 -- packer commands
