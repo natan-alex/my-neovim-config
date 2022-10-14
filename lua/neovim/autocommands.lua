@@ -19,6 +19,6 @@ create_autocommand("BufWritePre", {
     pattern = "*",
     group = after_saving_group,
     callback = function()
-        vim.lsp.buf.format({ async = true })
+        pcall(vim.lsp.buf.format)
     end,
 })
