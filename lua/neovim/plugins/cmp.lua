@@ -10,37 +10,6 @@ if not was_lspkind_module_found then
     return
 end
 
-lspkind.init()
-
--- local icons = {
---     Text = "",
---     Method = "m",
---     Function = "",
---     Constructor = "",
---     Field = "",
---     Variable = "",
---     Class = "",
---     Interface = "",
---     Module = "",
---     Property = "",
---     Unit = "",
---     Value = "",
---     Enum = "",
---     Keyword = "",
---     Snippet = "",
---     Color = "",
---     File = "",
---     Reference = "",
---     Folder = "",
---     EnumMember = "",
---     Constant = "",
---     Struct = "",
---     Event = "",
---     Operator = "",
---     TypeParameter = "",
--- }
---
-
 cmp.setup {
     snippet = {
         expand = function(args)

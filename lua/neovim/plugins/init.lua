@@ -66,6 +66,9 @@ local start_packer_up = function(use)
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip' -- snippet completions
 
+    -- For nice completion menu
+    use 'onsails/lspkind.nvim'
+
     -- Snippets
     use 'L3MON4D3/LuaSnip' -- snippet engine
     use 'rafamadriz/friendly-snippets'
@@ -107,7 +110,6 @@ packer.startup(start_packer_up)
 
 
 -- call plugins configurations
-require("neovim.plugins.cmp")
 require("neovim.plugins.comment")
 require("neovim.plugins.lualine")
 require("neovim.plugins.luasnip")
@@ -117,9 +119,11 @@ require("neovim.plugins.rust-tools")
 require("neovim.plugins.telescope")
 require("neovim.plugins.toggleterm")
 require("neovim.plugins.treesitter")
-require("neovim.plugins.vimspector")
 require("neovim.plugins.vim-visual-multi")
+require("neovim.plugins.vimspector")
 require("neovim.plugins.which-key")
+require("neovim.plugins.lsp-kind")
+require("neovim.plugins.cmp")
 
 
 -- packer commands
