@@ -9,13 +9,12 @@ vim.g.mapleader = ","
 map("i", "jk", "<ESC>", default_options)
 map("i", "kj", "<ESC>", default_options)
 
--- Tabs related
+-- Bufferline related
 map("n", "<A-l>", "<CMD>BufferNext<CR>", default_options)
 map("n", "<A-h>", "<CMD>BufferPrevious<CR>", default_options)
-
--- Bufferline related
 map("n", "<A-L>", "<CMD>BufferMoveNext<CR>", default_options)
 map("n", "<A-H>", "<CMD>BufferMovePrevious<CR>", default_options)
+map("n", "<A-q>", "<CMD>BufferClose<CR>", default_options)
 
 -- Delete without changing registers
 map({ "n", "x" }, "x", "\"_x", default_options)
