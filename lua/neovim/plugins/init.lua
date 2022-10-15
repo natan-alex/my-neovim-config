@@ -40,12 +40,18 @@ local start_packer_up = function(use)
     -- For packer to update itself
     use "wbthomason/packer.nvim"
 
+    -- Common for plugins
+    use "nvim-lua/plenary.nvim"
+
     -- Colorschemes
     use "joshdick/onedark.vim"
     use 'Mofiqul/vscode.nvim'
 
+    -- For file explorer
     use "kyazdani42/nvim-tree.lua"
-    use "kyazdani42/nvim-web-devicons" -- for file icons
+
+    -- For file icons
+    use "kyazdani42/nvim-web-devicons"
 
     -- Surround things
     use "tpope/vim-surround"
@@ -87,10 +93,7 @@ local start_packer_up = function(use)
     use "nvim-treesitter/nvim-treesitter"
 
     -- Fuzzy finder
-    use {
-        "nvim-telescope/telescope.nvim",
-        requires = { { "nvim-lua/plenary.nvim" } }
-    }
+    use "nvim-telescope/telescope.nvim"
 
     -- For floating menus with mappings
     use "folke/which-key.nvim"
