@@ -5,8 +5,8 @@ local create_command = vim.api.nvim_create_user_command
 local config_path = vim.fn.stdpath("config")
 
 local types_and_corresponding_templates = {
-    dotnet = config_path .. "/vimspector-configs/dotnet.json",
-    rust = config_path .. "/vimspector-configs/rust.json",
+    dotnet = config_path .. "/vimspector-templates/dotnet.json",
+    rust = config_path .. "/vimspector-templates/rust.json",
 }
 
 local function get_file_lines(path)
