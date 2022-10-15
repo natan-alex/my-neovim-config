@@ -99,7 +99,9 @@ local start_packer_up = function(use)
     use "folke/which-key.nvim"
 
     -- Git wrapper
-    use "tpope/vim-fugitive"
+    -- use "tpope/vim-fugitive"
+    use "TimUntersberger/neogit"
+    use "sindrets/diffview.nvim"
 
     -- Debugging
     use "puremourning/vimspector"
@@ -131,6 +133,7 @@ require("neovim.plugins.treesitter")
 require("neovim.plugins.vim-visual-multi")
 require("neovim.plugins.vimspector")
 require("neovim.plugins.which-key")
+require("neovim.plugins.neogit")
 
 
 -- packer commands
