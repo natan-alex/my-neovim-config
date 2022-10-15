@@ -2,7 +2,7 @@ local was_which_key_module_found, which_key = pcall(require, "which-key")
 
 if not was_which_key_module_found then return end
 
-local common = require("neovim.ftplugins-common")
+local common = require("neovim.ftplugin.common")
 
 local mappings = {
     p = {

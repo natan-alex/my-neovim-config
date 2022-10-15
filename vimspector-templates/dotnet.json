@@ -1,0 +1,14 @@
+{
+    "configurations": {
+        "launch - netcoredbg": {
+            "adapter": "netcoredbg",
+            "configuration": {
+                "request": "launch",
+                "program": "${workspaceRoot}/bin/Debug/",
+                "args": [],
+                "cwd": "${workspaceRoot}",
+                "env": {}
+            }
+        }
+    }
+}
