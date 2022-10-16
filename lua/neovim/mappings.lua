@@ -32,8 +32,8 @@ map({ "n", "x" }, "<A-p>", "\"+p", default_options)
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", default_options)
 
 -- Resize windows with arrows
-map("n", "<C-S-Up>", ":horizontal resize +2<CR>", default_options)
-map("n", "<C-S-Down>", ":horizontal resize -2<CR>", default_options)
+map("n", "<C-S-Up>", ":resize +2<CR>", default_options)
+map("n", "<C-S-Down>", ":resize -2<CR>", default_options)
 map("n", "<C-S-Right>", ":vertical resize -2<CR>", default_options)
 map("n", "<C-S-Left>", ":vertical resize +2<CR>", default_options)
 
