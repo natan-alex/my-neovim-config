@@ -4,10 +4,13 @@
             "adapter": "netcoredbg",
             "configuration": {
                 "request": "launch",
-                "program": "${workspaceRoot}/bin/Debug/",
+                "program": "${workspaceRoot}/bin/Debug/net6.0/netapi.dll",
                 "args": [],
                 "cwd": "${workspaceRoot}",
-                "env": {}
+                "env": {
+                    "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000",
+                    "ASPNETCORE_ENVIRONMENT": "Development"
+                }
             }
         }
     }
