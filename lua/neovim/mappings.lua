@@ -44,4 +44,4 @@ map("n", "$", "g$", default_options)
 map("n", "^", "g^", default_options)
 
 -- Fugitive mappings
-map("n", "<Leader>gg", "<CMD>Neogit<CR>", default_options)
+map("n", "<Leader>gg", "<CMD>tab Git<CR>", default_options)
