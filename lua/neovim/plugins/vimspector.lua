@@ -3,18 +3,21 @@ vim.g.vimspector_enable_mappings = "HUMAN"
 local create_command = vim.api.nvim_create_user_command
 
 local config_path = vim.fn.stdpath("config")
+local templates_folder_name = "vimspector-templates"
+local templates_folder_path = config_path .. "/" .. templates_folder_name .. "/"
+local vimspector_file_name = ".vimspector.json"
 
-local types_and_corresponding_templates = {
-    dotnet = config_path .. "/vimspector-templates/dotnet.json",
-    rust = config_path .. "/vimspector-templates/rust.json",
+local template_names_and_paths = {
+    dotnet = templates_folder_path .. "dotnet.json",
+    rust = templates_folder_path .. "rust.json",
 }
+
+local template_names = vim.tbl_keys(template_names_and_paths)
 
 local function get_file_lines(path)
     local file = io.open(path, "r")
 
-    if not file then
-        return
-    end
+    if not file then return end
 
     local lines = {}
 
@@ -27,10 +30,10 @@ local function get_file_lines(path)
 end
 
 local function generate_vimspector_file(params)
-    local file_type = params.args
+    local template_name = params.args
 
-    for key, value in pairs(types_and_corresponding_templates) do
-        if file_type == key then
+    for name, path in pairs(template_names_and_paths) do
+        if template_name == name then
             local new_buffer = vim.api.nvim_create_buf({}, {})
 
             if new_buffer == 0 then
@@ -38,10 +41,16 @@ local function generate_vimspector_file(params)
                 return
             end
 
-            vim.api.nvim_set_current_buf(new_buffer)
-            vim.api.nvim_buf_set_name(new_buffer, ".vimspector.json")
-            vim.api.nvim_buf_set_lines(new_buffer, 0, 0, true, get_file_lines(value))
+            local file_content = get_file_lines(path)
 
+            if not file_content then
+                print("Failed to read file at " .. path)
+                return
+            end
+
+            vim.api.nvim_set_current_buf(new_buffer)
+            vim.api.nvim_buf_set_name(new_buffer, vimspector_file_name)
+            vim.api.nvim_buf_set_lines(new_buffer, 0, 0, true, file_content)
             vim.opt.buftype = ""
 
             return
@@ -55,7 +64,7 @@ create_command(
     {
         nargs = 1,
         complete = function()
-            return vim.tbl_keys(types_and_corresponding_templates)
+            return template_names
         end
     }
 )
@@ -76,8 +85,11 @@ local mapping_options = {
 local mappings = {
     v = {
         name = "Vimspector",
-        G = { ":GenerateVimspectorFile ", "Generate vimspector file" },
+        G = { ":GenerateVimspectorFile", "Generate vimspector file" },
+        I = { ":VimspectorInstall", "Install" },
         U = { "<CMD>VimspectorUpdate<CR>", "Update" },
+        B = { "<CMD>VimspectorBreakpoints<CR>", "Breakpoints" },
+        R = { "<CMD>VimspectorReset<CR>", "Reset" },
         b = { "<CMD>call vimspector#ToggleBreakpoint()<CR>", "Toggle Breakpoint" },
         c = { "<CMD>call vimspector#Continue()<CR>", "Continue" },
         C = { "<CMD>call vimspector#RunToCursor()<CR>", "Run to Cursor" },
@@ -86,9 +98,7 @@ local mappings = {
         s = { "<CMD>call vimspector#Launch()<CR>", "Start" },
         S = { "<CMD>call vimspector#Stop()<CR>", "Stop" },
         r = { "<CMD>call vimspector#Restart()<CR>", "Restart" },
-        R = { "<CMD>VimspectorReset<CR>", "Reset" },
         i = { "<CMD>call vimspector#StepInto()<CR>", "Step Into" },
-        I = { "<CMD>VimspectorInstall<CR>", "Install" },
     }
 }
 
