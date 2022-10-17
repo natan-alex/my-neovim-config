@@ -9,12 +9,6 @@ vim.g.mapleader = ","
 map("i", "jk", "<ESC>", default_options)
 map("i", "kj", "<ESC>", default_options)
 
--- Bufferline related
-map("n", "<A-l>", "<CMD>BufferLineCycleNext<CR>", default_options)
-map("n", "<A-h>", "<CMD>BufferLineCyclePrev<CR>", default_options)
-map("n", "<A-L>", "<CMD>BufferLineMoveNext<CR>", default_options)
-map("n", "<A-H>", "<CMD>BufferLineMovePrev<CR>", default_options)
-
 -- Common save
 map("n", "<C-s>", "<CMD>w!<CR>", default_options)
 
@@ -45,6 +39,3 @@ map("n", "j", "gj", default_options)
 map("n", "k", "gk", default_options)
 map("n", "$", "g$", default_options)
 map("n", "^", "g^", default_options)
-
--- Fugitive mappings
-map("n", "<Leader>gg", "<CMD>tab Git<CR>", default_options)
