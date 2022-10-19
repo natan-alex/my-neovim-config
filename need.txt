@@ -3,3 +3,6 @@ cargo install ripgrep
 
 // install python provider
 pip install pynvim
+
+// if will use jdtls lsp server, install like this:
+:LspInstall jdtls@1.12.0-202206011637
