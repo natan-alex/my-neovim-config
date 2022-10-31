@@ -44,3 +44,7 @@ local insert_node = luasnip.insert_node
 luasnip.add_snippets("cs", {
     create_snippet("cws", format([[Console.WriteLine("{}");]], { insert_node(1) })),
 })
+
+luasnip.add_snippets("java", {
+    create_snippet("sout", format([[System.out.println("{}");]], { insert_node(1) })),
+})
