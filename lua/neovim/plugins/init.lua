@@ -70,7 +70,7 @@ local start_packer_up = function(use)
     use "hrsh7th/cmp-buffer" -- buffer completions
     use "hrsh7th/cmp-path" -- path completions
     use "hrsh7th/cmp-cmdline" -- cmdline completions
-    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-nvim-lsp" -- lsp completions
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
     -- For nice completion menu
@@ -99,13 +99,14 @@ local start_packer_up = function(use)
     use "folke/which-key.nvim"
 
     -- Git wrapper
-    use "tpope/vim-fugitive"
+    use "TimUntersberger/neogit"
+    use "sindrets/diffview.nvim"
 
     -- Debugging
     use "puremourning/vimspector"
 
     -- For nice tab display
-    use "akinsho/bufferline.nvim"
+    use "romgrk/barbar.nvim"
 
     if can_sync_packer then
         packer.sync()
@@ -117,12 +118,12 @@ packer.startup(start_packer_up)
 
 
 -- call plugins configurations
-require("neovim.plugins.bufferline")
+require("neovim.plugins.barbar")
 require("neovim.plugins.cmp")
 require("neovim.plugins.comment")
-require("neovim.plugins.fugitive")
 require("neovim.plugins.lualine")
 require("neovim.plugins.luasnip")
+require("neovim.plugins.neogit")
 require("neovim.plugins.nvim-tree")
 require("neovim.plugins.nvim-web-devicons")
 require("neovim.plugins.rust-tools")
