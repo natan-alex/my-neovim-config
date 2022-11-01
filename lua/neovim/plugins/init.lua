@@ -70,7 +70,7 @@ local start_packer_up = function(use)
     use "hrsh7th/cmp-buffer" -- buffer completions
     use "hrsh7th/cmp-path" -- path completions
     use "hrsh7th/cmp-cmdline" -- cmdline completions
-    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-nvim-lsp" -- lsp completions
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
     -- For nice completion menu
@@ -99,10 +99,12 @@ local start_packer_up = function(use)
     use "folke/which-key.nvim"
 
     -- Git wrapper
-    use "tpope/vim-fugitive"
+    use "TimUntersberger/neogit"
+    use "sindrets/diffview.nvim"
 
     -- Debugging
-    use "puremourning/vimspector"
+    use "mfussenegger/nvim-dap"
+    use "rcarriga/nvim-dap-ui"
 
     -- For nice tab display
     use "akinsho/bufferline.nvim"
@@ -120,9 +122,10 @@ packer.startup(start_packer_up)
 require("neovim.plugins.bufferline")
 require("neovim.plugins.cmp")
 require("neovim.plugins.comment")
-require("neovim.plugins.fugitive")
+require("neovim.plugins.dap")
 require("neovim.plugins.lualine")
 require("neovim.plugins.luasnip")
+require("neovim.plugins.neogit")
 require("neovim.plugins.nvim-tree")
 require("neovim.plugins.nvim-web-devicons")
 require("neovim.plugins.rust-tools")
@@ -130,7 +133,6 @@ require("neovim.plugins.telescope")
 require("neovim.plugins.toggleterm")
 require("neovim.plugins.treesitter")
 require("neovim.plugins.vim-visual-multi")
-require("neovim.plugins.vimspector")
 require("neovim.plugins.which-key")
 
 

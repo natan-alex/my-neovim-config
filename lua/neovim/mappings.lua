@@ -9,12 +9,6 @@ vim.g.mapleader = ","
 map("i", "jk", "<ESC>", default_options)
 map("i", "kj", "<ESC>", default_options)
 
--- Easy close
-map("n", "<C-q><C-q>", "<CMD>q<CR>", default_options)
-map("n", "<C-q><C-a>", "<CMD>qa<CR>", default_options)
-map("n", "<C-q><C-Q>", "<CMD>q!<CR>", default_options)
-map("n", "<C-q><C-A>", "<CMD>qa!<CR>", default_options)
-
 -- Delete without changing registers
 map({ "n", "x" }, "x", "\"_x", default_options)
 

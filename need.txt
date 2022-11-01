@@ -6,3 +6,9 @@ pip install pynvim
 
 // if will use jdtls lsp server, install like this:
 :LspInstall jdtls@1.12.0-202206011637
+
+// lldb for debugging c, cpp and rust
+yay -S lldb
+
+// netcoredbg for debugging dotnet core
+https://github.com/Samsung/netcoredbg/releases
