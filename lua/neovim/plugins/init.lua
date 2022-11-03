@@ -103,8 +103,7 @@ local start_packer_up = function(use)
     use "sindrets/diffview.nvim"
 
     -- Debugging
-    use "mfussenegger/nvim-dap"
-    use "rcarriga/nvim-dap-ui"
+    use "puremourning/vimspector"
 
     -- For nice tab display
     use "akinsho/bufferline.nvim"
@@ -122,7 +121,6 @@ packer.startup(start_packer_up)
 require("neovim.plugins.bufferline")
 require("neovim.plugins.cmp")
 require("neovim.plugins.comment")
-require("neovim.plugins.dap")
 require("neovim.plugins.lualine")
 require("neovim.plugins.luasnip")
 require("neovim.plugins.neogit")
@@ -133,6 +131,7 @@ require("neovim.plugins.telescope")
 require("neovim.plugins.toggleterm")
 require("neovim.plugins.treesitter")
 require("neovim.plugins.vim-visual-multi")
+require("neovim.plugins.vimspector")
 require("neovim.plugins.which-key")
 
 
