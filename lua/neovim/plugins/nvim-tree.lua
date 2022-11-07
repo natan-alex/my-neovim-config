@@ -17,16 +17,24 @@ local mappings = {
 }
 
 nvim_tree.setup({
-    sort_by = "case_sensitive",
+    open_on_setup_file = true,
+    sort_by = "name",
     view = {
         adaptive_size = true,
         mappings = { list = mappings },
     },
+    filesystem_watchers = {
+        enable = true,
+    },
     renderer = {
         group_empty = true,
+        highlight_opened_files = "all",
+    },
+    diagnostics = {
+        enable = true,
     },
     filters = {
-        dotfiles = true,
+        dotfiles = false,
     },
 })
 
