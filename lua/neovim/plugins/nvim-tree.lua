@@ -8,21 +8,11 @@ if not was_module_found then
     return
 end
 
-local mappings = {
-    { key = "u", action = "dir_up" },
-    { key = "t", action = "tabnew" },
-    { key = "C", action = "cd" },
-    { key = "s", action = "split" },
-    { key = "v", action = "vsplit" },
-}
-
 nvim_tree.setup({
-    open_on_setup_file = true,
+    disable_netrw = true,
+    hijack_cursor = true,
+    update_cwd = true,
     sort_by = "name",
-    view = {
-        adaptive_size = true,
-        mappings = { list = mappings },
-    },
     filesystem_watchers = {
         enable = true,
     },
@@ -32,9 +22,28 @@ nvim_tree.setup({
     },
     diagnostics = {
         enable = true,
+        show_on_dirs = true,
     },
-    filters = {
-        dotfiles = false,
+    actions = {
+        open_file = {
+            quit_on_open = true
+        },
+    },
+    update_focused_file = {
+        enable = true,
+        update_cwd = true,
+    },
+    view = {
+        adaptive_size = true,
+        mappings = { 
+            list = {
+                { key = "u", action = "dir_up" },
+                { key = "t", action = "tabnew" },
+                { key = "C", action = "cd" },
+                { key = "s", action = "split" },
+                { key = "v", action = "vsplit" },
+            },
+        },
     },
 })
 
