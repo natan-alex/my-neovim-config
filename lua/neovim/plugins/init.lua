@@ -165,6 +165,11 @@ packer.startup(function(use)
         requires = { "nvim-tree/nvim-web-devicons" }, 
     })
 
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup() end
+    }
+
     if can_sync_packer then
         packer.sync()
     end
