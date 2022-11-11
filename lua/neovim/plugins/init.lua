@@ -127,7 +127,6 @@ packer.startup(function(use)
     -- Floating terminal
     use({ 
         "akinsho/toggleterm.nvim", 
-        cmd = "ToggleTerm", 
         config = function() require("neovim.plugins.toggleterm") end,
     })
 
