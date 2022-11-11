@@ -64,7 +64,7 @@ packer.startup(function(use)
     -- For file icons
     use({ 
         "nvim-tree/nvim-web-devicons", 
-        config = function() require("neovim.plugins.nvim-web-devicons") end,
+        config = function() require("nvim-web-devicons").setup() end,
     })
 
     -- Surround things
