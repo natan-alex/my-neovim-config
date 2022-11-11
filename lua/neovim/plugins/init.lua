@@ -73,7 +73,11 @@ packer.startup(function(use)
     -- Multiple cursors
     use({ 
         "mg979/vim-visual-multi", 
-        config = function() vim.cmd("source ./lua/neovim/plugins/vim-visual-multi.vim") end,
+        config = function() 
+	    local path = vim.fn.stdpath("config")
+	    path = path .. "/lua/neovim/plugins/vim-visual-multi.vim"
+	    vim.cmd("source" .. path) 
+	end,
     })
 
     -- Nice bar
