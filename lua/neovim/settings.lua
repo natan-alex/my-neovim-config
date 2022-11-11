@@ -1,49 +1,71 @@
-local settings = {
-    number = true,
-    relativenumber = true,
+vim.wo.number = true
+vim.wo.relativenumber = true
 
-    hlsearch = false,
-    incsearch = true,
+vim.o.hlsearch = false
+vim.o.incsearch = true
 
-    softtabstop = 4,
-    shiftwidth = 4,
-    expandtab = true,
+vim.bo.softtabstop = 4
+vim.bo.shiftwidth = 4
+vim.bo.expandtab = true
 
-    wrap = true,
+vim.o.smarttab = true
 
-    ignorecase = true,
-    smartcase = true,
+vim.o.wrap = true
 
-    termguicolors = true,
+vim.o.hidden = true
 
-    undofile = true, -- enable persistent undo
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
-    cursorline = true, -- highlight the current line
+vim.o.termguicolors = true
 
-    mouse = "a", -- use mouse for selections and scroll
+vim.o.undofile = true -- enable persistent undo
 
-    backup = false, -- dont create a backup file
+vim.o.cursorline = true -- highlight the current line
 
-    cmdheight = 2, -- more space in the neovim command line for displaying messages
-    fileencoding = "utf-8", -- the encoding written to a file
+vim.o.mouse = "a" -- use mouse for selections and scroll
 
-    smartindent = true,
-    autoindent = true,
+vim.o.backup = false -- dont create a backup file
 
-    splitbelow = true, -- force all horizontal splits to go below current window
-    splitright = true, -- force all vertical splits to go to the right of current window
+vim.o.cmdheight = 2 -- more space in the neovim command line for displaying messages
+vim.o.fileencoding = "utf-8" -- the encoding written to a file
 
-    swapfile = false, -- creates a swapfile
+vim.bo.smartindent = true
+vim.bo.autoindent = true
 
-    scrolloff = 2,
-    sidescrolloff = 2,
+vim.o.splitbelow = true -- force all horizontal splits to go below current window
+vim.o.splitright = true -- force all vertical splits to go to the right of current window
 
-    lazyredraw = true,
+vim.o.swapfile = false -- creates a swapfile
 
-    timeoutlen = 500,
-}
+vim.o.scrolloff = 2
+vim.o.sidescrolloff = 2
 
--- Set the options based on table
-for name, value in pairs(settings) do
-    vim.opt[name] = value
+vim.o.lazyredraw = true
+
+vim.o.timeoutlen = 500
+
+vim.o.showmatch = true
+
+vim.o.backspace = "indent,eol,start",
+
+
+-- Clipboard related
+vim.cmd([[set clipboard+=unnamedplus]])
+
+local winyank = "win32yank.exe"
+
+if vim.fn.executable(winyank) then
+    vim.g.clipboard = {
+        name = "win32yank-wsl",
+        copy = {
+            ["+"] = winyank .. " -i --crlf",
+            ["*"] = winyank .. " -i --crlf",
+        },
+        paste = {
+            ["+"] = winyank .. " -o --lf",
+            ["*"] = winyank .. " -o --lf",
+        },
+        ["cache_enabled"] = 0,
+    }
 end
