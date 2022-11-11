@@ -26,17 +26,17 @@ if not was_packer_module_found then
 end
 
 -- Use packer popup window
-packer.init {
+packer.init({
     display = {
         open_fn = function()
             local util = require("packer.util")
             return util.float { border = "rounded" }
         end,
     },
-}
+})
 
 -- Add plugins here
-local start_packer_up = function(use)
+packer.startup(function(use)
     -- For packer to update itself
     use "wbthomason/packer.nvim"
 
@@ -45,94 +45,130 @@ local start_packer_up = function(use)
 
     -- Colorschemes
     use "joshdick/onedark.vim"
-    use 'Mofiqul/vscode.nvim'
+    
+    -- For floating menus with mappings
+    use({ 
+        "folke/which-key.nvim", 
+        event = "BufWinEnter",
+        config = function() require("neovim.plugins.which-key") end,
+    })
 
     -- For file explorer
-    use "kyazdani42/nvim-tree.lua"
+    use({ 
+        "nvim-tree/nvim-tree.lua", 
+        event = "BufWinEnter",
+        config = function() require("neovim.plugins.nvim-tree") end,
+        requires = { "nvim-tree/nvim-web-devicons" }, 
+    })
 
     -- For file icons
-    use "kyazdani42/nvim-web-devicons"
+    use({ 
+        "nvim-tree/nvim-web-devicons", 
+        config = function() require("neovim.plugins.nvim-web-devicons") end,
+    })
 
     -- Surround things
     use "tpope/vim-surround"
 
     -- Multiple cursors
-    use "mg979/vim-visual-multi"
+    use({ 
+        "mg979/vim-visual-multi", 
+        event = "BufWinEnter",
+        config = function() require("neovim.plugins.vim-visual-multi") end,
+    })
 
     -- Nice bar
-    use "nvim-lualine/lualine.nvim"
+    use({ 
+        "nvim-lualine/lualine.nvim", 
+        config = function() require("neovim.plugins.lualine") end,
+        requires = { "nvim-tree/nvim-web-devicons" }, 
+    })
 
     -- To comment code
-    use "numToStr/Comment.nvim"
+    use({ 
+        "numToStr/Comment.nvim", 
+        event = "BufRead",
+        config = function() require("neovim.plugins.comment") end,
+    })
 
     -- Completion plugins
-    use "hrsh7th/nvim-cmp" -- completion plugin
-    use "hrsh7th/cmp-buffer" -- buffer completions
-    use "hrsh7th/cmp-path" -- path completions
-    use "hrsh7th/cmp-cmdline" -- cmdline completions
-    use "hrsh7th/cmp-nvim-lsp" -- lsp completions
-    use "saadparwaiz1/cmp_luasnip" -- snippet completions
+    use({ 
+        "hrsh7th/nvim-cmp", 
+        event = "InsertEnter",
+        config = function() require("neovim.plugins.cmp") end,
+        requires = { "L3MON4D3/LuaSnip" }, 
+    })
+
+    use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
+    use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
+    use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
+    use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
+    use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
 
     -- For nice completion menu
-    use "onsails/lspkind.nvim"
+    use({ "onsails/lspkind.nvim", event = "BufRead" })
 
     -- Snippets
-    use "L3MON4D3/LuaSnip" -- snippet engine
-    use "rafamadriz/friendly-snippets"
+    use({ 
+        "L3MON4D3/LuaSnip", 
+        event = "BufWinEnter",
+        config = function() require("neovim.plugins.luasnip") end,
+    })
+
+    use({ "rafamadriz/friendly-snippets", event = "BufWinEnter" })
 
     -- Lsp related
-    use "neovim/nvim-lspconfig"
+    use({ "neovim/nvim-lspconfig", event = "BufRead" })
     use "williamboman/nvim-lsp-installer"
 
-    use "simrat39/rust-tools.nvim"
-
     -- Floating terminal
-    use "akinsho/toggleterm.nvim"
+    use({ 
+        "akinsho/toggleterm.nvim", 
+        cmd = "ToggleTerm", 
+        config = function() require("neovim.plugins.toggleterm") end,
+    })
 
     -- Syntax highlighting
-    use "nvim-treesitter/nvim-treesitter"
+    use({ 
+        "nvim-treesitter/nvim-treesitter", 
+        event = "BufWinEnter",
+        config = function() require("neovim.plugins.treesitter") end,
+    })
 
     -- Fuzzy finder
-    use "nvim-telescope/telescope.nvim"
-
-    -- For floating menus with mappings
-    use "folke/which-key.nvim"
+    use({ 
+        "nvim-telescope/telescope.nvim", 
+        event = "BufWinEnter",
+        config = function() require("neovim.plugins.telescope") end,
+        requires = { "nvim-lua/plenary.nvim" },
+    })
 
     -- Git wrapper
-    use "TimUntersberger/neogit"
+    use({ 
+        "TimUntersberger/neogit", 
+        event = "BufWinEnter",
+        config = function() require("neovim.plugins.neogit") end,
+    })
     use "sindrets/diffview.nvim"
 
     -- Debugging
-    use "puremourning/vimspector"
+    use({ 
+        "puremourning/vimspector", 
+        config = function() require("neovim.plugins.vimspector") end,
+    })
 
     -- For nice tab display
-    use "akinsho/bufferline.nvim"
+    use({ 
+        "akinsho/bufferline.nvim", 
+        event = "BufWinEnter",
+        config = function() require("neovim.plugins.bufferline") end,
+        requires = { "nvim-tree/nvim-web-devicons" }, 
+    })
 
     if can_sync_packer then
         packer.sync()
     end
-end
-
-
-packer.startup(start_packer_up)
-
-
--- call plugins configurations
-require("neovim.plugins.bufferline")
-require("neovim.plugins.cmp")
-require("neovim.plugins.comment")
-require("neovim.plugins.lualine")
-require("neovim.plugins.luasnip")
-require("neovim.plugins.neogit")
-require("neovim.plugins.nvim-tree")
-require("neovim.plugins.nvim-web-devicons")
-require("neovim.plugins.rust-tools")
-require("neovim.plugins.telescope")
-require("neovim.plugins.toggleterm")
-require("neovim.plugins.treesitter")
-require("neovim.plugins.vim-visual-multi")
-require("neovim.plugins.vimspector")
-require("neovim.plugins.which-key")
+end)
 
 
 -- packer commands
