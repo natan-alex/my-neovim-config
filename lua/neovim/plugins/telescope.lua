@@ -44,3 +44,20 @@ telescope.setup({
         }
     },
 })
+
+local telescope_builtin = require("telescope.builtin")
+local map = vim.keymap.set
+local mapping_options = { noremap = true }
+
+map("n", "<Leader>ff", telescope_builtin.find_files, mapping_options)
+map("n", "<Leader>fr", telescope_builtin.oldfiles, mapping_options)
+map("n", "<Leader>fg", telescope_builtin.live_grep, mapping_options)
+map("n", "<Leader>fb", telescope_builtin.buffers, mapping_options)
+map("n", "<Leader>fd", telescope_builtin.diagnostics, mapping_options)
+map("n", "<Leader>fh", telescope_builtin.help_tags, mapping_options)
+map("n", "<Leader>fc", function()
+    telescope_builtin.current_buffer_fuzzy_find({ sorting_strategy = "ascending" })
+end, mapping_options)
+map("n", "<Leader>gs", telescope_builtin.git_status, mapping_options)
+map("n", "<Leader>gb", telescope_builtin.git_branches, mapping_options)
+map("n", "<Leader>gc", telescope_builtin.git_commits, mapping_options)
