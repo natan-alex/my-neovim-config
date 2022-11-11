@@ -73,8 +73,7 @@ packer.startup(function(use)
     -- Multiple cursors
     use({ 
         "mg979/vim-visual-multi", 
-        event = "BufWinEnter",
-        config = function() require("neovim.plugins.vim-visual-multi") end,
+        config = function() vim.cmd("source ./lua/neovim/plugins/vim-visual-multi.vim") end,
     })
 
     -- Nice bar
