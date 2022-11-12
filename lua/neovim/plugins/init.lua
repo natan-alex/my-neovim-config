@@ -19,9 +19,9 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 -- Use a protected call to get packer module
-local was_packer_module_found, packer = pcall(require, "packer")
+local packer_found, packer = pcall(require, "packer")
 
-if not was_packer_module_found then
+if not packer_found then
     return
 end
 
@@ -45,131 +45,178 @@ packer.startup(function(use)
 
     -- Colorschemes
     use "joshdick/onedark.vim"
-    
+
     -- For floating menus with mappings
-    use({ 
-        "folke/which-key.nvim", 
+    use {
+        "folke/which-key.nvim",
         event = "BufWinEnter",
         config = function() require("neovim.plugins.which-key") end,
-    })
+    }
 
     -- For file explorer
-    use({ 
-        "nvim-tree/nvim-tree.lua", 
-        event = "BufWinEnter",
+    use {
+        "nvim-tree/nvim-tree.lua",
+	cmd = "NvimTreeToggle",
         config = function() require("neovim.plugins.nvim-tree") end,
-        requires = { "nvim-tree/nvim-web-devicons" }, 
-    })
+        requires = { "nvim-tree/nvim-web-devicons" },
+    }
 
     -- For file icons
-    use({ 
-        "nvim-tree/nvim-web-devicons", 
+    use {
+        "nvim-tree/nvim-web-devicons",
+	event = "BufWinEnter",
         config = function() require("nvim-web-devicons").setup() end,
-    })
+    }
 
     -- Surround things
-    use "tpope/vim-surround"
-
-    -- Multiple cursors
-    use({ 
-        "mg979/vim-visual-multi", 
-        config = function() 
-	    local path = vim.fn.stdpath("config")
-	    path = path .. "/lua/neovim/plugins/vim-visual-multi.vim"
-	    vim.cmd("source" .. path) 
-	end,
-    })
-
-    -- Nice bar
-    use({ 
-        "nvim-lualine/lualine.nvim", 
-        config = function() require("neovim.plugins.lualine") end,
-        requires = { "nvim-tree/nvim-web-devicons" }, 
-    })
-
-    -- To comment code
-    use({ 
-        "numToStr/Comment.nvim", 
-        event = "BufRead",
-        config = function() require("neovim.plugins.comment") end,
-    })
-
-    -- Completion plugins
-    use({ 
-        "hrsh7th/nvim-cmp", 
-        event = "InsertEnter",
-        config = function() require("neovim.plugins.cmp") end,
-        requires = { "L3MON4D3/LuaSnip" }, 
-    })
-
-    use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
-    use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
-    use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
-    use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
-    use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
-
-    -- For nice completion menu
-    use({ "onsails/lspkind.nvim", event = "BufRead" })
-
-    -- Snippets
-    use({ 
-        "L3MON4D3/LuaSnip", 
-        event = "BufWinEnter",
-        config = function() require("neovim.plugins.luasnip") end,
-    })
-
-    use({ "rafamadriz/friendly-snippets", event = "BufWinEnter" })
+    use { "tpope/vim-surround", event = "BufWinEnter" }
 
     -- Lsp related
-    use({ "neovim/nvim-lspconfig", event = "BufRead" })
-    use "williamboman/nvim-lsp-installer"
+    use "neovim/nvim-lspconfig"
+
+    use {
+	"williamboman/mason.nvim",
+	config = function() require("neovim.plugins.mason") end,
+    }
+
+    use {
+	"williamboman/mason-lspconfig.nvim",
+	config = function() require("neovim.plugins.mason-lspconfig") end,
+	requires = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
+    }
+
+    -- Multiple cursors
+    use {
+        "mg979/vim-visual-multi",
+        config = function()
+	    local path = vim.fn.stdpath("config")
+	    path = path .. "/lua/neovim/plugins/vim-visual-multi.vim"
+	    vim.cmd("source" .. path)
+	end,
+    }
+
+    -- Nice bar
+    use {
+        "nvim-lualine/lualine.nvim",
+	event = "BufWinEnter",
+        config = function() require("neovim.plugins.lualine") end,
+        requires = { "nvim-tree/nvim-web-devicons" },
+    }
+
+    -- To comment code
+    use {
+        "numToStr/Comment.nvim",
+        event = "BufRead",
+        config = function() require("neovim.plugins.comment") end,
+    }
+
+    -- Snippets
+    use {
+        "L3MON4D3/LuaSnip",
+        config = function() require("neovim.plugins.luasnip") end,
+    }
+
+    use { "rafamadriz/friendly-snippets" }
+
+    -- Completion plugins
+    use {
+        "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+        config = function() require("neovim.plugins.cmp") end,
+    }
+
+    use {
+        "hrsh7th/cmp-nvim-lsp",
+        after = "nvim-cmp",
+        requires = { "hrsh7th/nvim-cmp" }
+    }
+
+    use {
+        "hrsh7th/cmp-buffer",
+        after = "nvim-cmp",
+        requires = { "hrsh7th/nvim-cmp" }
+    }
+
+    use {
+        "hrsh7th/cmp-path",
+        after = "nvim-cmp",
+        requires = { "hrsh7th/nvim-cmp" }
+    }
+
+    use {
+        "hrsh7th/cmp-cmdline",
+        after = "nvim-cmp",
+        requires = { "hrsh7th/nvim-cmp" }
+    }
+
+    use {
+        "saadparwaiz1/cmp_luasnip",
+        after = "nvim-cmp",
+        requires = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" }
+    }
 
     -- Floating terminal
-    use({ 
-        "akinsho/toggleterm.nvim", 
+    use {
+        "akinsho/toggleterm.nvim",
+	cmd = "ToggleTerm",
         config = function() require("neovim.plugins.toggleterm") end,
-    })
+    }
 
     -- Syntax highlighting
-    use({ 
-        "nvim-treesitter/nvim-treesitter", 
+    use {
+        "nvim-treesitter/nvim-treesitter",
         event = "BufWinEnter",
         config = function() require("neovim.plugins.treesitter") end,
-    })
+    }
 
     -- Fuzzy finder
-    use({ 
-        "nvim-telescope/telescope.nvim", 
-        event = "BufWinEnter",
+    use {
+        "nvim-telescope/telescope.nvim",
+	cmd = "Telescope",
         config = function() require("neovim.plugins.telescope") end,
         requires = { "nvim-lua/plenary.nvim" },
-    })
+    }
 
     -- Git wrapper
-    use({ 
-        "TimUntersberger/neogit", 
-        event = "BufWinEnter",
+    use {
+        "TimUntersberger/neogit",
+	cmd = "Neogit",
         config = function() require("neovim.plugins.neogit") end,
-    })
-    use "sindrets/diffview.nvim"
+    }
+
+    use {
+	"sindrets/diffview.nvim",
+	after = "neogit",
+	requires = { "TimUntersberger/neogit" }
+    }
 
     -- Debugging
-    use({ 
-        "puremourning/vimspector", 
+    use {
+        "puremourning/vimspector",
+	ft = { "rust", "cs" },
         config = function() require("neovim.plugins.vimspector") end,
-    })
+    }
 
     -- For nice tab display
-    use({ 
-        "akinsho/bufferline.nvim", 
+    use {
+        "akinsho/bufferline.nvim",
         event = "BufWinEnter",
         config = function() require("neovim.plugins.bufferline") end,
-        requires = { "nvim-tree/nvim-web-devicons" }, 
-    })
+        requires = { "nvim-tree/nvim-web-devicons" },
+    }
 
+    -- For auto pairing things
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup() end
+    }
+
+    -- Rust related
+    use {
+	"simrat39/rust-tools.nvim",
+	ft = { "rs" },
+	config = function() require("neovim.plugins.rust-tools") end,
+	requires = { "neovim/nvim-lspconfig" },
     }
 
     if can_sync_packer then
