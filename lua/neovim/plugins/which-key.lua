@@ -1,6 +1,7 @@
-local was_module_found, which_key = pcall(require, "which-key")
+local which_key_found, which_key = pcall(require, "which-key")
 
-if not was_module_found then
+if not which_key_found then
+    vim.notify("which-key module not found. Error: " .. which_key, "error")
     return
 end
 

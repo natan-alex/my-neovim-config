@@ -1,6 +1,7 @@
-local was_module_found, lualine = pcall(require, "lualine")
+local lualine_found, lualine = pcall(require, "lualine")
 
-if not was_module_found then
+if not lualine_found then
+    vim.notify("lualine module not found. Error: " .. lualine, "error")
     return
 end
 

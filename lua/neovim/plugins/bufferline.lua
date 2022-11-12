@@ -1,6 +1,7 @@
-local was_module_found, bufferline = pcall(require, "bufferline")
+local bufferline_found, bufferline = pcall(require, "bufferline")
 
-if not was_module_found then
+if not bufferline_found then
+    vim.notify("bufferline module not found. Error: " .. bufferline, "error")
     return
 end
 

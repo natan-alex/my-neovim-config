@@ -1,6 +1,7 @@
-local was_module_found, telescope = pcall(require, "telescope")
+local telescope_found, telescope = pcall(require, "telescope")
 
-if not was_module_found then
+if not telescope_found then
+    vim.notify("telescope module not found. Error: " .. telescope, "error")
     return
 end
 

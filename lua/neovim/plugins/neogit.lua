@@ -1,6 +1,7 @@
-local was_module_found, neogit = pcall(require, "neogit")
+local neogit_found, neogit = pcall(require, "neogit")
 
-if not was_module_found then
+if not neogit_found then
+    vim.notify("neogit module not found. Error: " .. neogit, "error")
     return
 end
 

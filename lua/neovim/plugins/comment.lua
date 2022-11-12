@@ -1,6 +1,7 @@
-local was_module_found, comment = pcall(require, "Comment")
+local comment_found, comment = pcall(require, "Comment")
 
-if not was_module_found then
+if not comment_found then
+    vim.notify("comment module not found. Error: " .. comment, "error")
     return
 end
 

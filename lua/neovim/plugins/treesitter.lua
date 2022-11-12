@@ -1,6 +1,7 @@
-local was_module_found, treesitter = pcall(require, "nvim-treesitter.configs")
+local treesitter_configs_found, treesitter = pcall(require, "nvim-treesitter.configs")
 
-if not was_module_found then
+if not treesitter_configs_found then
+    vim.notify("nvim-treesitter.configs module not found. Error: " .. treesitter, "error")
     return
 end
 

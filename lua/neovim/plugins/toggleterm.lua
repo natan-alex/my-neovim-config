@@ -1,6 +1,7 @@
-local was_module_found, toggleterm = pcall(require, "toggleterm")
+local toggleterm_found, toggleterm = pcall(require, "toggleterm")
 
-if not was_module_found then
+if not toggleterm_found then
+    vim.notify("toggleterm module not found. Error: " .. toggleterm, "error")
     return
 end
 

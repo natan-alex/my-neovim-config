@@ -1,12 +1,13 @@
+local nvim_tree_found, nvim_tree = pcall(require, "nvim-tree")
+
+if not nvim_tree_found then
+    vim.notify("nvim-tree module not found. Error: " .. nvim_tree, "error")
+    return
+end
+
 -- disable netrw
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
-
-local was_module_found, nvim_tree = pcall(require, "nvim-tree")
-
-if not was_module_found then
-    return
-end
 
 nvim_tree.setup({
     disable_netrw = true,

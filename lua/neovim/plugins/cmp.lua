@@ -2,6 +2,7 @@ local cmp_found, cmp = pcall(require, "cmp")
 
 if not cmp_found then
     vim.notify("cmp module not found. Error: " .. cmp, "error")
+    return
 end
 
 cmp.setup {
