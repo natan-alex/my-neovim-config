@@ -37,6 +37,3 @@ neogit.setup({
         }
     }
 })
-
--- add mapping for opening neogit
-vim.keymap.set("n", "<Leader>gg", "<CMD>Neogit<CR>", { noremap = true })

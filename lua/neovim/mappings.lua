@@ -17,16 +17,39 @@ map({ "n", "x" }, "<A-y>", "\"+y", default_options)
 map({ "n", "x" }, "<A-p>", "\"+p", default_options)
 
 -- Explorer
-map("n", "<Leader>e", ":NvimTreeToggle<CR>", default_options)
+map("n", "<Leader>e", "<CMD>NvimTreeToggle<CR>", default_options)
 
 -- Resize windows with arrows
-map("n", "<C-S-Up>", ":resize +2<CR>", default_options)
-map("n", "<C-S-Down>", ":resize -2<CR>", default_options)
-map("n", "<C-S-Right>", ":vertical resize -2<CR>", default_options)
-map("n", "<C-S-Left>", ":vertical resize +2<CR>", default_options)
+map("n", "<C-S-Up>", "<CMD>resize +2<CR>", default_options)
+map("n", "<C-S-Down>", "<CMD>resize -2<CR>", default_options)
+map("n", "<C-S-Right>", "<CMD>vertical resize -2<CR>", default_options)
+map("n", "<C-S-Left>", "<CMD>vertical resize +2<CR>", default_options)
 
 -- One line at a time
 map("n", "j", "gj", default_options)
 map("n", "k", "gk", default_options)
 map("n", "$", "g$", default_options)
 map("n", "^", "g^", default_options)
+
+-- Telescope
+map("n", "<Leader>ff", "<CMD>Telescope find_files<CR>", default_options)
+map("n", "<Leader>fr", "<CMD>Telescope oldfiles<CR>", default_options)
+map("n", "<Leader>fg", "<CMD>Telescope live_grep<CR>", default_options)
+map("n", "<Leader>fb", "<CMD>Telescope buffers<CR>", default_options)
+map("n", "<Leader>fd", "<CMD>Telescope diagnostics<CR>", default_options)
+map("n", "<Leader>fh", "<CMD>Telescope help_tags<CR>", default_options)
+map("n", "<Leader>gs", "<CMD>Telescope git_status<CR>", default_options)
+map("n", "<Leader>gb", "<CMD>Telescope git_branches<CR>", default_options)
+map("n", "<Leader>gc", "<CMD>Telescope git_commits<CR>", default_options)
+
+-- Git
+map("n", "<Leader>gg", "<CMD>Neogit<CR>", default_options)
+
+-- Terminal
+map("n", "<Leader>tt", "<CMD>ToggleTerm<CR>", default_options)
+
+-- BufferLine
+map("n", "<A-l>", "<CMD>BufferLineCycleNext<CR>", default_options)
+map("n", "<A-h>", "<CMD>BufferLineCyclePrev<CR>", default_options)
+map("n", "<A-L>", "<CMD>BufferLineMoveNext<CR>", default_options)
+map("n", "<A-H>", "<CMD>BufferLineMovePrev<CR>", default_options)
