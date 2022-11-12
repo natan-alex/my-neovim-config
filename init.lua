@@ -1,7 +1,6 @@
 require("neovim.settings")
 require("neovim.mappings")
 require("neovim.plugins")
-require("neovim.lsp")
 require("neovim.autocommands")
 require("neovim.sessions")
 require("neovim.colorscheme")
