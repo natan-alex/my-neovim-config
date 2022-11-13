@@ -37,8 +37,8 @@ cmp.setup {
         ["<C-b>"] = cmp.mapping.scroll_docs(-5),
         ["<C-f>"] = cmp.mapping.scroll_docs(5),
         ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping.confirm({
-            select = true,
+        ["<Tab>"] = cmp.mapping.confirm({
+            select = false,
             behavior = cmp.ConfirmBehavior.Insert,
         }),
         ["<C-e>"] = cmp.mapping({
