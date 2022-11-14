@@ -33,6 +33,8 @@ local function on_lsp_attach(_, buffer_number)
     map("n", "<C-F>", vim.lsp.buf.format, options)
 end
 
+mason_lspconfig.setup()
+
 mason_lspconfig.setup_handlers({
   -- The first entry (without a key) will be the default handler
   -- and will be called for each installed server that doesn't have

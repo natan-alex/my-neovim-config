@@ -37,3 +37,4 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 require("neovim.plugins.luasnip.cs-snippets")
 require("neovim.plugins.luasnip.java-snippets")
+require("neovim.plugins.luasnip.js-ts-snippets")

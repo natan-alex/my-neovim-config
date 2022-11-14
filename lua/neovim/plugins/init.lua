@@ -72,15 +72,17 @@ packer.startup(function(use)
     use { "tpope/vim-surround", event = "BufWinEnter" }
 
     -- Lsp related
-    use "neovim/nvim-lspconfig"
+    use { "neovim/nvim-lspconfig", cmd = "Mason" }
 
     use {
 	"williamboman/mason.nvim",
+        cmd = "Mason",
 	config = function() require("neovim.plugins.mason") end,
     }
 
     use {
 	"williamboman/mason-lspconfig.nvim",
+        cmd = "Mason",
 	config = function() require("neovim.plugins.mason-lspconfig") end,
 	requires = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     }
@@ -106,17 +108,18 @@ packer.startup(function(use)
     -- To comment code
     use {
         "numToStr/Comment.nvim",
-        event = "BufRead",
+        event = "BufWinEnter",
         config = function() require("neovim.plugins.comment") end,
     }
 
     -- Snippets
     use {
         "L3MON4D3/LuaSnip",
+        event = "InsertEnter",
         config = function() require("neovim.plugins.luasnip") end,
     }
 
-    use { "rafamadriz/friendly-snippets" }
+    use { "rafamadriz/friendly-snippets", event = "InsertEnter" }
 
     -- Completion plugins
     use {
@@ -208,6 +211,7 @@ packer.startup(function(use)
     -- For auto pairing things
     use {
         "windwp/nvim-autopairs",
+        event = "InsertEnter",
         config = function() require("nvim-autopairs").setup() end
     }
 
@@ -221,6 +225,7 @@ packer.startup(function(use)
 
     use {
         "ggandor/leap.nvim",
+        event = "BufWinEnter",
         config = function() require('leap').add_default_mappings() end,
     }
 

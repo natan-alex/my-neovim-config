@@ -43,23 +43,25 @@ vim.opt.timeoutlen = 500
 
 vim.opt.backspace = "indent,eol,start"
 
+-- do not highlight matching pairs
+vim.opt.showmatch = false
+pcall(vim.cmd, "NoMatchParen")
+
 
 -- Clipboard related
--- vim.cmd([[set clipboard+=unnamedplus]])
---
--- local winyank = "win32yank.exe"
---
--- if vim.fn.executable(winyank) then
---     vim.g.clipboard = {
---         name = "win32yank-wsl",
---         copy = {
---             ["+"] = winyank .. " -i --crlf",
---             ["*"] = winyank .. " -i --crlf",
---         },
---         paste = {
---             ["+"] = winyank .. " -o --lf",
---             ["*"] = winyank .. " -o --lf",
---         },
---         ["cache_enabled"] = 0,
---     }
--- end
+local winyank = "win32yank.exe"
+
+if vim.fn.executable(winyank) then
+    vim.g.clipboard = {
+        name = "win32yank-wsl",
+        copy = {
+            ["+"] = winyank .. " -i --crlf",
+            ["*"] = winyank .. " -i --crlf",
+        },
+        paste = {
+            ["+"] = winyank .. " -o --lf",
+            ["*"] = winyank .. " -o --lf",
+        },
+        ["cache_enabled"] = 0,
+    }
+end
