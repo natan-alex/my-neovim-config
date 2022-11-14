@@ -219,6 +219,11 @@ packer.startup(function(use)
 	requires = { "neovim/nvim-lspconfig" },
     }
 
+    use {
+        "ggandor/leap.nvim",
+        config = function() require('leap').add_default_mappings() end,
+    }
+
     if can_sync_packer then
         packer.sync()
     end
