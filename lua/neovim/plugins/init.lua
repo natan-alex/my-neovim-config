@@ -72,17 +72,15 @@ packer.startup(function(use)
     use { "tpope/vim-surround", event = "BufWinEnter" }
 
     -- Lsp related
-    use { "neovim/nvim-lspconfig", cmd = "Mason" }
+    use { "neovim/nvim-lspconfig" }
 
     use {
 	"williamboman/mason.nvim",
-        cmd = "Mason",
 	config = function() require("neovim.plugins.mason") end,
     }
 
     use {
 	"williamboman/mason-lspconfig.nvim",
-        cmd = "Mason",
 	config = function() require("neovim.plugins.mason-lspconfig") end,
 	requires = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     }
