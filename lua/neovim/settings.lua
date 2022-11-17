@@ -1,5 +1,5 @@
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -15,9 +15,9 @@ vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
-vim.opt.undofile = true -- enable persistent undo
+vim.opt.undofile = true -- persistent undo
 
-vim.opt.cursorline = true -- highlight the current line
+vim.opt.cursorline = false -- highlight the current line
 
 vim.opt.mouse = "a" -- use mouse for selections and scroll
 
@@ -44,8 +44,7 @@ vim.opt.timeoutlen = 500
 vim.opt.backspace = "indent,eol,start"
 
 -- do not highlight matching pairs
-vim.opt.showmatch = false
-pcall(vim.cmd, "NoMatchParen")
+vim.g.loaded_matchparen = 1
 
 
 -- Clipboard related
