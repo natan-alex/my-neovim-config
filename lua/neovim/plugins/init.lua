@@ -189,7 +189,7 @@ packer.startup(function(use)
         requires = { "nvim-lua/plenary.nvim" },
     }
 
-    -- Git wrapper
+    -- Git
     use {
         "TimUntersberger/neogit",
 	cmd = "Neogit",
@@ -200,6 +200,12 @@ packer.startup(function(use)
 	"sindrets/diffview.nvim",
 	after = "neogit",
 	requires = { "TimUntersberger/neogit" }
+    }
+
+    -- To show git modifications in code
+    use {
+        "lewis6991/gitsigns.nvim",
+        config = function() require("neovim.plugins.gitsigns") end,
     }
 
     -- Debugging

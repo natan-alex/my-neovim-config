@@ -86,3 +86,16 @@ map("n", "<Leader>cd", "<CMD>Lspsaga show_cursor_diagnostics<CR>", default_optio
 
 -- Aerial
 map("n", "<Leader>a", "<CMD>AerialToggle<CR>")
+
+-- Gitsigns
+map({"n", "v"}, "<Leader>hs", "<CMD>Gitsigns stage_hunk<CR>", default_options)
+map({"n", "v"}, "<Leader>hr", "<CMD>Gitsigns reset_hunk<CR>", default_options)
+map("n", "<Leader>hS", "<CMD>Gitsigns stage_buffer", default_options)
+map("n", "<Leader>hu", "<CMD>Gitsigns undo_stage_hunk", default_options)
+map("n", "<Leader>hR", "<CMD>Gitsigns reset_buffer", default_options)
+map("n", "<Leader>hp", "<CMD>Gitsigns preview_hunk", default_options)
+map("n", "<Leader>tb", "<CMD>Gitsigns toggle_current_line_blame", default_options)
+map("n", "<Leader>hd", "<CMD>Gitsigns diffthis", default_options)
+map("n", "<Leader>td", "<CMD>Gitsigns toggle_deleted", default_options)
+map("n", "<Leader>hb", "<CMD>lua require('gitsigns').blame_line({ full = true })", default_options)
+map("n", "<Leader>hD", "<CMD>lua require('gitsigns').diffthis('~')<CR>", default_options)
