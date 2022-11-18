@@ -210,9 +210,16 @@ packer.startup(function(use)
 
     -- Debugging
     use {
-        "puremourning/vimspector",
-	ft = { "rust", "cs" },
-        config = function() require("neovim.plugins.vimspector") end,
+        "mfussenegger/nvim-dap",
+        ft = { "cs" },
+        config = function() require("neovim.plugins.dap") end,
+    }
+
+    use {
+        "rcarriga/nvim-dap-ui",
+        config = function() require("neovim.plugins.dap.dapui") end,
+        requires = { "mfussenegger/nvim-dap" },
+        after = { "nvim-dap" },
     }
 
     -- For nice tab display
