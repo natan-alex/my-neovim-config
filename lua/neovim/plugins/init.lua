@@ -181,26 +181,23 @@ packer.startup(function(use)
         config = function() require("neovim.plugins.treesitter") end,
     }
 
-    -- Fuzzy finder
+    -- Telescope, my friend, just telescope
     use {
         "nvim-telescope/telescope.nvim",
-	cmd = "Telescope",
         config = function() require("neovim.plugins.telescope") end,
         requires = { "nvim-lua/plenary.nvim" },
     }
 
-    -- Git
+    -- telescope neoclip extension for clipboard remembering
     use {
-        "TimUntersberger/neogit",
-	cmd = "Neogit",
-        config = function() require("neovim.plugins.neogit") end,
+        "AckslD/nvim-neoclip.lua",
+        after = "telescope.nvim",
+        requires = { "nvim-telescope/telescope.nvim" },
+        config = function() require("neovim.plugins.neoclip").setup() end,
     }
 
-    use {
-	"sindrets/diffview.nvim",
-	after = "neogit",
-	requires = { "TimUntersberger/neogit" }
-    }
+    -- Git
+    use { "tpope/vim-fugitive" }
 
     -- To show git modifications in code
     use {

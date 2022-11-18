@@ -42,8 +42,22 @@ map("n", "<Leader>gs", "<CMD>Telescope git_status<CR>", default_options)
 map("n", "<Leader>gb", "<CMD>Telescope git_branches<CR>", default_options)
 map("n", "<Leader>gc", "<CMD>Telescope git_commits<CR>", default_options)
 
+-- Telescope extensions
+map("n", "<Leader>fn", "<CMD>Telescope neoclip<CR>", default_options)
+
 -- Git
-map("n", "<Leader>gg", "<CMD>Neogit<CR>", default_options)
+map("n", "<Leader>gg", "<CMD>tab Git<CR>", default_options)
+
+-- Gitsigns
+map({"n", "v"}, "<Leader>hs", "<CMD>Gitsigns stage_hunk<CR>", default_options)
+map({"n", "v"}, "<Leader>hr", "<CMD>Gitsigns reset_hunk<CR>", default_options)
+map("n", "<Leader>hS", "<CMD>Gitsigns stage_buffer<CR>", default_options)
+map("n", "<Leader>hu", "<CMD>Gitsigns undo_stage_hunk<CR>", default_options)
+map("n", "<Leader>hR", "<CMD>Gitsigns reset_buffer<CR>", default_options)
+map("n", "<Leader>hp", "<CMD>Gitsigns preview_hunk<CR>", default_options)
+map("n", "<Leader>hl", "<CMD>Gitsigns toggle_current_line_blame<CR>", default_options)
+map("n", "<Leader>hd", "<CMD>Gitsigns diffthis<CR>", default_options)
+map("n", "<Leader>hD", "<CMD>Gitsigns toggle_deleted<CR>", default_options)
 
 -- Terminal
 map("n", "<Leader>tt", "<CMD>ToggleTerm<CR>", default_options)
@@ -70,17 +84,6 @@ map("n", "<Leader>cd", "<CMD>Lspsaga show_cursor_diagnostics<CR>", default_optio
 
 -- Aerial
 map("n", "<Leader>a", "<CMD>AerialToggle<CR>")
-
--- Gitsigns
-map({"n", "v"}, "<Leader>hs", "<CMD>Gitsigns stage_hunk<CR>", default_options)
-map({"n", "v"}, "<Leader>hr", "<CMD>Gitsigns reset_hunk<CR>", default_options)
-map("n", "<Leader>hS", "<CMD>Gitsigns stage_buffer<CR>", default_options)
-map("n", "<Leader>hu", "<CMD>Gitsigns undo_stage_hunk<CR>", default_options)
-map("n", "<Leader>hR", "<CMD>Gitsigns reset_buffer<CR>", default_options)
-map("n", "<Leader>hp", "<CMD>Gitsigns preview_hunk<CR>", default_options)
-map("n", "<Leader>hl", "<CMD>Gitsigns toggle_current_line_blame<CR>", default_options)
-map("n", "<Leader>hd", "<CMD>Gitsigns diffthis<CR>", default_options)
-map("n", "<Leader>hD", "<CMD>Gitsigns toggle_deleted<CR>", default_options)
 
 -- Dap
 map("n", "<F5>", "<CMD>lua require('dap').continue()<CR>", default_options)
