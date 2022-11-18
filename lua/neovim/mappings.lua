@@ -69,3 +69,20 @@ map("n", "<Leader>vs", "<CMD>call vimspector#Launch()<CR>", default_options)
 map("n", "<Leader>vS", "<CMD>call vimspector#Stop()<CR>", default_options)
 map("n", "<Leader>vr", "<CMD>call vimspector#Restart()<CR>", default_options)
 map("n", "<Leader>vi", "<CMD>call vimspector#StepInto()<CR>", default_options)
+
+-- Lsp saga
+map("n", "K", "<CMD>Lspsaga hover_doc<CR>", default_options)
+map("n", "gr", "<CMD>Lspsaga lsp_finder<CR>", default_options)
+map("n", "gd", "<CMD>Lspsaga peek_definition<CR>", default_options)
+map("n", "[d", "<CMD>Lspsaga diagnostic_jump_prev<CR>", default_options)
+map("n", "]d", "<CMD>Lspsaga diagnostic_jump_next<CR>", default_options)
+map("n", "[e", "lua require('lspsaga.diagnostic').goto_prev({ severity = vim.diagnostic.severity.ERROR })", default_options)
+map("n", "]e", "lua require('lspsaga.diagnostic').goto_next({ severity = vim.diagnostic.severity.ERROR })", default_options)
+map("n", "<Leader>o", "<CMD>LSoutlineToggle<CR>", default_options)
+map("n", "<Leader>ca", "<CMD>Lspsaga code_action<CR>", default_options)
+map("n", "<Leader>rn", "<CMD>Lspsaga rename<CR>", default_options)
+map("n", "<Leader>ld", "<CMD>Lspsaga show_line_diagnostics<CR>", default_options)
+map("n", "<Leader>cd", "<CMD>Lspsaga show_cursor_diagnostics<CR>", default_options)
+
+-- Aerial
+map("n", "<Leader>a", "<CMD>AerialToggle<CR>")

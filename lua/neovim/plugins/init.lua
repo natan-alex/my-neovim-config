@@ -85,6 +85,17 @@ packer.startup(function(use)
 	requires = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     }
 
+    use {
+        "glepnir/lspsaga.nvim",
+        config = function() require("lspsaga").init_lsp_saga() end,
+    }
+
+    use {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function() require("neovim.plugins.null-ls") end,
+        requires = { "nvim-lua/plenary.nvim" },
+    }
+
     -- Multiple cursors
     use {
         "mg979/vim-visual-multi",
@@ -221,10 +232,24 @@ packer.startup(function(use)
 	requires = { "neovim/nvim-lspconfig" },
     }
 
+    -- Easy move in window
     use {
         "ggandor/leap.nvim",
         event = "BufWinEnter",
-        config = function() require('leap').add_default_mappings() end,
+        config = function() require("leap").add_default_mappings() end,
+    }
+
+    -- Session management
+    use {
+        "rmagatti/auto-session",
+        config = function() require("neovim.plugins.auto-session") end
+    }
+
+    -- Code navigation
+    use {
+        "stevearc/aerial.nvim",
+        cmd = "AerialToggle",
+        config = function() require("neovim.plugins.aerial") end
     }
 
     if can_sync_packer then
