@@ -45,3 +45,16 @@ telescope.setup({
         }
     },
 })
+
+-- mappings
+local builtin = require("telescope.builtin")
+local map = vim.keymap.set
+local mapping_options = { noremap = true }
+
+map("n", "<Leader>ff", builtin.find_files, mapping_options)
+map("n", "<Leader>fo", builtin.oldfiles, mapping_options)
+map("n", "<Leader>fg", builtin.live_grep, mapping_options)
+map("n", "<Leader>fb", builtin.buffers, mapping_options)
+map("n", "<Leader>fd", builtin.diagnostics, mapping_options)
+map("n", "<Leader>fh", builtin.help_tags, mapping_options)
+map("n", "<Leader>fq", builtin.quickfix, mapping_options)

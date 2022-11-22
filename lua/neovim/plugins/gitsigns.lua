@@ -23,3 +23,14 @@ gitsigns.setup {
         end, { expr = true })
     end
 }
+
+-- mappings
+vim.keymap.set({"n", "v"}, "<Leader>hs", gitsigns.stage_hunk, { noremap = true })
+vim.keymap.set({"n", "v"}, "<Leader>hr", gitsigns.reset_hunk, { noremap = true })
+vim.keymap.set("n", "<Leader>hS", gitsigns.stage_buffer, { noremap = true })
+vim.keymap.set("n", "<Leader>hu", gitsigns.undo_stage_hunk, { noremap = true })
+vim.keymap.set("n", "<Leader>hR", gitsigns.reset_buffer, { noremap = true })
+vim.keymap.set("n", "<Leader>hp", gitsigns.preview_hunk, { noremap = true })
+vim.keymap.set("n", "<Leader>hl", gitsigns.toggle_current_line_blame, { noremap = true })
+vim.keymap.set("n", "<Leader>hd", gitsigns.diffthis, { noremap = true })
+vim.keymap.set("n", "<Leader>hD", gitsigns.toggle_deleted, { noremap = true })

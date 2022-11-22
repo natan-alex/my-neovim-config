@@ -15,3 +15,6 @@ if not neoclip_found then
 end
 
 neoclip.setup()
+
+-- mapping
+vim.keymap.set("n", "<Leader>fn", "<CMD>Telescope neoclip<CR>", { noremap = true })

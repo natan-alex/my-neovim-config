@@ -49,14 +49,12 @@ packer.startup(function(use)
     -- For floating menus with mappings
     use {
         "folke/which-key.nvim",
-        event = "BufWinEnter",
         config = function() require("neovim.plugins.which-key") end,
     }
 
     -- For file explorer
     use {
         "nvim-tree/nvim-tree.lua",
-	cmd = "NvimTreeToggle",
         config = function() require("neovim.plugins.nvim-tree") end,
         requires = { "nvim-tree/nvim-web-devicons" },
     }
@@ -64,12 +62,11 @@ packer.startup(function(use)
     -- For file icons
     use {
         "nvim-tree/nvim-web-devicons",
-	event = "BufWinEnter",
         config = function() require("nvim-web-devicons").setup() end,
     }
 
     -- Surround things
-    use { "tpope/vim-surround", event = "BufWinEnter" }
+    use { "tpope/vim-surround" }
 
     -- Lsp related
     use { "neovim/nvim-lspconfig" }
@@ -87,7 +84,7 @@ packer.startup(function(use)
 
     use {
         "glepnir/lspsaga.nvim",
-        config = function() require("lspsaga").init_lsp_saga() end,
+        config = function() require("neovim.plugins.lspsaga") end,
     }
 
     use {
@@ -109,7 +106,6 @@ packer.startup(function(use)
     -- Nice bar
     use {
         "nvim-lualine/lualine.nvim",
-	event = "BufWinEnter",
         config = function() require("neovim.plugins.lualine") end,
         requires = { "nvim-tree/nvim-web-devicons" },
     }
@@ -117,67 +113,38 @@ packer.startup(function(use)
     -- To comment code
     use {
         "numToStr/Comment.nvim",
-        event = "BufWinEnter",
         config = function() require("neovim.plugins.comment") end,
     }
 
     -- Snippets
     use {
         "L3MON4D3/LuaSnip",
-        event = "InsertEnter",
         config = function() require("neovim.plugins.luasnip") end,
     }
 
-    use { "rafamadriz/friendly-snippets", event = "InsertEnter" }
+    use { "rafamadriz/friendly-snippets" }
 
     -- Completion plugins
     use {
         "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
         config = function() require("neovim.plugins.cmp") end,
     }
 
-    use {
-        "hrsh7th/cmp-nvim-lsp",
-        after = "nvim-cmp",
-        requires = { "hrsh7th/nvim-cmp" }
-    }
-
-    use {
-        "hrsh7th/cmp-buffer",
-        after = "nvim-cmp",
-        requires = { "hrsh7th/nvim-cmp" }
-    }
-
-    use {
-        "hrsh7th/cmp-path",
-        after = "nvim-cmp",
-        requires = { "hrsh7th/nvim-cmp" }
-    }
-
-    use {
-        "hrsh7th/cmp-cmdline",
-        after = "nvim-cmp",
-        requires = { "hrsh7th/nvim-cmp" }
-    }
-
-    use {
-        "saadparwaiz1/cmp_luasnip",
-        after = "nvim-cmp",
-        requires = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" }
-    }
+    use { "hrsh7th/cmp-nvim-lsp" }
+    use { "hrsh7th/cmp-buffer" }
+    use { "hrsh7th/cmp-path" }
+    use { "hrsh7th/cmp-cmdline" }
+    use { "saadparwaiz1/cmp_luasnip" }
 
     -- Floating terminal
     use {
         "akinsho/toggleterm.nvim",
-	cmd = "ToggleTerm",
         config = function() require("neovim.plugins.toggleterm") end,
     }
 
     -- Syntax highlighting
     use {
         "nvim-treesitter/nvim-treesitter",
-        event = "BufWinEnter",
         config = function() require("neovim.plugins.treesitter") end,
     }
 
@@ -191,13 +158,15 @@ packer.startup(function(use)
     -- telescope neoclip extension for clipboard remembering
     use {
         "AckslD/nvim-neoclip.lua",
-        after = "telescope.nvim",
         requires = { "nvim-telescope/telescope.nvim" },
         config = function() require("neovim.plugins.neoclip").setup() end,
     }
 
     -- Git
-    use { "tpope/vim-fugitive" }
+    use {
+        "tpope/vim-fugitive",
+        config = function() require("neovim.plugins.vim-fugitive") end
+    }
 
     -- To show git modifications in code
     use {
@@ -222,7 +191,7 @@ packer.startup(function(use)
     -- For nice tab display
     use {
         "akinsho/bufferline.nvim",
-        event = "BufWinEnter",
+        tag = "v3.*",
         config = function() require("neovim.plugins.bufferline") end,
         requires = { "nvim-tree/nvim-web-devicons" },
     }
@@ -230,7 +199,6 @@ packer.startup(function(use)
     -- For auto pairing things
     use {
         "windwp/nvim-autopairs",
-        event = "InsertEnter",
         config = function() require("nvim-autopairs").setup() end
     }
 
@@ -245,7 +213,6 @@ packer.startup(function(use)
     -- Easy move in window
     use {
         "ggandor/leap.nvim",
-        event = "BufWinEnter",
         config = function() require("leap").add_default_mappings() end,
     }
 
@@ -261,6 +228,9 @@ packer.startup(function(use)
         cmd = "AerialToggle",
         config = function() require("neovim.plugins.aerial") end
     }
+
+    -- Cache modules
+    use { "lewis6991/impatient.nvim" }
 
     if can_sync_packer then
         packer.sync()

@@ -24,3 +24,5 @@ dap.configurations.cs = {
         end,
     },
 }
+
+require("neovim.plugins.dap.mappings")
