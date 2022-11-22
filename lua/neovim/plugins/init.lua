@@ -230,7 +230,16 @@ packer.startup(function(use)
     }
 
     -- Cache modules
-    use { "lewis6991/impatient.nvim" }
+    use {
+        "lewis6991/impatient.nvim",
+        config = function() require("impatient") end,
+    }
+
+    -- Nice indentation lines
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function() require("indent_blankline").setup() end,
+    }
 
     if can_sync_packer then
         packer.sync()

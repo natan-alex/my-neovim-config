@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-
 local default_options = { noremap = true }
 
 -- Leader
