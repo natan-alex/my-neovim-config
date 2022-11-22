@@ -102,7 +102,7 @@ packer.startup(function(use)
         config = function()
 	    local path = vim.fn.stdpath("config")
 	    path = path .. "/lua/neovim/plugins/vim-visual-multi.vim"
-	    vim.cmd("source" .. path)
+	    vim.cmd("source " .. path)
 	end,
     }
 
