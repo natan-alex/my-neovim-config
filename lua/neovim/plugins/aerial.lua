@@ -89,3 +89,6 @@ aerial.setup({
         "Struct",
     },
 })
+
+-- mapping
+vim.keymap.set("n", "<Leader>a", aerial.toggle, { noremap = true })

@@ -36,7 +36,7 @@ nvim_tree.setup({
     },
     view = {
         adaptive_size = true,
-        mappings = { 
+        mappings = {
             list = {
                 { key = "u", action = "dir_up" },
                 { key = "t", action = "tabnew" },
@@ -47,6 +47,9 @@ nvim_tree.setup({
         },
     },
 })
+
+-- mapping
+vim.keymap.set("n", "<Leader>e", nvim_tree.toggle, { noremap = true })
 
 --              DEFAULT MAPPINGS
 -- `<CR>`            edit                open a file or folder; root will cd to the above directory
