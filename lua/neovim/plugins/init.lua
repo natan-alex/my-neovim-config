@@ -44,7 +44,7 @@ packer.startup(function(use)
     use "nvim-lua/plenary.nvim"
 
     -- Colorschemes
-    use "joshdick/onedark.vim"
+    use "folke/tokyonight.nvim"
 
     -- For floating menus with mappings
     use {
@@ -72,14 +72,14 @@ packer.startup(function(use)
     use { "neovim/nvim-lspconfig" }
 
     use {
-	"williamboman/mason.nvim",
-	config = function() require("neovim.plugins.mason") end,
+        "williamboman/mason.nvim",
+        config = function() require("neovim.plugins.mason") end,
     }
 
     use {
-	"williamboman/mason-lspconfig.nvim",
-	config = function() require("neovim.plugins.mason-lspconfig") end,
-	requires = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
+        "williamboman/mason-lspconfig.nvim",
+        config = function() require("neovim.plugins.mason-lspconfig") end,
+        requires = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     }
 
     use {
@@ -97,10 +97,10 @@ packer.startup(function(use)
     use {
         "mg979/vim-visual-multi",
         config = function()
-	    local path = vim.fn.stdpath("config")
-	    path = path .. "/lua/neovim/plugins/vim-visual-multi.vim"
-	    vim.cmd("source " .. path)
-	end,
+            local path = vim.fn.stdpath("config")
+            path = path .. "/lua/neovim/plugins/vim-visual-multi.vim"
+            vim.cmd("source " .. path)
+        end,
     }
 
     -- Nice bar
@@ -204,10 +204,10 @@ packer.startup(function(use)
 
     -- Rust related
     use {
-	"simrat39/rust-tools.nvim",
-	ft = { "rs" },
-	config = function() require("neovim.plugins.rust-tools") end,
-	requires = { "neovim/nvim-lspconfig" },
+        "simrat39/rust-tools.nvim",
+        ft = { "rs" },
+        config = function() require("neovim.plugins.rust-tools") end,
+        requires = { "neovim/nvim-lspconfig" },
     }
 
     -- Easy move in window
@@ -225,7 +225,6 @@ packer.startup(function(use)
     -- Code navigation
     use {
         "stevearc/aerial.nvim",
-        cmd = "AerialToggle",
         config = function() require("neovim.plugins.aerial") end
     }
 
