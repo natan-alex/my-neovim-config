@@ -21,3 +21,6 @@ choco install make
 
 // fzf
 choco install fzf
+
+// really nice font
+CascaydiaCove nerd font
