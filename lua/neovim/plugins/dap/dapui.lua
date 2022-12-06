@@ -1,16 +1,5 @@
-local dap_found, dap = pcall(require, "dap")
-
-if not dap_found then
-    vim.notify("dap module not found. Error: " .. dap, "error")
-    return
-end
-
-local dapui_found, dapui = pcall(require, "dapui")
-
-if not dapui_found then
-    vim.notify("dapui module not found. Error: " .. dapui, "error")
-    return
-end
+local dap = require("dap")
+local dapui = require("dapui")
 
 dapui.setup({
     layouts = {

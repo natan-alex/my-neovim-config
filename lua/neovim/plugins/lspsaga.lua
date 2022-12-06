@@ -1,11 +1,4 @@
-local lspsaga_found, lspsaga = pcall(require, "lspsaga")
-
-if not lspsaga_found then
-    vim.notify("lspsaga module not found. Error: " .. lspsaga, "error")
-    return
-end
-
-lspsaga.init_lsp_saga()
+require("lspsaga").init_lsp_saga()
 
 local map = vim.keymap.set
 local mapping_options = { noremap = true, silent = true }

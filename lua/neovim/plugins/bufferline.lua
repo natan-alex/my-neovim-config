@@ -1,9 +1,4 @@
-local bufferline_found, bufferline = pcall(require, "bufferline")
-
-if not bufferline_found then
-    vim.notify("bufferline module not found. Error: " .. bufferline, "error")
-    return
-end
+local bufferline = require("bufferline")
 
 bufferline.setup({
     options = {
@@ -14,7 +9,10 @@ bufferline.setup({
     },
 })
 
-vim.keymap.set("n", "<A-l>", function() bufferline.cycle(1) end, { noremap = true })
-vim.keymap.set("n", "<A-h>", function() bufferline.cycle(-1) end, { noremap = true })
-vim.keymap.set("n", "<A-L>", function() bufferline.move(1) end, { noremap = true })
-vim.keymap.set("n", "<A-H>", function() bufferline.move(-1) end, { noremap = true })
+local map = vim.keymap.set
+local mapping_options = { noremap = true, silent = true }
+
+map("n", "<A-l>", function() bufferline.cycle(1) end, mapping_options)
+map("n", "<A-h>", function() bufferline.cycle(-1) end, mapping_options)
+map("n", "<A-L>", function() bufferline.move(1) end, mapping_options)
+map("n", "<A-H>", function() bufferline.move(-1) end, mapping_options)

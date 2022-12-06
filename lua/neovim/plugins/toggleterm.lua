@@ -1,11 +1,4 @@
-local toggleterm_found, toggleterm = pcall(require, "toggleterm")
-
-if not toggleterm_found then
-    vim.notify("toggleterm module not found. Error: " .. toggleterm, "error")
-    return
-end
-
-toggleterm.setup({
+require("toggleterm").setup({
     size = 75,
     open_mapping = "<Leader>t",
     hide_numbers = true,

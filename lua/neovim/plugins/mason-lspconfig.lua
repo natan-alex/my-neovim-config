@@ -1,22 +1,11 @@
-local mason_lspconfig_found, mason_lspconfig = pcall(require, "mason-lspconfig")
-
-if not mason_lspconfig_found then
-    vim.notify("mason-lspconfig module not found. Error: " .. mason_lspconfig, "error")
-    return
-end
-
-local lspconfig_found, lspconfig = pcall(require, "lspconfig")
-
-if not lspconfig_found then
-    vim.notify("lspconfig module not found. Error: " .. lspconfig, "error")
-    return
-end
+local lspconfig = require("lspconfig")
+local mason_lspconfig = require("mason-lspconfig")
 
 local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local function on_lsp_attach(_, buffer_number)
     local map = vim.keymap.set
-    local options = { noremap = true, silent = true, buffer = buffer_number }
+    local mapping_options = { noremap = true, silent = true, buffer = buffer_number }
 
     -- map("n", "[d", vim.diagnostic.goto_prev, options)
     -- map("n", "]d", vim.diagnostic.goto_next, options)
@@ -28,9 +17,9 @@ local function on_lsp_attach(_, buffer_number)
     -- map("n", "gr", vim.lsp.buf.references, options)
     -- map("n", "<Leader>rn", vim.lsp.buf.rename, options)
     -- map("n", "<Leader>ca", vim.lsp.buf.code_action, options)
-    map("n", "<Leader>ll", vim.diagnostic.setloclist, options)
-    map("n", "<Leader>ql", vim.diagnostic.setqflist, options)
-    map("n", "<C-F>", vim.lsp.buf.format, options)
+    -- map("n", "<Leader>ll", vim.diagnostic.setloclist, options)
+    -- map("n", "<Leader>ql", vim.diagnostic.setqflist, options)
+    map("n", "<C-F>", vim.lsp.buf.format, mapping_options)
 end
 
 mason_lspconfig.setup()

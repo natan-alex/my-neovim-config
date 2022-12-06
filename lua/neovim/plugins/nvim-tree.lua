@@ -1,9 +1,4 @@
-local nvim_tree_found, nvim_tree = pcall(require, "nvim-tree")
-
-if not nvim_tree_found then
-    vim.notify("nvim-tree module not found. Error: " .. nvim_tree, "error")
-    return
-end
+local nvim_tree = require("nvim-tree")
 
 -- disable netrw
 vim.g.loaded = 1
@@ -49,7 +44,7 @@ nvim_tree.setup({
 })
 
 -- mapping
-vim.keymap.set("n", "<Leader>e", nvim_tree.toggle, { noremap = true })
+vim.keymap.set("n", "<Leader>e", nvim_tree.toggle, { noremap = true, silent = true })
 
 --              DEFAULT MAPPINGS
 -- `<CR>`            edit                open a file or folder; root will cd to the above directory

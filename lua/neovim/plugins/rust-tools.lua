@@ -1,11 +1,4 @@
-local rust_tools_found, rust_tools = pcall(require, "rust-tools")
-
-if not rust_tools_found then
-    vim.notify("rust-tools module not found. Error: " .. rust_tools, "error")
-    return
-end
-
-local opts = {
+require("rust-tools").setup({
     tools = {
         autoSetHints = true,
         inlay_hints = {
@@ -25,6 +18,4 @@ local opts = {
             }
         }
     },
-}
-
-rust_tools.setup(opts)
+})

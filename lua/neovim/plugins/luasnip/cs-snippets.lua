@@ -8,7 +8,7 @@ local insert_node = luasnip.insert_node
 luasnip.add_snippets("cs", {
     create_snippet("cws", format([[Console.WriteLine("{}");]], { insert_node(1) })),
     create_snippet(
-        "controller", 
+        "controller",
         format(
         [[
         using Microsoft.AspNetCore.Mvc;
@@ -19,7 +19,7 @@ luasnip.add_snippets("cs", {
         {{
             {}
         }}
-        ]], 
+        ]],
         { insert_node(1), insert_node(2), insert_node(3) })
     ),
 })

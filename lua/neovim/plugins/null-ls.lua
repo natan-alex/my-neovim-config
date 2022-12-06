@@ -1,9 +1,4 @@
-local null_ls_found, null_ls = pcall(require, "null-ls")
-
-if not null_ls_found then
-    vim.notify("null-ls module not found. Error: " .. null_ls, "error")
-    return
-end
+local null_ls = require("null-ls")
 
 null_ls.setup({
     sources = {

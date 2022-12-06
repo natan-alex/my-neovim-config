@@ -1,36 +1,35 @@
-local gitsigns_found, gitsigns = pcall(require, "gitsigns")
+local gitsigns = require("gitsigns")
 
-if not gitsigns_found then
-    vim.notify("gitsigns module not found. Error: " .. gitsigns, "error")
-    return
-end
+local map = vim.keymap.set
 
 gitsigns.setup {
     on_attach = function()
-        local map = vim.keymap.set
+        local mapping_options = { expr = true, noremap = true, silent = true }
 
         -- Navigation
         map("n", "]c", function()
             if vim.wo.diff then return "]c" end
             vim.schedule(function() gitsigns.next_hunk() end)
             return "<Ignore>"
-        end, { expr = true })
+        end, mapping_options)
 
         map("n", "[c", function()
             if vim.wo.diff then return "[c" end
             vim.schedule(function() gitsigns.prev_hunk() end)
             return "<Ignore>"
-        end, { expr = true })
+        end, mapping_options)
     end
 }
 
 -- mappings
-vim.keymap.set({"n", "v"}, "<Leader>hs", gitsigns.stage_hunk, { noremap = true })
-vim.keymap.set({"n", "v"}, "<Leader>hr", gitsigns.reset_hunk, { noremap = true })
-vim.keymap.set("n", "<Leader>hS", gitsigns.stage_buffer, { noremap = true })
-vim.keymap.set("n", "<Leader>hu", gitsigns.undo_stage_hunk, { noremap = true })
-vim.keymap.set("n", "<Leader>hR", gitsigns.reset_buffer, { noremap = true })
-vim.keymap.set("n", "<Leader>hp", gitsigns.preview_hunk, { noremap = true })
-vim.keymap.set("n", "<Leader>hl", gitsigns.toggle_current_line_blame, { noremap = true })
-vim.keymap.set("n", "<Leader>hd", gitsigns.diffthis, { noremap = true })
-vim.keymap.set("n", "<Leader>hD", gitsigns.toggle_deleted, { noremap = true })
+local mapping_options = { expr = true, noremap = true, silent = true }
+
+map("n", "<Leader>hS", gitsigns.stage_buffer, mapping_options)
+map("n", "<Leader>hu", gitsigns.undo_stage_hunk, mapping_options)
+map("n", "<Leader>hR", gitsigns.reset_buffer, mapping_options)
+map("n", "<Leader>hp", gitsigns.preview_hunk, mapping_options)
+map("n", "<Leader>hl", gitsigns.toggle_current_line_blame, mapping_options)
+map("n", "<Leader>hd", gitsigns.diffthis, mapping_options)
+map("n", "<Leader>hD", gitsigns.toggle_deleted, mapping_options)
+map({"n", "v"}, "<Leader>hs", gitsigns.stage_hunk, mapping_options)
+map({"n", "v"}, "<Leader>hr", gitsigns.reset_hunk, mapping_options)

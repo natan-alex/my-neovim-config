@@ -1,9 +1,4 @@
-local cmp_found, cmp = pcall(require, "cmp")
-
-if not cmp_found then
-    vim.notify("cmp module not found. Error: " .. cmp, "error")
-    return
-end
+local cmp = require("cmp")
 
 cmp.setup {
     snippet = {
@@ -20,7 +15,6 @@ cmp.setup {
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
-        { name = "cmdline" },
     },
     window = {
         documentation = true,
@@ -38,7 +32,7 @@ cmp.setup {
         ["<C-f>"] = cmp.mapping.scroll_docs(5),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<Tab>"] = cmp.mapping.confirm({
-            select = false,
+            select = true,
             behavior = cmp.ConfirmBehavior.Insert,
         }),
         ["<C-e>"] = cmp.mapping({

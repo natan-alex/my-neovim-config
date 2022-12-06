@@ -1,9 +1,4 @@
-local aerial_found, aerial = pcall(require, "aerial")
-
-if not aerial_found then
-    vim.notify("aerial module not found. Error: " .. aerial, "error")
-    return
-end
+local aerial = require("aerial")
 
 aerial.setup({
     -- Priority list of preferred backends for aerial.
@@ -91,4 +86,4 @@ aerial.setup({
 })
 
 -- mapping
-vim.keymap.set("n", "<Leader>a", aerial.toggle, { noremap = true })
+vim.keymap.set("n", "<Leader>a", aerial.toggle, { noremap = true, silent = true })

@@ -1,7 +1,8 @@
 local dap = require("dap")
 local dapui = require("dapui")
+
 local map = vim.keymap.set
-local mapping_options = { noremap = true }
+local mapping_options = { noremap = true, silent = true }
 
 map("n", "<F5>", dap.continue, mapping_options)
 map("n", "<F10>", dap.step_over, mapping_options)

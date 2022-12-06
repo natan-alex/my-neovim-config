@@ -7,8 +7,11 @@ local insert_node = luasnip.insert_node
 
 local snippets = {
     create_snippet("cl", format([[console.log("{}");]], { insert_node(1) })),
+    create_snippet("log", format([[console.log("{}");]], { insert_node(1) })),
     create_snippet("ce", format([[console.error("{}");]], { insert_node(1) })),
 }
 
 luasnip.add_snippets("javascript", snippets)
 luasnip.add_snippets("typescript", snippets)
+luasnip.add_snippets("javascriptreact", snippets)
+luasnip.add_snippets("typescriptreact", snippets)

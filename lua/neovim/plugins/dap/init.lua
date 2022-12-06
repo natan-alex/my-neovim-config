@@ -1,9 +1,4 @@
-local dap_found, dap = pcall(require, "dap")
-
-if not dap_found then
-    vim.notify("dap module not found. Error: " .. dap, "error")
-    return
-end
+local dap = require("dap")
 
 dap.adapters.coreclr = {
     type = "executable",

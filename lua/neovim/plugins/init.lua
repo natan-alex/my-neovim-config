@@ -1,4 +1,5 @@
 local packer_path = "/site/pack/packer/start/packer.nvim"
+
 local install_path = vim.fn.stdpath("data") .. packer_path
 
 local can_sync_packer = false
@@ -13,29 +14,27 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     })
 
     vim.cmd("packadd packer.nvim")
+
     can_sync_packer = true
 
     print("Packer installed successfully")
 end
 
--- Use a protected call to get packer module
 local packer_found, packer = pcall(require, "packer")
 
 if not packer_found then
     return
 end
 
--- Use packer popup window
 packer.init({
     display = {
         open_fn = function()
             local util = require("packer.util")
-            return util.float { border = "rounded" }
+            return util.float({ border = "rounded" })
         end,
     },
 })
 
--- Add plugins here
 packer.startup(function(use)
     -- For packer to update itself
     use "wbthomason/packer.nvim"
@@ -44,7 +43,10 @@ packer.startup(function(use)
     use "nvim-lua/plenary.nvim"
 
     -- Colorschemes
-    use "folke/tokyonight.nvim"
+    use {
+        "folke/tokyonight.nvim",
+        config = function() vim.cmd("colorscheme tokyonight-storm") end,
+    }
 
     -- For floating menus with mappings
     use {
@@ -130,10 +132,9 @@ packer.startup(function(use)
         config = function() require("neovim.plugins.cmp") end,
     }
 
-    use { "hrsh7th/cmp-nvim-lsp" }
-    use { "hrsh7th/cmp-buffer" }
     use { "hrsh7th/cmp-path" }
-    use { "hrsh7th/cmp-cmdline" }
+    use { "hrsh7th/cmp-buffer" }
+    use { "hrsh7th/cmp-nvim-lsp" }
     use { "saadparwaiz1/cmp_luasnip" }
 
     -- Floating terminal

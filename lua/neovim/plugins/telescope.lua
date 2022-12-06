@@ -1,11 +1,6 @@
-local telescope_found, telescope = pcall(require, "telescope")
-
-if not telescope_found then
-    vim.notify("telescope module not found. Error: " .. telescope, "error")
-    return
-end
-
+local telescope = require("telescope")
 local actions = require("telescope.actions")
+local builtin = require("telescope.builtin")
 
 telescope.setup({
     defaults = {
@@ -47,9 +42,8 @@ telescope.setup({
 })
 
 -- mappings
-local builtin = require("telescope.builtin")
 local map = vim.keymap.set
-local mapping_options = { noremap = true }
+local mapping_options = { noremap = true, silent = true }
 
 map("n", "<Leader>ff", builtin.find_files, mapping_options)
 map("n", "<Leader>fo", builtin.oldfiles, mapping_options)
