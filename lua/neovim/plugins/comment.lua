@@ -18,7 +18,7 @@ require("Comment").setup({
     ---@type table
     toggler = {
         ---Line-comment toggle keymap
-        line = "<Leader>cc",
+        line = "<C-_>",
         ---Block-comment toggle keymap
         block = "<Leader>cb",
     },
@@ -26,9 +26,9 @@ require("Comment").setup({
     ---LHS of operator-pending mappings in NORMAL + VISUAL mode
     ---@type table
     opleader = {
-        ---Line-comment keymap
-        line = "<Leader>cc",
-        ---Block-comment keymap
+        ---Line-comment toggle keymap
+        line = "<C-_>",
+        ---Block-comment toggle keymap
         block = "<Leader>cb",
     },
 
