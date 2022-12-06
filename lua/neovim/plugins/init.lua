@@ -49,10 +49,7 @@ packer.startup(function(use)
     }
 
     -- For floating menus with mappings
-    use {
-        "folke/which-key.nvim",
-        config = function() require("neovim.plugins.which-key") end,
-    }
+    use { "folke/which-key.nvim" }
 
     -- For file explorer
     use {
