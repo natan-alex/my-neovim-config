@@ -240,6 +240,25 @@ packer.startup(function(use)
         config = function() require("indent_blankline").setup() end,
     }
 
+    -- To add more commands like ciw, di', etc
+    use { "wellle/targets.vim" }
+
+    -- For automatically resize splits on focus
+    use {
+        "beauwilliams/focus.nvim",
+        config = function() require("focus").setup() end
+    }
+
+    -- Repeat many things with dot
+    use { "tpope/vim-repeat" }
+
+    -- Better diagnostics
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function() require("neovim.plugins.trouble") end,
+    }
+
     if can_sync_packer then
         packer.sync()
     end
