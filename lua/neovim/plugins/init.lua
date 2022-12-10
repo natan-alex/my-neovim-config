@@ -214,12 +214,6 @@ packer.startup(function(use)
         config = function() require("leap").add_default_mappings() end,
     }
 
-    -- Session management
-    use {
-        "rmagatti/auto-session",
-        config = function() require("neovim.plugins.auto-session") end
-    }
-
     -- Code navigation
     use {
         "stevearc/aerial.nvim",
