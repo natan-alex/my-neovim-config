@@ -7,7 +7,6 @@ vim.g.loaded_netrwPlugin = 1
 nvim_tree.setup({
     disable_netrw = true,
     hijack_cursor = true,
-    update_cwd = true,
     sort_by = "name",
     filesystem_watchers = {
         enable = true,
@@ -27,7 +26,6 @@ nvim_tree.setup({
     },
     update_focused_file = {
         enable = true,
-        update_cwd = true,
     },
     view = {
         adaptive_size = true,
