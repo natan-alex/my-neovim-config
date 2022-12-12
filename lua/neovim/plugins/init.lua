@@ -157,7 +157,7 @@ packer.startup(function(use)
     use {
         "AckslD/nvim-neoclip.lua",
         requires = { "nvim-telescope/telescope.nvim" },
-        config = function() require("neovim.plugins.neoclip").setup() end,
+        config = function() require("neovim.plugins.neoclip") end,
     }
 
     -- Git
