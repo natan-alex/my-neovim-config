@@ -235,12 +235,6 @@ packer.startup(function(use)
     -- To add more commands like ciw, di', etc
     use { "wellle/targets.vim" }
 
-    -- For automatically resize splits on focus
-    use {
-        "beauwilliams/focus.nvim",
-        config = function() require("focus").setup() end
-    }
-
     -- Repeat many things with dot
     use { "tpope/vim-repeat" }
 
