@@ -1,9 +1,9 @@
 require("lspsaga").init_lsp_saga({
     definition_action_keys = {
-        edit = "<Space>o",
-        vsplit = "<Space>v",
-        split = "<Space>i",
-        tabe = "<Space>t",
+        edit = "<Leader>o",
+        vsplit = "<Leader>v",
+        split = "<Leader>i",
+        tabe = "<Leader>t",
         quit = "q",
     },
     rename_in_select = false,
