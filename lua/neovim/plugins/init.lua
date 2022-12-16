@@ -156,8 +156,9 @@ packer.startup(function(use)
 
     -- Git
     use {
-        "tpope/vim-fugitive",
-        config = function() require("neovim.plugins.vim-fugitive") end
+        "TimUntersberger/neogit",
+        requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
+        config = function() require("neovim.plugins.neogit") end,
     }
 
     -- To show git modifications in code
