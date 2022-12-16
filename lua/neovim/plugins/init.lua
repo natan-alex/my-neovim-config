@@ -49,7 +49,7 @@ packer.startup(function(use)
     }
 
     -- For floating menus with mappings
-    use { "folke/which-key.nvim" }
+    use { "folke/which-key.nvim", config = function() require("which-key").setup() end }
 
     -- For file explorer
     use {
@@ -84,12 +84,6 @@ packer.startup(function(use)
     use {
         "glepnir/lspsaga.nvim",
         config = function() require("neovim.plugins.lspsaga") end,
-    }
-
-    use {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function() require("neovim.plugins.null-ls") end,
-        requires = { "nvim-lua/plenary.nvim" },
     }
 
     -- Multiple cursors
