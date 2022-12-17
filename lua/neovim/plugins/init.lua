@@ -240,6 +240,11 @@ packer.startup(function(use)
         config = function() require("neovim.plugins.trouble") end,
     }
 
+    use {
+      "stevearc/aerial.nvim",
+      config = function() require("neovim.plugins.aerial") end
+    }
+
     if can_sync_packer then
         packer.sync()
     end

@@ -86,4 +86,17 @@ aerial.setup({
 })
 
 -- mapping
-vim.keymap.set("n", "<Leader>a", aerial.toggle, { noremap = true, silent = true })
+local mapping_options = {
+    mode = "n",
+    prefix = "<Leader>",
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = false,
+}
+
+local mappings = {
+    a = { aerial.toggle, "Aerial toggle" },
+}
+
+require("which-key").register(mappings, mapping_options)
