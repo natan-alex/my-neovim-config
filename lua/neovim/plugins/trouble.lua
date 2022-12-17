@@ -1,8 +1,22 @@
-local map = vim.keymap.set
-local mapping_options = { noremap = true, silent = true }
+local mapping_options = {
+    mode = "n",
+    prefix = nil,
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = false,
+}
 
-map("n", "gR", "<CMD>TroubleToggle lsp_references<CR>", mapping_options)
-map("n", "<leader>dl", "<CMD>TroubleToggle loclist<CR>", mapping_options)
-map("n", "<leader>dq", "<CMD>TroubleToggle quickfix<CR>", mapping_options)
-map("n", "<leader>dd", "<CMD>TroubleToggle document_diagnostics<CR>", mapping_options)
-map("n", "<leader>do", "<CMD>TroubleToggle<CR>", mapping_options)
+local mappings = {
+    ["<Leader>"] = {
+        d = {
+            l = { "<CMD>TroubleToggle loclist<CR>", "Trouble loclist" },
+            q = { "<CMD>TroubleToggle quickfix<CR>", "Trouble quickfix" },
+            d = { "<CMD>TroubleToggle document_diagnostics<CR>", "Trouble document diagnostics" },
+            o = { "<CMD>TroubleToggle<CR>", "Trouble toggle" },
+        }
+    },
+    ["gR"] = { "<CMD>TroubleToggle lsp_references<CR>", "Trouble lsp references" },
+}
+
+require("which-key").register(mappings, mapping_options)

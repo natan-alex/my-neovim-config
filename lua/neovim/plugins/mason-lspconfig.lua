@@ -4,20 +4,34 @@ local mason_lspconfig = require("mason-lspconfig")
 local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local function on_lsp_attach(_, buffer_number)
-    local map = vim.keymap.set
-    local mapping_options = { noremap = true, silent = true, buffer = buffer_number }
+    local mapping_options = {
+        mode = "n",
+        prefix = nil,
+        buffer = buffer_number,
+        silent = true,
+        noremap = true,
+        nowait = false,
+    }
 
-    -- map("n", "<Leader>rn", vim.lsp.buf.rename, options)
-    -- map("n", "<Leader>ca", vim.lsp.buf.code_action, options)
-    -- map("n", "[d", vim.diagnostic.goto_prev, options)
-    -- map("n", "]d", vim.diagnostic.goto_next, options)
-    -- map("n", "K", vim.lsp.buf.hover, options)
-    -- map("n", "<C-s>", vim.lsp.buf.signature_help, options)
-    -- map("n", "gr", vim.lsp.buf.references, options)
-    -- map("n", "gD", vim.lsp.buf.declaration, options)
-    map("n", "gd", vim.lsp.buf.definition, options)
-    map("n", "gi", vim.lsp.buf.implementation, options)
-    map("n", "<C-f>", vim.lsp.buf.format, mapping_options)
+    local mappings = {
+        ["<Leader>g"] = {
+            d = { vim.lsp.buf.definition, "Lsp buffer definition" },
+            i = { vim.lsp.buf.implementation, "Lsp buffer implementation" },
+            -- r = { vim.lsp.buf.references, "Lsp buffer references" },
+            -- D = { vim.lsp.buf.declaration, "Lsp buffer declaration" },
+        },
+        ["<C-f>"] = { vim.lsp.buf.format, "Lsp format buffer" },
+        -- K = { vim.lsp.buf.hover, "Lsp hover" },
+        -- ["<C-s>"] = { vim.lsp.buf.signature_help, "Lsp signature help" },
+        -- ["<Leader>"] = {
+        --     ["rn"] = { vim.lsp.buf.rename, "Lsp rename symbol" },
+        --     ["ca"] = { vim.lsp.buf.code_action, "Lsp code actions" },
+        -- },
+        -- ["[d"] = { vim.diagnostic.goto_prev, "Lsp go to previous diagnostic" },
+        -- ["]d"] = { vim.diagnostic.goto_next, "Lsp go to next diagnostic" },
+    }
+
+    require("which-key").register(mappings, mapping_options)
 end
 
 mason_lspconfig.setup()

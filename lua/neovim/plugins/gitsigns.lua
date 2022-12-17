@@ -1,35 +1,59 @@
 local gitsigns = require("gitsigns")
 
-local map = vim.keymap.set
-
 gitsigns.setup {
     on_attach = function()
-        local mapping_options = { expr = true, noremap = true, silent = true }
+        local mapping_options = {
+            mode = "n",
+            prefix = nil,
+            buffer = nil,
+            silent = true,
+            noremap = true,
+            nowait = false,
+        }
 
-        -- Navigation
-        map("n", "]c", function()
-            if vim.wo.diff then return "]c" end
-            vim.schedule(function() gitsigns.next_hunk() end)
-            return "<Ignore>"
-        end, mapping_options)
+        local mappings = {
+            ["]c"] = {
+                function()
+                    if vim.wo.diff then return "]c" end
+                    vim.schedule(function() gitsigns.next_hunk() end)
+                    return "<Ignore>"
+                end,
+                "Gitsigns go to next hunk"
+            },
+            ["[c"] = {
+                function()
+                    if vim.wo.diff then return "[c" end
+                    vim.schedule(function() gitsigns.prev_hunk() end)
+                    return "<Ignore>"
+                end,
+                "Gitsigns go to previous hunk"
+            },
+        }
 
-        map("n", "[c", function()
-            if vim.wo.diff then return "[c" end
-            vim.schedule(function() gitsigns.prev_hunk() end)
-            return "<Ignore>"
-        end, mapping_options)
+        require("which-key").register(mappings, mapping_options)
     end
 }
 
 -- mappings
-local mapping_options = { expr = true, noremap = true, silent = true }
+local mapping_options = {
+    mode = "n",
+    prefix = "<Leader>h",
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = false,
+}
 
-map("n", "<Leader>hS", gitsigns.stage_buffer, mapping_options)
-map("n", "<Leader>hu", gitsigns.undo_stage_hunk, mapping_options)
-map("n", "<Leader>hR", gitsigns.reset_buffer, mapping_options)
-map("n", "<Leader>hp", gitsigns.preview_hunk, mapping_options)
-map("n", "<Leader>hl", gitsigns.toggle_current_line_blame, mapping_options)
-map("n", "<Leader>hd", gitsigns.diffthis, mapping_options)
-map("n", "<Leader>hD", gitsigns.toggle_deleted, mapping_options)
-map({"n", "v"}, "<Leader>hs", gitsigns.stage_hunk, mapping_options)
-map({"n", "v"}, "<Leader>hr", gitsigns.reset_hunk, mapping_options)
+local mappings = {
+    S = { gitsigns.stage_buffer, "Gitsigns stage buffer" },
+    u = { gitsigns.undo_stage_hunk, "Gitsigns undo stage hunk" },
+    R = { gitsigns.reset_buffer, "Gitsigns reset buffer" },
+    p = { gitsigns.preview_hunk, "Gitsigns preview hunk" },
+    l = { gitsigns.toggle_current_line_blame, "Gitsigns toggle current line blame" },
+    d = { gitsigns.diffthis, "Gitsigns diff this" },
+    D = { gitsigns.toggle_deleted, "Gitsigns toggle deleted" },
+    s = { gitsigns.stage_hunk, "Gitsigns stage hunk" },
+    r = { gitsigns.reset_hunk, "Gitsigns reset hunk" },
+}
+
+require("which-key").register(mappings, mapping_options)

@@ -4,26 +4,37 @@ luasnip.config.set_config({
     enable_autosnippets = true,
 })
 
-local map = vim.keymap.set
-local mapping_options = { noremap = true, silent = true }
+local mapping_options = {
+    mode = { "i", "s" },
+    prefix = nil,
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = false,
+}
 
-map({ "i", "s" }, "<C-l>", function()
-    if luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-    end
-end, mapping_options)
+local mappings = {
+    ["<C-h>"] = {
+        function()
+            if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            end
+        end,
+        ""
+    },
+    ["<C-l>"] = {
+        function()
+            if luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            elseif luasnip.choice_active() then
+                luasnip.change_choice(1)
+            end
+        end,
+        ""
+    },
+}
 
-map({ "i", "s" }, "<C-h>", function()
-    if luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-    end
-end, mapping_options)
-
-map("i", "<C-l>", function()
-    if luasnip.choice_active() then
-        luasnip.change_choice(1)
-    end
-end, mapping_options)
+require("which-key").register(mappings, mapping_options)
 
 
 -- To use existing vs-code style snippets from a plugin

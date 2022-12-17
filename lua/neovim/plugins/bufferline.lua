@@ -9,10 +9,20 @@ bufferline.setup({
     },
 })
 
-local map = vim.keymap.set
-local mapping_options = { noremap = true, silent = true }
+local mapping_options = {
+    mode = "n",
+    prefix = nil,
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = false,
+}
 
-map("n", "<A-l>", function() bufferline.cycle(1) end, mapping_options)
-map("n", "<A-h>", function() bufferline.cycle(-1) end, mapping_options)
-map("n", "<A-L>", function() bufferline.move(1) end, mapping_options)
-map("n", "<A-H>", function() bufferline.move(-1) end, mapping_options)
+local mappings = {
+    ["<A-l>"] = { function() bufferline.cycle(1) end, "Bufferline go right" },
+    ["<A-h>"] = { function() bufferline.cycle(-1) end, "Bufferline go left" },
+    ["<A-L>"] = { function() bufferline.move(1) end, "Bufferline move right" },
+    ["<A-H>"] = { function() bufferline.move(-1) end, "Bufferline move left" },
+}
+
+require("which-key").register(mappings, mapping_options)

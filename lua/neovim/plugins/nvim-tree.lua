@@ -42,7 +42,20 @@ nvim_tree.setup({
 })
 
 -- mapping
-vim.keymap.set("n", "<Leader>e", nvim_tree.toggle, { noremap = true, silent = true })
+local mapping_options = {
+    mode = "n",
+    prefix = "<Leader>",
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = false,
+}
+
+local mappings = {
+    e = { nvim_tree.toggle, "NvimTree toggle" },
+}
+
+require("which-key").register(mappings, mapping_options)
 
 --              DEFAULT MAPPINGS
 -- `<CR>`            edit                open a file or folder; root will cd to the above directory

@@ -7,4 +7,17 @@ neogit.setup {
     },
 }
 
-vim.keymap.set("n", "<Leader>gg", "<CMD>Neogit<CR>", { noremap = true, silent = true })
+local mapping_options = {
+    mode = "n",
+    prefix = "<Leader>",
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = false,
+}
+
+local mappings = {
+    ["gg"] = { "<CMD>Neogit<CR>", "Toggle neogit" }
+}
+
+require("which-key").register(mappings, mapping_options)
