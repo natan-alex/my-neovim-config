@@ -147,6 +147,12 @@ packer.startup(function(use)
         requires = { "nvim-lua/plenary.nvim" },
     }
 
+    use {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make",
+        config = function() require("neovim.plugins.telescope-fzf-native") end
+    }
+
     -- telescope neoclip extension for clipboard remembering
     use {
         "AckslD/nvim-neoclip.lua",
@@ -207,12 +213,6 @@ packer.startup(function(use)
     use {
         "ggandor/leap.nvim",
         config = function() require("leap").add_default_mappings() end,
-    }
-
-    -- Code navigation
-    use {
-        "stevearc/aerial.nvim",
-        config = function() require("neovim.plugins.aerial") end
     }
 
     -- Cache modules

@@ -35,8 +35,24 @@ telescope.setup({
         }
     },
     pickers = {
-        find_files = {
-            -- theme = "dropdown",
+        find_files            = { theme = "dropdown" },
+        oldfiles              = { theme = "dropdown" },
+        live_grep             = { theme = "dropdown" },
+        buffers               = { theme = "dropdown" },
+        diagnostics           = { theme = "dropdown" },
+        help_tags             = { theme = "dropdown" },
+        lsp_references        = { theme = "dropdown" },
+        lsp_document_symbols  = { theme = "dropdown" },
+        lsp_workspace_symbols = { theme = "dropdown" },
+        treesitter            = { theme = "dropdown" },
+        reloader              = { theme = "dropdown" },
+        builtin               = { theme = "dropdown" },
+    },
+    extensions = {
+        fzf = {
+            fuzzy = true,                    -- false will only do exact matching
+            override_generic_sorter = true,  -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
         }
     },
 })
@@ -51,4 +67,12 @@ map("n", "<Leader>fg", builtin.live_grep, mapping_options)
 map("n", "<Leader>fb", builtin.buffers, mapping_options)
 map("n", "<Leader>fd", builtin.diagnostics, mapping_options)
 map("n", "<Leader>fh", builtin.help_tags, mapping_options)
-map("n", "<Leader>fq", builtin.quickfix, mapping_options)
+
+map("n", "<Leader>fr", builtin.lsp_references, mapping_options)
+map("n", "<Leader>fs", builtin.lsp_document_symbols, mapping_options)
+map("n", "<Leader>fw", builtin.lsp_workspace_symbols, mapping_options)
+
+map("n", "<Leader>ft", builtin.treesitter, mapping_options)
+
+map("n", "<Leader>fR", builtin.reloader, mapping_options)
+map("n", "<Leader>fB", builtin.builtin, mapping_options)
