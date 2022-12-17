@@ -17,7 +17,7 @@ vim.opt.termguicolors = true
 
 vim.opt.undofile = true -- persistent undo
 
-vim.opt.cursorline = false -- highlight the current line
+vim.opt.cursorline = true -- highlight the current line
 
 vim.opt.mouse = "a" -- use mouse for selections and scroll
 
@@ -42,10 +42,6 @@ vim.opt.lazyredraw = true
 vim.opt.timeoutlen = 500
 
 vim.opt.backspace = "indent,eol,start"
-
--- do not highlight matching pairs
-vim.g.loaded_matchparen = 1
-
 
 -- Clipboard related
 local winyank = "win32yank.exe"
