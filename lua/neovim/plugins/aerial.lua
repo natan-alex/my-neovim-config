@@ -6,8 +6,8 @@ aerial.setup({
     backends = { "treesitter", "lsp" },
 
     layout = {
-        max_width = 0.25,
-        min_width = 0.2,
+        max_width = 0.6,
+        min_width = 0.3,
 
         -- Determines the default direction to open the aerial window. The 'prefer'
         -- options will open the window in the other direction *if* there is a
