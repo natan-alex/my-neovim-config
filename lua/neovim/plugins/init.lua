@@ -117,6 +117,7 @@ packer.startup(function(use)
         "hrsh7th/nvim-cmp",
         requires = {
             "hrsh7th/cmp-path",
+            "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-nvim-lsp",
             "saadparwaiz1/cmp_luasnip",
         },
@@ -153,13 +154,6 @@ packer.startup(function(use)
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
         cond = vim.fn.executable("make") == 1,
-        config = function() require("neovim.plugins.telescope-fzf-native") end
-    }
-
-    use {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-        cond = vim.fn.executable("cmake") == 1,
         config = function() require("neovim.plugins.telescope-fzf-native") end
     }
 
