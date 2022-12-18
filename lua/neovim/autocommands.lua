@@ -18,13 +18,6 @@ create_autocommand("FileType", {
     end,
 })
 
--- Automatically source and re-compile packer whenever init.lua is changed
-create_autocommand("BufWritePost", {
-    command = "source <afile> | PackerCompile",
-    group = packer_group,
-    pattern = vim.fn.expand("$MYVIMRC"),
-})
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 create_autocommand("TextYankPost", {
@@ -33,4 +26,13 @@ create_autocommand("TextYankPost", {
     end,
     group = highlight_group,
     pattern = "*",
+})
+
+local Path = require("plenary.path")
+
+-- Automatically source and re-compile packer whenever init.lua is changed
+create_autocommand("BufWritePost", {
+    command = "source <afile> | PackerCompile",
+    group = packer_group,
+    pattern = Path:new(vim.fn.stdpath("config"), "lua", "neovim", "plugins", "init.lua"):absolute()
 })

@@ -6,7 +6,9 @@ local replacements = {
     ["/"] = "_sep_",
 }
 
-local sessions_folder_path = vim.fn.stdpath("data") .. "/sessions"
+local Path = require("plenary.path")
+
+local sessions_folder_path = Path:new(vim.fn.stdpath("data"), "sessions"):absolute()
 
 local function generate_session_filename()
     local filename = vim.fn.getcwd()
@@ -15,7 +17,7 @@ local function generate_session_filename()
         filename = filename:gsub(replace, by)
     end
 
-    return sessions_folder_path .. "/" .. filename .. ".vim"
+    return Path:new(sessions_folder_path, filename .. ".vim"):absolute()
 end
 
 local sessions_augroup = vim.api.nvim_create_augroup("SessionRelatedGroup", { clear = true })
