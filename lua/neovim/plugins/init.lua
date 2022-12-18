@@ -1,30 +1,21 @@
-local packer_path = "/site/pack/packer/start/packer.nvim"
-
-local install_path = vim.fn.stdpath("data") .. packer_path
-
-local can_sync_packer = false
+local install_path = vim.fn.stdpath("data") ..  "/site/pack/packer/start/packer.nvim"
+local is_bootstrap = false
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    is_bootstrap = true
+
     print("Packer not installed yet. Installing...")
 
-    local github_repo_url = "https://github.com/wbthomason/packer.nvim"
+    local repo_url = "https://github.com/wbthomason/packer.nvim"
 
-    vim.fn.system({
-        "git", "clone", "--depth", "1", github_repo_url, install_path
-    })
+    vim.fn.execute("!git clone --depth 1 " .. repo_url .. install_path)
 
     vim.cmd("packadd packer.nvim")
-
-    can_sync_packer = true
 
     print("Packer installed successfully")
 end
 
-local packer_found, packer = pcall(require, "packer")
-
-if not packer_found then
-    return
-end
+local packer = require("packer")
 
 packer.init({
     display = {
@@ -48,20 +39,23 @@ packer.startup(function(use)
         config = function() vim.cmd("colorscheme tokyonight-storm") end,
     }
 
+    -- For file icons
+    use {
+        "nvim-tree/nvim-web-devicons",
+        config = function() require("nvim-web-devicons").setup() end,
+    }
+
     -- For floating menus with mappings
-    use { "folke/which-key.nvim", config = function() require("which-key").setup() end }
+    use {
+        "folke/which-key.nvim",
+        config = function() require("which-key").setup() end
+    }
 
     -- For file explorer
     use {
         "nvim-tree/nvim-tree.lua",
         config = function() require("neovim.plugins.nvim-tree") end,
         requires = { "nvim-tree/nvim-web-devicons" },
-    }
-
-    -- For file icons
-    use {
-        "nvim-tree/nvim-web-devicons",
-        config = function() require("nvim-web-devicons").setup() end,
     }
 
     -- Surround things
@@ -81,6 +75,7 @@ packer.startup(function(use)
         requires = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     }
 
+    -- Better lsp interactions like renaming, code actions, etc
     use {
         "glepnir/lspsaga.nvim",
         config = function() require("neovim.plugins.lspsaga") end,
@@ -110,23 +105,23 @@ packer.startup(function(use)
     }
 
     -- Snippets
+    use { "rafamadriz/friendly-snippets" }
+
     use {
         "L3MON4D3/LuaSnip",
         config = function() require("neovim.plugins.luasnip") end,
     }
 
-    use { "rafamadriz/friendly-snippets" }
-
     -- Completion plugins
     use {
         "hrsh7th/nvim-cmp",
+        requires = {
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-nvim-lsp",
+            "saadparwaiz1/cmp_luasnip",
+        },
         config = function() require("neovim.plugins.cmp") end,
     }
-
-    use { "hrsh7th/cmp-path" }
-    use { "hrsh7th/cmp-buffer" }
-    use { "hrsh7th/cmp-nvim-lsp" }
-    use { "saadparwaiz1/cmp_luasnip" }
 
     -- Floating terminal
     use {
@@ -140,6 +135,12 @@ packer.startup(function(use)
         config = function() require("neovim.plugins.treesitter") end,
     }
 
+    -- Additional text objects via treesitter
+    use {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+    }
+
     -- Telescope, my friend, just telescope
     use {
         "nvim-telescope/telescope.nvim",
@@ -147,9 +148,18 @@ packer.startup(function(use)
         requires = { "nvim-lua/plenary.nvim" },
     }
 
+    -- Use fzf to make telescope fuzzy finder faster
     use {
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
+        cond = vim.fn.executable("make") == 1,
+        config = function() require("neovim.plugins.telescope-fzf-native") end
+    }
+
+    use {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        cond = vim.fn.executable("cmake") == 1,
         config = function() require("neovim.plugins.telescope-fzf-native") end
     }
 
@@ -201,14 +211,6 @@ packer.startup(function(use)
         config = function() require("nvim-autopairs").setup() end
     }
 
-    -- Rust related
-    use {
-        "simrat39/rust-tools.nvim",
-        ft = { "rs" },
-        config = function() require("neovim.plugins.rust-tools") end,
-        requires = { "neovim/nvim-lspconfig" },
-    }
-
     -- Easy move in window
     use {
         "ggandor/leap.nvim",
@@ -240,12 +242,13 @@ packer.startup(function(use)
         config = function() require("neovim.plugins.trouble") end,
     }
 
+    -- To easily list and jump between functions, methods, etc in code
     use {
       "stevearc/aerial.nvim",
       config = function() require("neovim.plugins.aerial") end
     }
 
-    if can_sync_packer then
+    if is_bootstrap then
         packer.sync()
     end
 end)
