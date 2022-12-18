@@ -21,7 +21,7 @@ cmp.setup {
     },
     experimental = {
         ghost_text = true,
-        native_menu = false,
+        native_menu = true,
     },
     mapping = {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
