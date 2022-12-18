@@ -1,6 +1,13 @@
 local gitsigns = require("gitsigns")
 
 gitsigns.setup {
+    signs = {
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+    },
     on_attach = function()
         local mapping_options = {
             mode = "n",
