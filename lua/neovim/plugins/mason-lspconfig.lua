@@ -1,7 +1,7 @@
-local lspconfig = require("lspconfig")
 local mason_lspconfig = require("mason-lspconfig")
 
 local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
+lsp_capabilities = require("cmp_nvim_lsp").default_capabilities(lsp_capabilities)
 
 local function on_lsp_attach(_, buffer_number)
     local mapping_options = {
@@ -35,6 +35,8 @@ local function on_lsp_attach(_, buffer_number)
 end
 
 mason_lspconfig.setup()
+
+local lspconfig = require("lspconfig")
 
 mason_lspconfig.setup_handlers({
     -- The first entry (without a key) will be the default handler
