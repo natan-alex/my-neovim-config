@@ -88,8 +88,9 @@ packer.startup(function(use)
     use {
         "mg979/vim-visual-multi",
         config = function()
+            local paths = require("neovim.utils.paths")
             local path = vim.fn.stdpath("config")
-            path = path .. "/lua/neovim/plugins/vim-visual-multi.vim"
+            path = paths.join(path, "lua", "neovim", "plugins", "vim-visual-multi.vim")
             vim.cmd("source " .. path)
         end,
     }
@@ -182,16 +183,9 @@ packer.startup(function(use)
 
     -- Debugging
     use {
-        "mfussenegger/nvim-dap",
-        ft = { "cs" },
-        config = function() require("neovim.plugins.dap") end,
-    }
-
-    use {
-        "rcarriga/nvim-dap-ui",
-        config = function() require("neovim.plugins.dap.dapui") end,
-        requires = { "mfussenegger/nvim-dap" },
-        after = { "nvim-dap" },
+        "puremourning/vimspector",
+        ft = { "cs", "rust" },
+        config = function() require("neovim.plugins.vimspector") end
     }
 
     -- For nice tab display
