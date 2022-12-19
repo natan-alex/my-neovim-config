@@ -4,34 +4,20 @@ local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 lsp_capabilities = require("cmp_nvim_lsp").default_capabilities(lsp_capabilities)
 
 local function on_lsp_attach(_, buffer_number)
-    local mapping_options = {
-        mode = "n",
-        prefix = nil,
-        buffer = buffer_number,
-        silent = true,
-        noremap = true,
-        nowait = false,
-    }
+    local nmap = require("neovim.utils.mappings").nmap
+    local mapping_options = { silent = true, noremap = true, buffer = buffer_number }
 
-    local mappings = {
-        ["<Leader>g"] = {
-            d = { vim.lsp.buf.definition, "Lsp buffer definition" },
-            i = { vim.lsp.buf.implementation, "Lsp buffer implementation" },
-            -- r = { vim.lsp.buf.references, "Lsp buffer references" },
-            -- D = { vim.lsp.buf.declaration, "Lsp buffer declaration" },
-        },
-        ["<C-f>"] = { vim.lsp.buf.format, "Lsp format buffer" },
-        -- K = { vim.lsp.buf.hover, "Lsp hover" },
-        -- ["<C-s>"] = { vim.lsp.buf.signature_help, "Lsp signature help" },
-        -- ["<Leader>"] = {
-        --     ["rn"] = { vim.lsp.buf.rename, "Lsp rename symbol" },
-        --     ["ca"] = { vim.lsp.buf.code_action, "Lsp code actions" },
-        -- },
-        -- ["[d"] = { vim.diagnostic.goto_prev, "Lsp go to previous diagnostic" },
-        -- ["]d"] = { vim.diagnostic.goto_next, "Lsp go to next diagnostic" },
-    }
-
-    require("which-key").register(mappings, mapping_options)
+    nmap("<Leader>gd",    vim.lsp.buf.definition,     mapping_options, "Lsp buffer definition")
+    nmap("<Leader>gi",    vim.lsp.buf.implementation, mapping_options, "Lsp buffer implementation")
+    -- nmap("<Leader>gr", vim.lsp.buf.references,     mapping_options, "Lsp buffer references")
+    -- nmap("<Leader>gD", vim.lsp.buf.declaration,    mapping_options, "Lsp buffer declaration")
+    nmap("<C-f>",         vim.lsp.buf.format,         mapping_options, "Lsp format buffer")
+    -- nmap("K",          vim.lsp.buf.hover,          mapping_options, "Lsp hover")
+    -- nmap("<C-s>",      vim.lsp.buf.signature_help, mapping_options, "Lsp signature help")
+    -- nmap("<Leader>rn", vim.lsp.buf.rename,         mapping_options, "Lsp rename symbol")
+    -- nmap("<Leader>ca", vim.lsp.buf.code_action,    mapping_options, "Lsp code actions")
+    -- nmap("[d",         vim.diagnostic.goto_prev,   mapping_options, "Lsp go to previous diagnostic")
+    -- nmap("]d",         vim.diagnostic.goto_next,   mapping_options, "Lsp go to next diagnostic")
 end
 
 mason_lspconfig.setup()

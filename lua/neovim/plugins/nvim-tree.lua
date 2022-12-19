@@ -41,21 +41,10 @@ nvim_tree.setup({
     },
 })
 
--- mapping
-local mapping_options = {
-    mode = "n",
-    prefix = "<Leader>",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-}
+local nmap = require("neovim.utils.mappings").nmap
+local mapping_options = { silent = true, noremap = true, }
 
-local mappings = {
-    e = { nvim_tree.toggle, "NvimTree toggle" },
-}
-
-require("which-key").register(mappings, mapping_options)
+nmap("<Leader>e", nvim_tree.toggle, mapping_options, "NvimTree toggle")
 
 --              DEFAULT MAPPINGS
 -- `<CR>`            edit                open a file or folder; root will cd to the above directory

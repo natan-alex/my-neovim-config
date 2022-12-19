@@ -61,32 +61,18 @@ telescope.setup({
 })
 
 -- mappings
-local mappings = {
-    f = { builtin.find_files, "Telescope Find files" },
-    o = { builtin.oldfiles, "Telescope Old files" },
-    g = { builtin.live_grep, "Telescope Grep files" },
-    b = { builtin.buffers, "Telescope List buffers" },
-    d = { builtin.diagnostics, "Telescope Workspace diagnostics" },
-    h = { builtin.help_tags, "Telescope Help tags" },
+local nmap = require("neovim.utils.mappings").nmap
+local mapping_options = { silent = true, noremap = true, }
 
-    r = { builtin.lsp_references, "Telescope Lsp references" },
-    s = { builtin.lsp_document_symbols, "Telescope Document symbols" },
-    w = { builtin.lsp_workspace_symbols, "Telescope Workspace symbols" },
-
-    t = { builtin.treesitter, "Telescope Treesitter symbols" },
-
-    R = { builtin.reloader, "Telescope Module reloader" },
-    B = { builtin.builtin, "Telescope Builtins" },
-}
-
-local mapping_options = {
-    mode = "n",
-    prefix = "<Leader>f",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-}
-
-require("which-key").register(mappings, mapping_options)
-
+nmap("<Leader>ff", builtin.find_files,            mapping_options, "Telescope Find files")
+nmap("<Leader>fo", builtin.oldfiles,              mapping_options, "Telescope Old files")
+nmap("<Leader>fg", builtin.live_grep,             mapping_options, "Telescope Grep files")
+nmap("<Leader>fb", builtin.buffers,               mapping_options, "Telescope List buffers")
+nmap("<Leader>fd", builtin.diagnostics,           mapping_options, "Telescope Workspace diagnostics")
+nmap("<Leader>fh", builtin.help_tags,             mapping_options, "Telescope Help tags")
+nmap("<Leader>ft", builtin.treesitter,            mapping_options, "Telescope Treesitter symbols")
+nmap("<Leader>fR", builtin.reloader,              mapping_options, "Telescope Module reloader")
+nmap("<Leader>fB", builtin.builtin,               mapping_options, "Telescope Builtins")
+nmap("<Leader>fr", builtin.lsp_references,        mapping_options, "Telescope Lsp references")
+nmap("<Leader>fs", builtin.lsp_document_symbols,  mapping_options, "Telescope Lsp document symbols")
+nmap("<Leader>fw", builtin.lsp_workspace_symbols, mapping_options, "Telescope Lsp workspace symbols")

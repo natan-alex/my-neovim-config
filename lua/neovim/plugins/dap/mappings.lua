@@ -1,47 +1,36 @@
 local dap = require("dap")
 local dapui = require("dapui")
 
-local mapping_options = {
-    mode = "n",
-    prefix = nil,
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-}
+local nmap = require("neovim.utils.mappings").nmap
+local mapping_options = { silent = true, noremap = true, }
 
-local mappings = {
-    ["<F5>"] = { dap.continue, "Dap continue" },
-    ["<F10>"] = { dap.step_over, "Dap step over" },
-    ["<F11>"] = { dap.step_into, "Dap step into" },
-    ["<F12>"] = { dap.step_out, "Dap step out" },
-    ["<Leader>"] = {
-        d = {
-            s = { dap.continue, "Dap continue" },
-            o = { dap.step_over, "Dap step over" },
-            i = { dap.step_into, "Dap step into" },
-            O = { dap.step_out, "Dap step out" },
-            b = { dap.toggle_breakpoint, "Dap toggle breakpoint" },
-            r = { dap.repl.open, "Dap repl open" },
-            l = { dap.run_last, "Dap run last" },
-            c = { dap.run_to_cursor, "Dap run to cursor" },
-            C = {
-                function()
-                    dap.terminate()
-                    dap.close()
-                    dapui.close()
-                end,
-                "Dap close"
-            },
-            B = {
-                function()
-                    local condition = vim.fn.input("Breakpoint condition: ")
-                    dap.set_breakpoint(condition)
-                end,
-                "Dap set breakpoint on condition"
-            }
-        },
-    },
-}
+nmap("<F5>",       dap.continue,          mapping_options, "Dap continue")
+nmap("<F10>",      dap.step_over,         mapping_options, "Dap step over")
+nmap("<F11>",      dap.step_into,         mapping_options, "Dap step into")
+nmap("<F12>",      dap.step_out,          mapping_options, "Dap step out")
+nmap("<Leader>ds", dap.continue,          mapping_options, "Dap continue")
+nmap("<Leader>do", dap.step_over,         mapping_options, "Dap step over")
+nmap("<Leader>di", dap.step_into,         mapping_options, "Dap step into")
+nmap("<Leader>dO", dap.step_out,          mapping_options, "Dap step out")
+nmap("<Leader>db", dap.toggle_breakpoint, mapping_options, "Dap toggle breakpoint")
+nmap("<Leader>dr", dap.repl.open,         mapping_options, "Dap repl open")
+nmap("<Leader>dl", dap.run_last,          mapping_options, "Dap run last")
+nmap("<Leader>dc", dap.run_to_cursor,     mapping_options, "Dap run to cursor")
 
-require("which-key").register(mappings, mapping_options)
+nmap("<Leader>dC",
+    function()
+        dap.terminate()
+        dap.close()
+        dapui.close()
+    end,
+    mapping_options,
+    "Dap close"
+)
+nmap("<Leader>dB",
+    function()
+        local condition = vim.fn.input("Breakpoint condition: ")
+        dap.set_breakpoint(condition)
+    end,
+    mapping_options,
+    "Dap set breakpoint on condition"
+)

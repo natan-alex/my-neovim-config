@@ -9,20 +9,10 @@ bufferline.setup({
     },
 })
 
-local mapping_options = {
-    mode = "n",
-    prefix = nil,
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-}
+local nmap = require("neovim.utils.mappings").nmap
+local mapping_options = { silent = true, noremap = true, }
 
-local mappings = {
-    ["<A-l>"] = { function() bufferline.cycle(1) end, "Bufferline go right" },
-    ["<A-h>"] = { function() bufferline.cycle(-1) end, "Bufferline go left" },
-    ["<A-L>"] = { function() bufferline.move(1) end, "Bufferline move right" },
-    ["<A-H>"] = { function() bufferline.move(-1) end, "Bufferline move left" },
-}
-
-require("which-key").register(mappings, mapping_options)
+nmap("<A-l>", function() bufferline.cycle(1) end, mapping_options, "Bufferline go right")
+nmap("<A-h>", function() bufferline.cycle(-1) end, mapping_options, "Bufferline go left")
+nmap("<A-L>", function() bufferline.move(1) end, mapping_options, "Bufferline move right")
+nmap("<A-H>", function() bufferline.move(-1) end, mapping_options, "Bufferline move left")

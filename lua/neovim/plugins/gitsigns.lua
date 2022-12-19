@@ -9,45 +9,37 @@ gitsigns.setup {
         changedelete = { text = "~" },
     },
     on_attach = function()
-        local mapping_options = {
-            mode = "n",
-            prefix = nil,
-            buffer = nil,
-            silent = true,
-            noremap = true,
-            nowait = false,
-        }
+        local nmap = require("neovim.utils.mappings").nmap
+        local mapping_options = { silent = true, noremap = true, }
 
-        local mappings = {
-            ["<Leader>h"] = {
-                S = { gitsigns.stage_buffer, "Gitsigns stage buffer" },
-                u = { gitsigns.undo_stage_hunk, "Gitsigns undo stage hunk" },
-                R = { gitsigns.reset_buffer, "Gitsigns reset buffer" },
-                p = { gitsigns.preview_hunk, "Gitsigns preview hunk" },
-                l = { gitsigns.toggle_current_line_blame, "Gitsigns toggle current line blame" },
-                d = { gitsigns.diffthis, "Gitsigns diff this" },
-                D = { gitsigns.toggle_deleted, "Gitsigns toggle deleted" },
-                s = { gitsigns.stage_hunk, "Gitsigns stage hunk" },
-                r = { gitsigns.reset_hunk, "Gitsigns reset hunk" },
-            },
-            ["]c"] = {
-                function()
-                    if vim.wo.diff then return "]c" end
-                    vim.schedule(function() gitsigns.next_hunk() end)
-                    return "<Ignore>"
-                end,
-                "Gitsigns go to next hunk"
-            },
-            ["[c"] = {
-                function()
-                    if vim.wo.diff then return "[c" end
-                    vim.schedule(function() gitsigns.prev_hunk() end)
-                    return "<Ignore>"
-                end,
-                "Gitsigns go to previous hunk"
-            },
-        }
-
-        require("which-key").register(mappings, mapping_options)
+        nmap("<Leader>hS", gitsigns.stage_buffer,              mapping_options, "Gitsigns stage buffer")
+        nmap("<Leader>hu", gitsigns.undo_stage_hunk,           mapping_options, "Gitsigns undo stage hunk")
+        nmap("<Leader>hR", gitsigns.reset_buffer,              mapping_options, "Gitsigns reset buffer")
+        nmap("<Leader>hp", gitsigns.preview_hunk,              mapping_options, "Gitsigns preview hunk")
+        nmap("<Leader>hd", gitsigns.diffthis,                  mapping_options, "Gitsigns diff this")
+        nmap("<Leader>hD", gitsigns.toggle_deleted,            mapping_options, "Gitsigns toggle deleted")
+        nmap("<Leader>hs", gitsigns.stage_hunk,                mapping_options, "Gitsigns stage hunk")
+        nmap("<Leader>hr", gitsigns.reset_hunk,                mapping_options, "Gitsigns reset hunk")
+        nmap("<Leader>hl", gitsigns.toggle_current_line_blame, mapping_options, "Gitsigns toggle current line blame")
+        nmap(
+            "]c",
+            function()
+                if vim.wo.diff then return "]c" end
+                vim.schedule(function() gitsigns.next_hunk() end)
+                return "<Ignore>"
+            end,
+            mapping_options,
+            "Gitsigns go to next hunk"
+        )
+        nmap(
+            "[c",
+            function()
+                if vim.wo.diff then return "[c" end
+                vim.schedule(function() gitsigns.prev_hunk() end)
+                return "<Ignore>"
+            end,
+            mapping_options,
+            "Gitsigns go to previous hunk"
+        )
     end
 }

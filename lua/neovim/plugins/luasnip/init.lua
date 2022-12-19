@@ -4,38 +4,29 @@ luasnip.config.set_config({
     enable_autosnippets = true,
 })
 
-local mapping_options = {
-    mode = { "i", "s" },
-    prefix = nil,
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-}
+local map = require("neovim.utils.mappings").map
+local mapping_options = { silent = true, noremap = true, }
 
-local mappings = {
-    ["<C-h>"] = {
-        function()
-            if luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            end
-        end,
-        ""
-    },
-    ["<C-l>"] = {
-        function()
-            if luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            elseif luasnip.choice_active() then
-                luasnip.change_choice(1)
-            end
-        end,
-        ""
-    },
-}
-
-require("which-key").register(mappings, mapping_options)
-
+map({ "i", "s" }, "<C-h>",
+    function()
+        if luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+        end
+    end,
+    mapping_options,
+    ""
+)
+map({ "i", "s" }, "<C-l>",
+    function()
+        if luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+        elseif luasnip.choice_active() then
+            luasnip.change_choice(1)
+        end
+    end,
+    mapping_options,
+    ""
+)
 
 -- To use existing vs-code style snippets from a plugin
 require("luasnip.loaders.from_vscode").lazy_load()

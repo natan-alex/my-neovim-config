@@ -1,18 +1,7 @@
 require("neoclip").setup()
 require("telescope").load_extension("neoclip")
 
--- mapping
-local mapping_options = {
-    mode = "n",
-    prefix = "<Leader>",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-}
+local nmap = require("neovim.utils.mappings").nmap
+local mapping_options = { silent = true, noremap = true, }
 
-local mappings = {
-    ["fn"] = { "<CMD>Telescope neoclip<CR>", "Neoclip telescope extension" },
-}
-
-require("which-key").register(mappings, mapping_options)
+nmap("<Leader>fn", "<CMD>Telescope neoclip<CR>", mapping_options, "Neoclip telescope extension")

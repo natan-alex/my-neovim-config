@@ -1,22 +1,8 @@
-local mapping_options = {
-    mode = "n",
-    prefix = nil,
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-}
+local nmap = require("neovim.utils.mappings").nmap
+local mapping_options = { silent = true, noremap = true, }
 
-local mappings = {
-    ["<Leader>"] = {
-        d = {
-            l = { "<CMD>TroubleToggle loclist<CR>", "Trouble loclist" },
-            q = { "<CMD>TroubleToggle quickfix<CR>", "Trouble quickfix" },
-            d = { "<CMD>TroubleToggle document_diagnostics<CR>", "Trouble document diagnostics" },
-            o = { "<CMD>TroubleToggle<CR>", "Trouble toggle" },
-        }
-    },
-    ["gR"] = { "<CMD>TroubleToggle lsp_references<CR>", "Trouble lsp references" },
-}
-
-require("which-key").register(mappings, mapping_options)
+nmap("gR"        , "<CMD>TroubleToggle lsp_references<CR>",       mapping_options, "Trouble lsp references")
+nmap("<Leader>xl", "<CMD>TroubleToggle loclist<CR>",              mapping_options, "Trouble loclist")
+nmap("<Leader>xq", "<CMD>TroubleToggle quickfix<CR>",             mapping_options, "Trouble quickfix")
+nmap("<Leader>xd", "<CMD>TroubleToggle document_diagnostics<CR>", mapping_options, "Trouble document diagnostics")
+nmap("<Leader>xo", "<CMD>TroubleToggle<CR>",                      mapping_options, "Trouble toggle")

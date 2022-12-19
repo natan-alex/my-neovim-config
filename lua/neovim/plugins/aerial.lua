@@ -85,4 +85,7 @@ aerial.setup({
     },
 })
 
-vim.keymap.set("n", "<Leader>a", aerial.toggle, { noremap = true, silent = true, desc = "Aerial toggle" })
+local nmap = require("neovim.utils.mappings").nmap
+local mapping_options = { silent = true, noremap = true, }
+
+nmap("<Leader>a", aerial.toggle, mapping_options, "Aerial toggle")

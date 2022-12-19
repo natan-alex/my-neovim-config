@@ -7,17 +7,7 @@ neogit.setup {
     },
 }
 
-local mapping_options = {
-    mode = "n",
-    prefix = "<Leader>",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-}
+local nmap = require("neovim.utils.mappings").nmap
+local mapping_options = { silent = true, noremap = true, }
 
-local mappings = {
-    ["gg"] = { "<CMD>Neogit<CR>", "Toggle neogit" }
-}
-
-require("which-key").register(mappings, mapping_options)
+nmap("<Leader>gg", "<CMD>Neogit<CR>", mapping_options, "Toggle neogit")
