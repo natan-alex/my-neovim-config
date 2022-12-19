@@ -242,6 +242,18 @@ packer.startup(function(use)
       config = function() require("neovim.plugins.aerial") end
     }
 
+    -- Nice winbar
+    use {
+        "utilyre/barbecue.nvim",
+        requires = {
+            "neovim/nvim-lspconfig",
+            "smiteshp/nvim-navic",
+            "kyazdani42/nvim-web-devicons",
+        },
+        after = "nvim-web-devicons",
+        config = function() require("barbecue").setup() end,
+    }
+
     if is_bootstrap then
         packer.sync()
     end
