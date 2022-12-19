@@ -19,6 +19,17 @@ gitsigns.setup {
         }
 
         local mappings = {
+            ["<Leader>h"] = {
+                S = { gitsigns.stage_buffer, "Gitsigns stage buffer" },
+                u = { gitsigns.undo_stage_hunk, "Gitsigns undo stage hunk" },
+                R = { gitsigns.reset_buffer, "Gitsigns reset buffer" },
+                p = { gitsigns.preview_hunk, "Gitsigns preview hunk" },
+                l = { gitsigns.toggle_current_line_blame, "Gitsigns toggle current line blame" },
+                d = { gitsigns.diffthis, "Gitsigns diff this" },
+                D = { gitsigns.toggle_deleted, "Gitsigns toggle deleted" },
+                s = { gitsigns.stage_hunk, "Gitsigns stage hunk" },
+                r = { gitsigns.reset_hunk, "Gitsigns reset hunk" },
+            },
             ["]c"] = {
                 function()
                     if vim.wo.diff then return "]c" end
@@ -40,27 +51,3 @@ gitsigns.setup {
         require("which-key").register(mappings, mapping_options)
     end
 }
-
--- mappings
-local mapping_options = {
-    mode = "n",
-    prefix = "<Leader>h",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-}
-
-local mappings = {
-    S = { gitsigns.stage_buffer, "Gitsigns stage buffer" },
-    u = { gitsigns.undo_stage_hunk, "Gitsigns undo stage hunk" },
-    R = { gitsigns.reset_buffer, "Gitsigns reset buffer" },
-    p = { gitsigns.preview_hunk, "Gitsigns preview hunk" },
-    l = { gitsigns.toggle_current_line_blame, "Gitsigns toggle current line blame" },
-    d = { gitsigns.diffthis, "Gitsigns diff this" },
-    D = { gitsigns.toggle_deleted, "Gitsigns toggle deleted" },
-    s = { gitsigns.stage_hunk, "Gitsigns stage hunk" },
-    r = { gitsigns.reset_hunk, "Gitsigns reset hunk" },
-}
-
-require("which-key").register(mappings, mapping_options)
