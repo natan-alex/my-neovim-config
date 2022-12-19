@@ -28,11 +28,11 @@ create_autocommand("TextYankPost", {
     pattern = "*",
 })
 
-local Path = require("plenary.path")
+local paths = require("neovim.utils.paths")
 
 -- Automatically source and re-compile packer whenever init.lua is changed
 create_autocommand("BufWritePost", {
     command = "source <afile> | PackerCompile",
     group = packer_group,
-    pattern = Path:new(vim.fn.stdpath("config"), "lua", "neovim", "plugins", "init.lua"):absolute()
+    pattern = paths.join(vim.fn.stdpath("config"), "lua", "neovim", "plugins", "init.lua")
 })

@@ -1,4 +1,7 @@
-local install_path = vim.fn.stdpath("data") ..  "/site/pack/packer/start/packer.nvim"
+local paths = require("neovim.utils.paths")
+
+local install_path = paths.join(vim.fn.stdpath("data"), "site", "pack", "packer", "start", "packer.nvim")
+
 local is_bootstrap = false
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -8,7 +11,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 
     local repo_url = "https://github.com/wbthomason/packer.nvim"
 
-    vim.fn.execute("!git clone --depth 1 " .. repo_url .. install_path)
+    vim.fn.execute("!git clone --depth 1 " .. repo_url .. " " .. install_path)
 
     vim.cmd("packadd packer.nvim")
 

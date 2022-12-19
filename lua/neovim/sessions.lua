@@ -1,23 +1,17 @@
 vim.o.sessionoptions="blank,buffers,curdir,folds,tabpages,localoptions"
 
-local replacements = {
-    ["%s+"] = "_space_",
-    ["\\"] = "_sep_",
-    ["/"] = "_sep_",
-}
+local paths = require("neovim.utils.paths")
 
-local Path = require("plenary.path")
+local sessions_folder_path = paths.join(vim.fn.stdpath("data"), "sessions")
 
-local sessions_folder_path = Path:new(vim.fn.stdpath("data"), "sessions"):absolute()
+if vim.fn.isdirectory(sessions_folder_path) ~= 1 then
+    vim.fn.mkdir(sessions_folder_path)
+end
 
 local function generate_session_filename()
-    local filename = vim.fn.getcwd()
+    local filename = vim.fn.getcwd():gsub("%W", "")
 
-    for replace, by in pairs(replacements) do
-        filename = filename:gsub(replace, by)
-    end
-
-    return Path:new(sessions_folder_path, filename .. ".vim"):absolute()
+    return paths.join(sessions_folder_path, filename .. ".vim")
 end
 
 local sessions_augroup = vim.api.nvim_create_augroup("SessionRelatedGroup", { clear = true })
