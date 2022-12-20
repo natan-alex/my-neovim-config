@@ -1,6 +1,5 @@
 local paths = require("neovim.utils.paths")
-
-local create_command = vim.api.nvim_create_user_command
+local files = require("neovim.utils.files")
 
 local templates_folder_path =  paths.join(vim.fn.stdpath("config"), "lua", "neovim", "plugins", "vimspector", "templates")
 local vimspector_file_name = ".vimspector.json"
@@ -11,21 +10,6 @@ local template_names_and_paths = {
 }
 
 local template_names = vim.tbl_keys(template_names_and_paths)
-
-local function get_file_lines(path)
-    local file = io.open(path, "r")
-
-    if not file then return end
-
-    local lines = {}
-
-    for line in file:lines() do
-        table.insert(lines, line)
-    end
-
-    file:close()
-    return lines
-end
 
 local function generate_vimspector_file(params)
     local template_name = params.args
@@ -39,7 +23,7 @@ local function generate_vimspector_file(params)
                 return
             end
 
-            local file_content = get_file_lines(path)
+            local file_content = files.get_file_lines(path)
 
             if not file_content then
                 print("Failed to read file at " .. path)
@@ -56,7 +40,7 @@ local function generate_vimspector_file(params)
     end
 end
 
-create_command(
+vim.api.nvim_create_user_command(
     "GenerateVimspectorFile",
     generate_vimspector_file,
     {
