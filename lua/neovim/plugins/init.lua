@@ -36,12 +36,10 @@ packer.startup(function(use)
     -- Common for plugins
     use "nvim-lua/plenary.nvim"
 
-    -- Colorschemes
-    use {
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function() require("neovim.plugins.catppuccin") end,
-    }
+    -- Themes
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use { "folke/tokyonight.nvim" }
+    use { "navarasu/onedark.nvim" }
 
     -- For file icons
     use {
@@ -257,6 +255,8 @@ packer.startup(function(use)
     end
 end)
 
+-- theme
+require("neovim.plugins.themes")
 
 -- packer commands
 
