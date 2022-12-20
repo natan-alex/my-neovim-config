@@ -38,8 +38,9 @@ packer.startup(function(use)
 
     -- Colorschemes
     use {
-        "folke/tokyonight.nvim",
-        config = function() vim.cmd("colorscheme tokyonight-storm") end,
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = function() require("neovim.plugins.catppuccin") end,
     }
 
     -- For file icons
