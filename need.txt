@@ -15,12 +15,13 @@ https://github.com/Samsung/netcoredbg/releases
 
 // cmake can be installed with visual studio on windows
 
-// llvm (for clang) and make (windows)
+// llvm (for clang)
 choco install llvm
-choco install make
 
 // fzf
 choco install fzf
+choco install mingw
+choco install make
 
 // really nice font
 CascaydiaCove nerd font
