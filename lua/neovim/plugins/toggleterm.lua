@@ -1,6 +1,6 @@
 require("toggleterm").setup({
     size = 75,
-    open_mapping = "<Leader>t",
+    open_mapping = nil,
     hide_numbers = true,
     shade_filetypes = {},
     shade_terminals = true,
@@ -20,3 +20,8 @@ require("toggleterm").setup({
         },
     },
 })
+
+local map = require("neovim.utils.mappings").map
+local mapping_options = { noremap = true, silent = true }
+
+map({ "n", "t" }, "<Leader>t", "<CMD>ToggleTerm<CR>", mapping_options, "ToggleTerm toggle")

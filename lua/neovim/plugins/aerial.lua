@@ -85,7 +85,7 @@ aerial.setup({
     },
 })
 
-local nmap = require("neovim.utils.mappings").nmap
+local map = require("neovim.utils.mappings").map
 local mapping_options = { silent = true, noremap = true, }
 
-nmap("<Leader>a", aerial.toggle, mapping_options, "Aerial toggle")
+map("n", "<Leader>a", aerial.toggle, mapping_options, "Aerial toggle")

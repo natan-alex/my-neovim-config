@@ -7,7 +7,7 @@ neogit.setup {
     },
 }
 
-local nmap = require("neovim.utils.mappings").nmap
+local map = require("neovim.utils.mappings").map
 local mapping_options = { silent = true, noremap = true, }
 
-nmap("<Leader>gg", "<CMD>Neogit<CR>", mapping_options, "Toggle neogit")
+map("n", "<Leader>gg", "<CMD>Neogit<CR>", mapping_options, "Toggle neogit")

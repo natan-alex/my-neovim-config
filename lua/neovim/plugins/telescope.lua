@@ -61,18 +61,19 @@ telescope.setup({
 })
 
 -- mappings
-local nmap = require("neovim.utils.mappings").nmap
+local map = require("neovim.utils.mappings").map
 local mapping_options = { silent = true, noremap = true, }
 
-nmap("<Leader>ff", builtin.find_files,            mapping_options, "Telescope Find files")
-nmap("<Leader>fo", builtin.oldfiles,              mapping_options, "Telescope Old files")
-nmap("<Leader>fg", builtin.live_grep,             mapping_options, "Telescope Grep files")
-nmap("<Leader>fb", builtin.buffers,               mapping_options, "Telescope List buffers")
-nmap("<Leader>fd", builtin.diagnostics,           mapping_options, "Telescope Workspace diagnostics")
-nmap("<Leader>fh", builtin.help_tags,             mapping_options, "Telescope Help tags")
-nmap("<Leader>ft", builtin.treesitter,            mapping_options, "Telescope Treesitter symbols")
-nmap("<Leader>fR", builtin.reloader,              mapping_options, "Telescope Module reloader")
-nmap("<Leader>fB", builtin.builtin,               mapping_options, "Telescope Builtins")
-nmap("<Leader>fr", builtin.lsp_references,        mapping_options, "Telescope Lsp references")
-nmap("<Leader>fs", builtin.lsp_document_symbols,  mapping_options, "Telescope Lsp document symbols")
-nmap("<Leader>fw", builtin.lsp_workspace_symbols, mapping_options, "Telescope Lsp workspace symbols")
+map("n", "<Leader>ff", builtin.find_files,            mapping_options, "Telescope Find files")
+map("n", "<Leader>fo", builtin.oldfiles,              mapping_options, "Telescope Old files")
+map("n", "<Leader>fg", builtin.live_grep,             mapping_options, "Telescope Grep files")
+map("n", "<Leader>fs", builtin.grep_string,           mapping_options, "Telescope Grep string")
+map("n", "<Leader>fb", builtin.buffers,               mapping_options, "Telescope List buffers")
+map("n", "<Leader>fd", builtin.diagnostics,           mapping_options, "Telescope Workspace diagnostics")
+map("n", "<Leader>fh", builtin.help_tags,             mapping_options, "Telescope Help tags")
+map("n", "<Leader>ft", builtin.treesitter,            mapping_options, "Telescope Treesitter symbols")
+map("n", "<Leader>fR", builtin.reloader,              mapping_options, "Telescope Module reloader")
+map("n", "<Leader>fB", builtin.builtin,               mapping_options, "Telescope Builtins")
+map("n", "<Leader>fr", builtin.lsp_references,        mapping_options, "Telescope Lsp references")
+map("n", "<Leader>fS", builtin.lsp_document_symbols,  mapping_options, "Telescope Lsp document symbols")
+map("n", "<Leader>fw", builtin.lsp_workspace_symbols, mapping_options, "Telescope Lsp workspace symbols")
