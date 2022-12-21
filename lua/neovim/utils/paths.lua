@@ -1,10 +1,6 @@
 local M = {}
 
-M.path_separator = "/"
-
-if vim.fn.has("Windows") == 1 then
-    M.path_separator = "\\"
-end
+M.path_separator = package.config:sub(1, 1)
 
 function M.join(...)
     local args = {...}
