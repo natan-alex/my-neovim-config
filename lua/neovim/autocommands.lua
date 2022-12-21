@@ -5,8 +5,6 @@ local group_options = { clear = true }
 
 local indentation_group = create_autogroup("IndentationRelated", group_options)
 
-local packer_group = create_autogroup("Packer", group_options)
-
 local highlight_group = create_autogroup("YankHighlight", group_options)
 
 create_autocommand("FileType", {
@@ -26,13 +24,4 @@ create_autocommand("TextYankPost", {
     end,
     group = highlight_group,
     pattern = "*",
-})
-
-local paths = require("neovim.utils.paths")
-
--- Automatically source and re-compile packer whenever init.lua is changed
-create_autocommand("BufWritePost", {
-    command = "source <afile> | PackerCompile",
-    group = packer_group,
-    pattern = paths.join(vim.fn.stdpath("config"), "lua", "neovim", "plugins", "init.lua")
 })
