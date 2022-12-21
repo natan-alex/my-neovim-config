@@ -1,4 +1,4 @@
-vim.o.sessionoptions="blank,buffers,curdir,folds,tabpages,localoptions"
+vim.o.sessionoptions="blank,buffers,curdir,folds,tabpages,localoptions,winsize,winpos"
 
 local paths = require("neovim.utils.paths")
 
