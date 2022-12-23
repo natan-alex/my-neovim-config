@@ -250,6 +250,11 @@ packer.startup(function(use)
         config = function() require("barbecue").setup() end,
     }
 
+    use {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function() require("neovim.plugins.null-ls") end,
+    }
+
     if is_bootstrap then
         packer.sync()
     end
