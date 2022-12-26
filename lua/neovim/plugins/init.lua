@@ -189,10 +189,9 @@ packer.startup(function(use)
 
     -- For nice tab display
     use {
-        "akinsho/bufferline.nvim",
-        tag = "v3.*",
-        config = function() require("neovim.plugins.bufferline") end,
-        requires = { "nvim-tree/nvim-web-devicons" },
+        "romgrk/barbar.nvim",
+        requires = "nvim-tree/nvim-web-devicons",
+        config = function() require("neovim.plugins.barbar") end,
     }
 
     -- For auto pairing things
