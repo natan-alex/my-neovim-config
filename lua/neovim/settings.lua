@@ -24,6 +24,7 @@ vim.opt.mouse = "a" -- use mouse for selections and scroll
 vim.opt.backup = false -- dont create a backup file
 
 vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
+
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 
 vim.opt.smartindent = true
@@ -43,12 +44,13 @@ vim.opt.timeoutlen = 500
 
 vim.opt.backspace = "indent,eol,start"
 
+
 -- Clipboard related
 local winyank = "win32yank.exe"
 
-if vim.fn.executable(winyank) then
+if vim.fn.executable(winyank) == 1 then
     vim.g.clipboard = {
-        name = "win32yank-wsl",
+        name = "win32yank",
         copy = {
             ["+"] = winyank .. " -i --crlf",
             ["*"] = winyank .. " -i --crlf",
