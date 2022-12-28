@@ -1,6 +1,6 @@
 require("bufferline").setup {
     options = {
-        mode = "tabs", -- set to "tabs" to only show tabpages instead
+        mode = "buffers", -- set to "tabs" to only show tabpages instead
         numbers = "none",
         close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
         right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -22,10 +22,10 @@ require("bufferline").setup {
                 return buf.name
             end
         end,
-        max_name_length = 18,
-        max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+        max_name_length = 25,
+        max_prefix_length = 18, -- prefix used when a buffer is de-duplicated
         truncate_names = true, -- whether or not tab names should be truncated
-        tab_size = 18,
+        tab_size = 22,
         diagnostics = "nvim_lsp",
         diagnostics_update_in_insert = false,
         diagnostics_indicator = function(count, _, _, _)
