@@ -1,6 +1,6 @@
 vim.o.sessionoptions="blank,buffers,curdir,folds,tabpages,localoptions,winsize,winpos"
 
-local paths = require("neovim.utils.paths")
+local paths = require("my-config.utils.paths")
 
 local sessions_folder_path = paths.join(vim.fn.stdpath("data"), "sessions")
 

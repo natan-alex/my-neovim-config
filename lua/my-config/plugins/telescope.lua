@@ -61,7 +61,7 @@ telescope.setup({
 })
 
 -- mappings
-local map = require("neovim.utils.mappings").map
+local map = require("my-config.utils.mappings").map
 local mapping_options = { silent = true, noremap = true, }
 
 map("n", "<Leader>ff", builtin.find_files,            mapping_options, "Telescope Find files")

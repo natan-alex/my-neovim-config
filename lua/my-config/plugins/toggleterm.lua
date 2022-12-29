@@ -21,7 +21,7 @@ require("toggleterm").setup({
     },
 })
 
-local map = require("neovim.utils.mappings").map
+local map = require("my-config.utils.mappings").map
 local mapping_options = { noremap = true, silent = true }
 
 map({ "n", "t" }, "<Leader>t", "<CMD>ToggleTerm<CR>", mapping_options, "ToggleTerm toggle")

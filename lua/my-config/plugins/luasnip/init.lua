@@ -4,7 +4,7 @@ luasnip.config.set_config({
     enable_autosnippets = true,
 })
 
-local map = require("neovim.utils.mappings").map
+local map = require("my-config.utils.mappings").map
 local mapping_options = { silent = true, noremap = true, }
 
 map({ "i", "s" }, "<C-h>",
@@ -33,6 +33,6 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 
 -- CUSTOM SNIPPETS
-require("neovim.plugins.luasnip.cs-snippets")
-require("neovim.plugins.luasnip.java-snippets")
-require("neovim.plugins.luasnip.js-ts-snippets")
+require("my-config.plugins.luasnip.cs-snippets")
+require("my-config.plugins.luasnip.java-snippets")
+require("my-config.plugins.luasnip.js-ts-snippets")

@@ -4,7 +4,7 @@ local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 lsp_capabilities = require("cmp_nvim_lsp").default_capabilities(lsp_capabilities)
 
 local function on_lsp_attach(_, buffer_number)
-    local map = require("neovim.utils.mappings").map
+    local map = require("my-config.utils.mappings").map
     local mapping_options = { silent = true, noremap = true, buffer = buffer_number }
 
     map("n", "gd", vim.lsp.buf.definition, mapping_options, "Lsp buffer definition")

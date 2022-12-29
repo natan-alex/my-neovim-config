@@ -1,7 +1,7 @@
-local paths = require("neovim.utils.paths")
-local files = require("neovim.utils.files")
+local paths = require("my-config.utils.paths")
+local files = require("my-config.utils.files")
 
-local templates_folder_path =  paths.join(vim.fn.stdpath("config"), "lua", "neovim", "plugins", "vimspector", "templates")
+local templates_folder_path =  paths.join(vim.fn.stdpath("config"), "lua", "my-config", "plugins", "vimspector", "templates")
 local vimspector_file_name = ".vimspector.json"
 
 local template_names_and_paths = {
@@ -51,4 +51,4 @@ vim.api.nvim_create_user_command(
     }
 )
 
-require("neovim.plugins.vimspector.mappings")
+require("my-config.plugins.vimspector.mappings")

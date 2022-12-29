@@ -10,7 +10,7 @@ require("lspsaga").init_lsp_saga({
     finder_request_timeout = 3000,
 })
 
-local map = require("neovim.utils.mappings").map
+local map = require("my-config.utils.mappings").map
 local mapping_options = { silent = true, noremap = true, }
 
 map("n", "K",          "<CMD>Lspsaga hover_doc<CR>",             mapping_options, "Lspsaga hover")

@@ -1,4 +1,4 @@
-local map = require("neovim.utils.mappings").map
+local map = require("my-config.utils.mappings").map
 local mapping_options = { silent = true, noremap = true, }
 
 map("n", "gR"        , "<CMD>TroubleToggle lsp_references<CR>",       mapping_options, "Trouble lsp references")

@@ -1,4 +1,4 @@
-local paths = require("neovim.utils.paths")
+local paths = require("my-config.utils.paths")
 
 local lazypath = paths.join(vim.fn.stdpath("data"), "lazy", "lazy.nvim")
 
@@ -39,7 +39,7 @@ local plugins = {
     -- For file explorer
     {
         "nvim-tree/nvim-tree.lua",
-        config = function() require("neovim.plugins.nvim-tree") end,
+        config = function() require("my-config.plugins.nvim-tree") end,
     },
 
     -- Surround things
@@ -50,27 +50,26 @@ local plugins = {
 
     {
         "williamboman/mason.nvim",
-        config = function() require("neovim.plugins.mason") end,
+        config = function() require("my-config.plugins.mason") end,
     },
 
     {
         "williamboman/mason-lspconfig.nvim",
-        config = function() require("neovim.plugins.mason-lspconfig") end,
+        config = function() require("my-config.plugins.mason-lspconfig") end,
     },
 
     -- Better lsp interactions like renaming, code actions, etc
     {
         "glepnir/lspsaga.nvim",
-        config = function() require("neovim.plugins.lspsaga") end,
+        config = function() require("my-config.plugins.lspsaga") end,
     },
 
     -- Multiple cursors
     {
         "mg979/vim-visual-multi",
         config = function()
-            local paths = require("neovim.utils.paths")
             local path = vim.fn.stdpath("config")
-            path = paths.join(path, "lua", "neovim", "plugins", "vim-visual-multi.vim")
+            path = paths.join(path, "lua", "my-config", "plugins", "vim-visual-multi.vim")
             vim.cmd("source " .. path)
         end,
     },
@@ -78,19 +77,19 @@ local plugins = {
     -- Nice bar
     {
         "nvim-lualine/lualine.nvim",
-        config = function() require("neovim.plugins.lualine") end,
+        config = function() require("my-config.plugins.lualine") end,
     },
 
     -- To comment code
     {
         "numToStr/Comment.nvim",
-        config = function() require("neovim.plugins.comment") end,
+        config = function() require("my-config.plugins.comment") end,
     },
 
     -- Snippets
     {
         "L3MON4D3/LuaSnip",
-        config = function() require("neovim.plugins.luasnip") end,
+        config = function() require("my-config.plugins.luasnip") end,
     },
 
     -- Completion plugins
@@ -102,19 +101,19 @@ local plugins = {
 
     {
         "hrsh7th/nvim-cmp",
-        config = function() require("neovim.plugins.cmp") end,
+        config = function() require("my-config.plugins.cmp") end,
     },
 
     -- Floating terminal
     {
         "akinsho/toggleterm.nvim",
-        config = function() require("neovim.plugins.toggleterm") end,
+        config = function() require("my-config.plugins.toggleterm") end,
     },
 
     -- Syntax highlighting
     {
         "nvim-treesitter/nvim-treesitter",
-        config = function() require("neovim.plugins.treesitter") end,
+        config = function() require("my-config.plugins.treesitter") end,
     },
 
     -- Additional text objects via treesitter
@@ -123,7 +122,7 @@ local plugins = {
     -- Telescope, my friend, just telescope
     {
         "nvim-telescope/telescope.nvim",
-        config = function() require("neovim.plugins.telescope") end,
+        config = function() require("my-config.plugins.telescope") end,
     },
 
     -- fzf to make telescope fuzzy finder faster
@@ -131,13 +130,13 @@ local plugins = {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
         cond = vim.fn.executable("make") == 1,
-        config = function() require("neovim.plugins.telescope-fzf-native") end
+        config = function() require("my-config.plugins.telescope-fzf-native") end
     },
 
     -- telescope neoclip extension for clipboard remembering
     {
         "AckslD/nvim-neoclip.lua",
-        config = function() require("neovim.plugins.neoclip") end,
+        config = function() require("my-config.plugins.neoclip") end,
     },
 
     -- Git
@@ -145,27 +144,27 @@ local plugins = {
 
     {
         "TimUntersberger/neogit",
-        config = function() require("neovim.plugins.neogit") end,
+        config = function() require("my-config.plugins.neogit") end,
     },
 
     -- To show git modifications in code
     {
         "lewis6991/gitsigns.nvim",
-        config = function() require("neovim.plugins.gitsigns") end,
+        config = function() require("my-config.plugins.gitsigns") end,
     },
 
     -- Debugging
     {
         "puremourning/vimspector",
         ft = { "cs", "rust" },
-        config = function() require("neovim.plugins.vimspector") end
+        config = function() require("my-config.plugins.vimspector") end
     },
 
     -- For nice tab display
     {
         "akinsho/bufferline.nvim",
         version = "v3.*",
-        config = function() require("neovim.plugins.bufferline") end,
+        config = function() require("my-config.plugins.bufferline") end,
     },
 
     -- For auto pairing things
@@ -195,13 +194,13 @@ local plugins = {
     -- Better diagnostics
     {
         "folke/trouble.nvim",
-        config = function() require("neovim.plugins.trouble") end,
+        config = function() require("my-config.plugins.trouble") end,
     },
 
     -- To easily list and jump between functions, methods, etc in code
     {
         "stevearc/aerial.nvim",
-        config = function() require("neovim.plugins.aerial") end
+        config = function() require("my-config.plugins.aerial") end
     },
 
     -- Nice winbar
@@ -233,4 +232,4 @@ require("lazy").setup(plugins, {
 })
 
 -- theme
-require("neovim.plugins.themes")
+require("my-config.plugins.themes")

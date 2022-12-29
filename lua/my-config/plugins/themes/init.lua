@@ -1,5 +1,5 @@
-local paths = require("neovim.utils.paths")
-local files = require("neovim.utils.files")
+local paths = require("my-config.utils.paths")
+local files = require("my-config.utils.files")
 
 local theme_file_path = paths.join(vim.fn.stdpath("data"), "theme.txt")
 
@@ -10,9 +10,9 @@ local themes = {
 }
 
 local themes_and_corresponding_configs = {
-    [themes.ONEDARK] = "neovim.plugins.themes.onedark",
-    [themes.CATPPUCCIN] = "neovim.plugins.themes.catppuccin",
-    [themes.TOKYONIGHT] = "neovim.plugins.themes.tokyonight",
+    [themes.ONEDARK] = "my-config.plugins.themes.onedark",
+    [themes.CATPPUCCIN] = "my-config.plugins.themes.catppuccin",
+    [themes.TOKYONIGHT] = "my-config.plugins.themes.tokyonight",
 }
 
 local themes_and_their_flavours = {
@@ -23,7 +23,7 @@ local themes_and_their_flavours = {
 
 local function apply_theme(theme, flavour)
     local config = require(themes_and_corresponding_configs[theme])
-    local lualine_config = require("neovim.plugins.lualine")
+    local lualine_config = require("my-config.plugins.lualine")
 
     config.apply_theme(flavour)
     lualine_config.setup_with_theme(theme)

@@ -43,7 +43,7 @@ require("bufferline").setup {
 }
 
 -- mappings
-local map = require("neovim.utils.mappings").map
+local map = require("my-config.utils.mappings").map
 local mapping_options = { noremap = true, silent = true }
 
 -- Move to previous/next

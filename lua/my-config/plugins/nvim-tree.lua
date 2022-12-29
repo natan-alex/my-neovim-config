@@ -41,7 +41,7 @@ nvim_tree.setup({
     },
 })
 
-local map = require("neovim.utils.mappings").map
+local map = require("my-config.utils.mappings").map
 local mapping_options = { silent = true, noremap = true, }
 
 map("n", "<Leader>e", nvim_tree.toggle, mapping_options, "NvimTree toggle")
