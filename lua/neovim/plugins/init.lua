@@ -108,8 +108,6 @@ packer.startup(function(use)
     }
 
     -- Snippets
-    use { "rafamadriz/friendly-snippets" }
-
     use {
         "L3MON4D3/LuaSnip",
         config = function() require("neovim.plugins.luasnip") end,
@@ -205,12 +203,6 @@ packer.startup(function(use)
     use {
         "ggandor/leap.nvim",
         config = function() require("leap").add_default_mappings() end,
-    }
-
-    -- Cache modules
-    use {
-        "lewis6991/impatient.nvim",
-        config = function() require("impatient") end,
     }
 
     -- Nice indentation lines
