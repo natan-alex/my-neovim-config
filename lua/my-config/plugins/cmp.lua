@@ -1,42 +1,34 @@
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 cmp.setup {
     snippet = {
         expand = function(args)
-            local luasnip_found, luasnip = pcall(require, "luasnip")
-
-            if luasnip_found then
-                luasnip.lsp_expand(args.body)
-            end
+            luasnip.lsp_expand(args.body)
         end
     },
-    sources = {
+    sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "buffer" },
-        { name = "path" },
-    },
+    }, {
+            { name = "buffer" },
+            { name = "path" },
+        }),
     window = {
-        documentation = true,
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
     experimental = {
         ghost_text = true,
     },
     mapping = {
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-5),
-        ["<C-f>"] = cmp.mapping.scroll_docs(5),
+        ["<C-p>"]     = cmp.mapping.select_prev_item(),
+        ["<C-n>"]     = cmp.mapping.select_next_item(),
+        ["<Up>"]      = cmp.mapping.scroll_docs(-1),
+        ["<Down>"]    = cmp.mapping.scroll_docs(1),
         ["<C-Space>"] = cmp.mapping.complete(),
-        ["<Tab>"] = cmp.mapping.confirm({
-            select = true,
-            behavior = cmp.ConfirmBehavior.Insert,
-        }),
-        ["<C-e>"] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-        }),
+        ["<CR>"]      = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"]     = cmp.mapping.confirm({ select = true }),
+        ["<C-e>"]     = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
     },
 }
