@@ -87,10 +87,13 @@ local plugins = {
     },
 
     -- Snippets
+    { "rafamadriz/friendly-snippets" },
+
     {
         "L3MON4D3/LuaSnip",
         config = function() require("my-config.plugins.luasnip") end,
     },
+
 
     -- Completion plugins
     { "hrsh7th/cmp-path" },
