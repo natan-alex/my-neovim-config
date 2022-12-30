@@ -29,6 +29,14 @@ local function apply_theme(theme, flavour)
     lualine_config.setup_with_theme(theme)
 end
 
+local function join_theme_and_flavour(theme, flavour)
+    return theme .. ";" .. flavour
+end
+
+local function split_theme_and_flavour(line)
+    return vim.split(line, ";")
+end
+
 local function load_theme_or_default(default_theme, default_flavour)
     local lines = files.get_file_lines(theme_file_path)
 
@@ -36,7 +44,7 @@ local function load_theme_or_default(default_theme, default_flavour)
     local flavour = default_flavour
 
     if lines ~= nil and lines[1] ~= nil then
-	local split = vim.split(lines[1], ";")
+	local split = split_theme_and_flavour(lines[1])
 
 	if split ~= nil and split[1] ~= nil and split[2] ~= nil then
 	    theme = split[1]
@@ -84,7 +92,7 @@ local function change_theme()
 
     files.create_and_write_to_file(
 	theme_file_path,
-	new_theme .. ";" .. new_flavour
+        join_theme_and_flavour(new_theme, new_flavour)
     )
 end
 
