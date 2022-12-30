@@ -17,12 +17,12 @@ vim.opt.runtimepath:prepend(lazypath)
 
 local plugins = {
     -- Common for plugins
-    { "nvim-lua/plenary.nvim",  },
+    { "nvim-lua/plenary.nvim" },
 
     -- Themes
-    { "catppuccin/nvim" },
-    { "folke/tokyonight.nvim" },
-    { "navarasu/onedark.nvim" },
+    { "catppuccin/nvim", lazy = true },
+    { "folke/tokyonight.nvim", lazy = true },
+    { "navarasu/onedark.nvim", lazy = true },
 
     -- For file icons
     {
