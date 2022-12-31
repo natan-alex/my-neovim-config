@@ -94,7 +94,6 @@ local plugins = {
         config = function() require("my-config.plugins.luasnip") end,
     },
 
-
     -- Completion plugins
     { "lukas-reineke/cmp-rg" },
 
@@ -208,6 +207,12 @@ local plugins = {
         config = function() require("my-config.plugins.aerial") end
     },
 
+    -- highlighting words
+    {
+        "RRethy/vim-illuminate",
+        config = function() require("my-config.plugins.vim-illuminate") end
+    },
+
     -- Nice winbar
     {
         "utilyre/barbecue.nvim",
@@ -216,12 +221,6 @@ local plugins = {
             "smiteshp/nvim-navic",
         },
         config = function() require("barbecue").setup() end,
-    },
-
-    -- highlighting words
-    {
-        "RRethy/vim-illuminate",
-        config = function() require("my-config.plugins.vim-illuminate") end
     },
 }
 
