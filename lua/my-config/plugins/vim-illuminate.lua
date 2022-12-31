@@ -13,6 +13,7 @@ illuminate.configure({
         "alpha",
         "NvimTree",
         "packer",
+        "lazy",
         "neogitstatus",
         "Trouble",
         "lir",
