@@ -1,4 +1,4 @@
-let leader = ';'
+let leader = '\\'
 
 let g:VM_default_mappings = 0
 let g:VM_mouse_mappings = 1
