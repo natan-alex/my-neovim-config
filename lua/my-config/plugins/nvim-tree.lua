@@ -12,8 +12,7 @@ nvim_tree.setup({
         enable = true,
     },
     renderer = {
-        group_empty = true,
-        highlight_opened_files = "all",
+        highlight_opened_files = "name",
     },
     diagnostics = {
         enable = true,
