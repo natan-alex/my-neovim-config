@@ -13,7 +13,6 @@ map({ "n", "x" }, "x", "\"_x", mapping_options)
 
 -- Clipboard related
 map({ "n", "x" }, "<A-y>", "\"+y", mapping_options)
-map({ "n", "x" }, "<A-p>", "\"+p", mapping_options)
 
 -- Resize windows with arrows
 map("n", "<C-S-Up>", "<CMD>resize +2<CR>", mapping_options)

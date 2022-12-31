@@ -55,7 +55,7 @@ map("n", "<A-L>", "<CMD>BufferLineMoveNext<CR>", mapping_options, "Bufferline mo
 map("n", "<A-H>", "<CMD>BufferLineMovePrev<CR>", mapping_options, "Bufferline move buffer left")
 
 -- Pin/unpin buffer
-map("n", "<A-p>", "<CMD>BufferLineTogglePin<CR>", mapping_options, "Bufferline toggle pin current buffer")
+map("n", "<A-P>", "<CMD>BufferLineTogglePin<CR>", mapping_options, "Bufferline toggle pin current buffer")
 
 -- Close buffers
 map("n", "<A-Left>", "<CMD>BufferLineCloseLeft<CR>",    mapping_options, "Bufferline close all buffers to the left")

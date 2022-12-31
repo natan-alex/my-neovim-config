@@ -96,6 +96,8 @@ local plugins = {
 
 
     -- Completion plugins
+    { "lukas-reineke/cmp-rg" },
+
     { "hrsh7th/cmp-path" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-nvim-lsp" },
@@ -214,6 +216,12 @@ local plugins = {
             "smiteshp/nvim-navic",
         },
         config = function() require("barbecue").setup() end,
+    },
+
+    -- highlighting words
+    {
+        "RRethy/vim-illuminate",
+        config = function() require("my-config.plugins.vim-illuminate") end
     },
 }
 
