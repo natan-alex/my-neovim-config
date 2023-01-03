@@ -129,7 +129,7 @@ local plugins = {
         config = function() require("my-config.plugins.telescope") end,
     },
 
-    -- fzf to make telescope fuzzy finder faster
+    -- Fzf to make telescope fuzzy finder faster
     {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
@@ -137,7 +137,7 @@ local plugins = {
         config = function() require("my-config.plugins.telescope-fzf-native") end
     },
 
-    -- telescope neoclip extension for clipboard remembering
+    -- Telescope neoclip extension for clipboard remembering
     {
         "AckslD/nvim-neoclip.lua",
         config = function() require("my-config.plugins.neoclip") end,
@@ -201,13 +201,13 @@ local plugins = {
         config = function() require("my-config.plugins.trouble") end,
     },
 
-    -- To easily list and jump between functions, methods, etc in code
+    -- To easily list symbols and jump between them in code
     {
         "stevearc/aerial.nvim",
         config = function() require("my-config.plugins.aerial") end
     },
 
-    -- highlighting words
+    -- Highlighting words under cursor
     {
         "RRethy/vim-illuminate",
         config = function() require("my-config.plugins.vim-illuminate") end
@@ -222,6 +222,12 @@ local plugins = {
         },
         config = function() require("barbecue").setup() end,
     },
+
+    -- Auto close and rename tags
+    {
+        "windwp/nvim-ts-autotag",
+        config = function() require("nvim-ts-autotag").setup() end
+    }
 }
 
 require("lazy").setup(plugins, {
