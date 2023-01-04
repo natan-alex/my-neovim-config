@@ -58,6 +58,11 @@ local plugins = {
         config = function() require("my-config.plugins.mason-lspconfig") end,
     },
 
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function() require("null-ls").setup() end,
+    },
+
     -- Better lsp interactions like renaming, code actions, etc
     {
         "glepnir/lspsaga.nvim",
