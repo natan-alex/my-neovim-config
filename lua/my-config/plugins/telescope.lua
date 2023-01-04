@@ -9,10 +9,12 @@ telescope.setup({
         mappings = {
             i = {
                 ["<C-n>"] = actions.move_selection_next,
+                ["<C-j>"] = actions.move_selection_next,
                 ["<C-p>"] = actions.move_selection_previous,
+                ["<C-k>"] = actions.move_selection_previous,
 
-                ["<C-j>"] = actions.cycle_history_next,
-                ["<C-k>"] = actions.cycle_history_prev,
+                ["<Up>"] = actions.cycle_history_next,
+                ["<Down>"] = actions.cycle_history_prev,
 
                 ["<C-x>"] = actions.select_horizontal,
                 ["<C-v>"] = actions.select_vertical,
