@@ -232,22 +232,10 @@ local plugins = {
         config = function() require("nvim-ts-autotag").setup() end
     },
 
-    -- Project management
-    {
-        "ahmedkhalf/project.nvim",
-        config = function() require("my-config.plugins.project") end,
-    },
-
     -- Session management
     {
         "rmagatti/auto-session",
         config = function() require("my-config.plugins.auto-session") end
-    },
-
-    -- To change cwd to the root of the project whenever a file is opened
-    {
-        "airblade/vim-rooter",
-        config = function() require("my-config.plugins.vim-rooter") end
     },
 }
 
