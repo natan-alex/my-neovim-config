@@ -230,6 +230,18 @@ local plugins = {
     {
         "windwp/nvim-ts-autotag",
         config = function() require("nvim-ts-autotag").setup() end
+    },
+
+    -- Project management
+    {
+        "ahmedkhalf/project.nvim",
+        config = function() require("my-config.plugins.project") end,
+    },
+
+    -- Session management
+    {
+        "rmagatti/auto-session",
+        config = function() require("my-config.plugins.auto-session") end
     }
 }
 
