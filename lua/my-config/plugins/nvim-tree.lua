@@ -8,12 +8,18 @@ nvim_tree.setup({
     disable_netrw = true,
     hijack_cursor = true,
     sort_by = "name",
-    respect_buf_cwd = true,
+    modified = {
+        enable = false,
+        show_on_dirs = true,
+    },
     filesystem_watchers = {
         enable = true,
     },
     renderer = {
-        highlight_opened_files = "name",
+        highlight_opened_files = "all",
+        indent_markers = {
+            enable = true,
+        }
     },
     diagnostics = {
         enable = true,
@@ -26,7 +32,7 @@ nvim_tree.setup({
     },
     update_focused_file = {
         enable = true,
-        update_cwd = true,
+        update_root = false,
     },
     view = {
         adaptive_size = true,
