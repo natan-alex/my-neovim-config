@@ -60,7 +60,7 @@ local plugins = {
 
     {
         "jose-elias-alvarez/null-ls.nvim",
-        config = function() require("null-ls").setup() end,
+        config = function() require("my-config.plugins.null-ls") end,
     },
 
     -- Better lsp interactions like renaming, code actions, etc
