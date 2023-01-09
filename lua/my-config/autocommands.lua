@@ -8,16 +8,20 @@ local indentation_group = create_autogroup("IndentationRelated", group_options)
 local highlight_group = create_autogroup("YankHighlight", group_options)
 
 create_autocommand("FileType", {
-    pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact", "css", "html" },
+    pattern = {
+        "javascript", "javascriptreact",
+        "typescript", "typescriptreact",
+        "css", "html", "svelte"
+    },
     group = indentation_group,
     callback = function()
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.softtabstop = 2
+        vim.opt.tabstop = 2
+        vim.opt.softtabstop = 2
+        vim.opt.shiftwidth = 2
+        vim.opt.expandtab = true
     end,
 })
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
 create_autocommand("TextYankPost", {
     callback = function()
         vim.highlight.on_yank()
