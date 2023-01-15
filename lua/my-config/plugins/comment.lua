@@ -4,12 +4,12 @@ require("Comment").setup({
     padding = true,
 
     ---Whether the cursor should stay at its position
-    ---NOTE: This only affects NORMAL mode mappings and doesn't work with dot-repeat
+    ---NOTE: This only affects NORMAL mode mappings and doesn"t work with dot-repeat
     ---@type boolean
     sticky = true,
 
     ---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
-    ---NOTE: If `mappings = false` then the plugin won't create any mappings
+    ---NOTE: If `mappings = false` then the plugin won"t create any mappings
     ---@type boolean|table
     mappings = {
         ---Operator-pending mapping
@@ -22,5 +22,27 @@ require("Comment").setup({
         ---Extended mapping
         ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
         extended = true,
+    },
+    toggler = {
+        ---Line-comment toggle keymap
+        line = "<Leader>cc",
+        ---Block-comment toggle keymap
+        block = "<Leader>cb",
+    },
+    ---LHS of operator-pending mappings in NORMAL and VISUAL mode
+    opleader = {
+        ---Line-comment keymap
+        line = "<Leader>c",
+        ---Block-comment keymap
+        block = "<Leader>b",
+    },
+    ---LHS of extra mappings
+    extra = {
+        ---Add comment on the line above
+        above = "<Leader>cO",
+        ---Add comment on the line below
+        below = "<Leader>co",
+        ---Add comment at the end of line
+        eol = "<Leader>cA",
     },
 })
