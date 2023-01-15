@@ -23,9 +23,6 @@ cmp.setup {
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
-        { name = "calc" },
-        { name = "emoji" },
-        { name = "treesitter" },
     }),
     duplicates = {
         buffer = 1,
@@ -47,11 +44,12 @@ cmp.setup {
         ["<C-k>"]     = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
         ["<C-n>"]     = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
         ["<C-j>"]     = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+        ["<C-l>"]     = cmp.mapping(cmp.mapping.complete(), { "i" }),
         ["<Up>"]      = cmp.mapping.scroll_docs(-1),
         ["<Down>"]    = cmp.mapping.scroll_docs(1),
-        ["<C-Space>"] = cmp.mapping.complete(),
         ["<CR>"]      = cmp.mapping.confirm({ select = true }),
         ["<Tab>"]     = cmp.mapping.confirm({ select = true }),
         ["<C-e>"]     = cmp.mapping.abort(),
+        ["<C-c>"]     = cmp.mapping.abort(),
     },
 }

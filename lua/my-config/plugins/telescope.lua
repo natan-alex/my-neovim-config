@@ -8,34 +8,34 @@ telescope.setup({
         selection_caret = "»  ",
         mappings = {
             i = {
-                ["<C-n>"] = actions.move_selection_next,
-                ["<C-j>"] = actions.move_selection_next,
-                ["<C-p>"] = actions.move_selection_previous,
-                ["<C-k>"] = actions.move_selection_previous,
+                ["<C-n>"]  = actions.move_selection_next,
+                ["<C-j>"]  = actions.move_selection_next,
+                ["<C-p>"]  = actions.move_selection_previous,
+                ["<C-k>"]  = actions.move_selection_previous,
 
-                ["<Up>"] = actions.cycle_history_next,
-                ["<Down>"] = actions.cycle_history_prev,
+                ["<Up>"]   = actions.cycle_history_prev,
+                ["<Down>"] = actions.cycle_history_next,
 
-                ["<C-x>"] = actions.select_horizontal,
-                ["<C-v>"] = actions.select_vertical,
-                ["<C-t>"] = actions.select_tab,
+                ["<C-x>"]  = actions.select_horizontal,
+                ["<C-v>"]  = actions.select_vertical,
+                ["<C-t>"]  = actions.select_tab,
 
-                ["<ESC>"] = actions.close,
-                ["<C-c>"] = actions.close,
+                ["<ESC>"]  = actions.close,
+                ["<C-c>"]  = actions.close,
             },
             n = {
-                ["q"] = actions.close,
-                ["<ESC>"] = actions.close,
-                ["<C-c>"] = actions.close,
+                ["q"]      = actions.close,
+                ["<ESC>"]  = actions.close,
+                ["<C-c>"]  = actions.close,
 
-                ["gg"] = actions.move_to_top,
-                ["G"] = actions.move_to_bottom,
-                ["M"] = actions.move_to_middle,
+                ["gg"]     = actions.move_to_top,
+                ["G"]      = actions.move_to_bottom,
+                ["M"]      = actions.move_to_middle,
 
-                ["<C-u>"] = actions.preview_scrolling_up,
-                ["<C-d>"] = actions.preview_scrolling_down,
+                ["<C-u>"]  = actions.preview_scrolling_up,
+                ["<C-d>"]  = actions.preview_scrolling_down,
 
-                ["?"] = actions.which_key,
+                ["?"]      = actions.which_key,
             },
         }
     },
