@@ -204,12 +204,6 @@ local plugins = {
         config = function() require("my-config.plugins.trouble") end,
     },
 
-    -- To easily list symbols and jump between them in code
-    {
-        "stevearc/aerial.nvim",
-        config = function() require("my-config.plugins.aerial") end
-    },
-
     -- Highlighting words under cursor
     {
         "RRethy/vim-illuminate",

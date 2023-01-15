@@ -7,7 +7,7 @@ require("lspsaga").init_lsp_saga({
         quit = "q",
     },
     rename_in_select = false,
-    finder_request_timeout = 3000,
+    finder_request_timeout = 15000,
 })
 
 local map = require("my-config.utils.mappings").map
@@ -22,3 +22,4 @@ map("n", "<F2>",       "<CMD>Lspsaga rename<CR>",                mapping_options
 map("n", "<Leader>rn", "<CMD>Lspsaga rename<CR>",                mapping_options, "Lspsaga rename symbol")
 map("n", "<Leader>ca", "<CMD>Lspsaga code_action<CR>",           mapping_options, "Lspsaga code actions")
 map("n", "<Leader>ld", "<CMD>Lspsaga show_line_diagnostics<CR>", mapping_options, "Lspsaga show line diagnostics")
+map("n", "<Leader>o", "<CMD>Lspsaga outline<CR>", mapping_options, "Lspsaga outline toggle")
