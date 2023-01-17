@@ -29,7 +29,10 @@ map({ "i", "s" }, "<C-l>",
 )
 
 -- To use existing vs-code style snippets from a plugin
-require("luasnip.loaders.from_vscode").lazy_load()
+local paths = require("my-config.utils.paths")
+local friendly_snippets_path = paths.join(vim.fn.stdpath("data"), "lazy", "friendly-snippets")
+
+require("luasnip/loaders/from_vscode").lazy_load({ paths = friendly_snippets_path })
 
 
 -- CUSTOM SNIPPETS
