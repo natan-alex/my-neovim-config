@@ -24,4 +24,4 @@ map("n", "<F2>",       "<CMD>Lspsaga rename<CR>",                mapping_options
 map("n", "<Leader>rn", "<CMD>Lspsaga rename<CR>",                mapping_options, "Lspsaga rename symbol")
 map("n", "<Leader>ld", "<CMD>Lspsaga show_line_diagnostics<CR>", mapping_options, "Lspsaga show line diagnostics")
 map("n", "<Leader>ca", "<CMD>Lspsaga code_action<CR>",           mapping_options, "Lspsaga code actions")
-map("n", "<Leader>o", "<CMD>Lspsaga outline<CR>", mapping_options, "Lspsaga outline toggle")
+map("n", "<Leader>o",  "<CMD>Lspsaga outline<CR>",               mapping_options, "Lspsaga outline toggle")
