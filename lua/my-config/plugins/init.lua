@@ -231,6 +231,12 @@ local plugins = {
         "rmagatti/auto-session",
         config = function() require("my-config.plugins.auto-session") end
     },
+
+    -- Symbols explorer
+    {
+        "simrat39/symbols-outline.nvim",
+        config = function() require("my-config.plugins.symbols-outline") end
+    }
 }
 
 require("lazy").setup(plugins, {
