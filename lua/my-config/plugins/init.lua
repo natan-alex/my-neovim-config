@@ -24,19 +24,19 @@ local plugins = {
     { "folke/tokyonight.nvim", lazy = true },
     { "navarasu/onedark.nvim", lazy = true },
 
-    -- For file icons
+    -- Icons
     {
         "nvim-tree/nvim-web-devicons",
         config = function() require("nvim-web-devicons").setup() end,
     },
 
-    -- For floating menus with mappings
+    -- Floating menus with mappings
     {
         "folke/which-key.nvim",
         config = function() require("which-key").setup() end
     },
 
-    -- For file explorer
+    -- File explorer
     {
         "nvim-tree/nvim-tree.lua",
         config = function() require("my-config.plugins.nvim-tree") end,
@@ -85,7 +85,7 @@ local plugins = {
         config = function() require("my-config.plugins.lualine") end,
     },
 
-    -- To comment code
+    -- Comment code
     {
         "numToStr/Comment.nvim",
         config = function() require("my-config.plugins.comment") end,
@@ -123,9 +123,6 @@ local plugins = {
         config = function() require("my-config.plugins.treesitter") end,
     },
 
-    -- Additional text objects via treesitter
-    { "nvim-treesitter/nvim-treesitter-textobjects" },
-
     -- Telescope, my friend, just telescope
     {
         "nvim-telescope/telescope.nvim",
@@ -140,7 +137,7 @@ local plugins = {
         config = function() require("my-config.plugins.telescope-fzf-native") end
     },
 
-    -- Telescope neoclip extension for clipboard remembering
+    -- Telescope extension for clipboard remembering
     {
         "AckslD/nvim-neoclip.lua",
         config = function() require("my-config.plugins.neoclip") end,
@@ -154,7 +151,7 @@ local plugins = {
         config = function() require("my-config.plugins.neogit") end,
     },
 
-    -- To show git modifications in code
+    -- Show git modifications in code
     {
         "lewis6991/gitsigns.nvim",
         config = function() require("my-config.plugins.gitsigns") end,
@@ -167,20 +164,20 @@ local plugins = {
         config = function() require("my-config.plugins.vimspector") end
     },
 
-    -- For nice tab display
+    -- Nice tabs
     {
         "akinsho/bufferline.nvim",
         version = "v3.*",
         config = function() require("my-config.plugins.bufferline") end,
     },
 
-    -- For auto pairing things
+    -- Auto pairing things
     {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup() end
     },
 
-    -- Easy move in window
+    -- Easy movementation in window
     {
         "ggandor/leap.nvim",
         config = function() require("leap").add_default_mappings() end,
@@ -192,25 +189,22 @@ local plugins = {
         config = function() require("indent_blankline").setup() end,
     },
 
-    -- To add more commands like ciw, di', etc
-    { "wellle/targets.vim" },
-
     -- Repeat many things with dot
     { "tpope/vim-repeat" },
 
-    -- Better diagnostics
+    -- Show diagnostics in quickfix list and loclist
     {
         "folke/trouble.nvim",
         config = function() require("my-config.plugins.trouble") end,
     },
 
-    -- Highlighting words under cursor
+    -- Highlight words under cursor
     {
         "RRethy/vim-illuminate",
         config = function() require("my-config.plugins.vim-illuminate") end
     },
 
-    -- Nice winbar
+    -- "Breadcrumbs"
     {
         "utilyre/barbecue.nvim",
         dependencies = {
