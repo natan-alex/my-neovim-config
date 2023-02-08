@@ -21,12 +21,18 @@ local themes_and_their_flavours = {
     [themes.TOKYONIGHT] = { "storm", "moon", "night", "day" }
 }
 
+local theme_being_used = ""
+local flavour_being_used = ""
+
 local function apply_theme(theme, flavour)
     local config = require(themes_and_corresponding_configs[theme])
     local lualine_config = require("my-config.plugins.lualine")
 
     config.apply_theme(flavour)
     lualine_config.setup_with_theme(theme)
+
+    theme_being_used = theme
+    flavour_being_used = flavour
 end
 
 local function join_theme_and_flavour(theme, flavour)
@@ -44,12 +50,12 @@ local function load_theme_or_default(default_theme, default_flavour)
     local flavour = default_flavour
 
     if lines ~= nil and lines[1] ~= nil then
-	local split = split_theme_and_flavour(lines[1])
+        local split = split_theme_and_flavour(lines[1])
 
-	if split ~= nil and split[1] ~= nil and split[2] ~= nil then
-	    theme = split[1]
-	    flavour = split[2]
-	end
+        if split ~= nil and split[1] ~= nil and split[2] ~= nil then
+            theme = split[1]
+            flavour = split[2]
+        end
     end
 
     apply_theme(theme, flavour)
@@ -60,7 +66,7 @@ local function ask_for_new_theme()
 
     local new_theme
 
-    vim.ui.select(theme_names, { prompt = "Theme: " }, function(choice)
+    vim.ui.select(theme_names, { prompt = "New Theme: " }, function(choice)
 	new_theme = choice
     end)
 
@@ -80,6 +86,8 @@ local function ask_for_new_flavour(theme)
 end
 
 local function change_theme()
+    print("Applied theme: " .. theme_being_used .. " | Flavour: " .. flavour_being_used)
+
     local new_theme = ask_for_new_theme()
 
     if new_theme == nil then return end
