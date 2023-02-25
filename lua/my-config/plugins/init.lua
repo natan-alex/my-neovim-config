@@ -65,12 +65,6 @@ local plugins = {
         config = function() require("my-config.plugins.null-ls") end,
     },
 
-    -- Better lsp interactions like renaming, code actions, etc
-    {
-        "glepnir/lspsaga.nvim",
-        config = function() require("my-config.plugins.lspsaga") end,
-    },
-
     -- Multiple cursors
     {
         "mg979/vim-visual-multi",
