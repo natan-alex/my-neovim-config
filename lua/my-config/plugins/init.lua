@@ -20,7 +20,7 @@ local plugins = {
     { "nvim-lua/plenary.nvim" },
 
     -- Themes
-    { "catppuccin/nvim", lazy = true },
+    { "catppuccin/nvim",       lazy = true },
     { "folke/tokyonight.nvim", lazy = true },
     { "navarasu/onedark.nvim", lazy = true },
 
@@ -223,6 +223,13 @@ local plugins = {
     {
         "simrat39/symbols-outline.nvim",
         config = function() require("my-config.plugins.symbols-outline") end
+    },
+
+    -- Notify with nice popups and redirect cmdline to top (really cool)
+    {
+        "folke/noice.nvim",
+        config = function() require("my-config.plugins.noice") end,
+        requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
     }
 }
 

@@ -39,8 +39,6 @@ vim.opt.splitright = true -- force all vertical splits to go to the right of cur
 vim.opt.scrolloff = 2
 vim.opt.sidescrolloff = 2
 
-vim.opt.lazyredraw = true
-
 vim.opt.timeoutlen = 500
 vim.opt.updatetime = 100 -- faster completion
 
