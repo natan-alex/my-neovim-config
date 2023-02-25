@@ -38,8 +38,10 @@ local plugins = {
 
     -- File explorer
     {
-        "nvim-tree/nvim-tree.lua",
-        config = function() require("my-config.plugins.nvim-tree") end,
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+        config = function() require("my-config.plugins.neo-tree") end
     },
 
     -- Surround things
@@ -207,10 +209,7 @@ local plugins = {
     -- "Breadcrumbs"
     {
         "utilyre/barbecue.nvim",
-        dependencies = {
-            "neovim/nvim-lspconfig",
-            "smiteshp/nvim-navic",
-        },
+        dependencies = { "neovim/nvim-lspconfig", "smiteshp/nvim-navic" },
         config = function() require("barbecue").setup() end,
     },
 
