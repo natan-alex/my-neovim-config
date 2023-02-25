@@ -25,6 +25,10 @@ local theme_being_used = ""
 local flavour_being_used = ""
 
 local function apply_theme(theme, flavour)
+    package.loaded["lualine"] = nil
+    package.loaded["my-config.plugins.themes"] = nil
+    package.loaded["my-config.plugins.lualine"] = nil
+
     local config = require(themes_and_corresponding_configs[theme])
     local lualine_config = require("my-config.plugins.lualine")
 
@@ -99,7 +103,7 @@ local function change_theme()
     apply_theme(new_theme, new_flavour)
 
     files.create_and_write_to_file(
-	theme_file_path,
+	    theme_file_path,
         join_theme_and_flavour(new_theme, new_flavour)
     )
 end
