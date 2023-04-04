@@ -32,5 +32,5 @@ map("n", "gr",         vim.lsp.buf.references,      mapping_options, "Lsp buffer
 map("n", "gt",         vim.lsp.buf.type_definition, mapping_options, "Lsp buffer type definition")
 map("n", "<C-I>",      vim.lsp.buf.format,          mapping_options, "Lsp format buffer")
 map("n", "<C-k>",      vim.lsp.buf.signature_help,  mapping_options, "Lsp signature help")
-map("n", "<Leader>rn", vim.lsp.buf.rename,          mapping_options, "Lsp rename symbol")
-map("n", "<Leader>ca", vim.lsp.buf.code_action,     mapping_options, "Lsp code actions")
+map("n", "<Leader><Leader>r", vim.lsp.buf.rename,          mapping_options, "Lsp rename symbol")
+map("n", "<Leader><Leader>a", vim.lsp.buf.code_action,     mapping_options, "Lsp code actions")
