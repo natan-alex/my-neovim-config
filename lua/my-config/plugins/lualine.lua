@@ -8,7 +8,7 @@ function M.setup_with_theme(theme)
         },
         sections = {
             lualine_c = {
-                require("auto-session-library").current_session_name
+                require("auto-session").current_session_name
             }
         }
     })
