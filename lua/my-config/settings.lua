@@ -16,31 +16,31 @@ vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
-vim.opt.undofile = true -- persistent undo
+vim.opt.undofile = true           -- persistent undo
 vim.opt.swapfile = false
 vim.opt.backup = false
 
-vim.opt.cursorline = true -- highlight the current line
+vim.opt.cursorline = true         -- highlight the current line
 
-vim.opt.mouse = "a" -- use mouse for selections and scroll
+vim.opt.mouse = "a"               -- use mouse for selections and scroll
 
-vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
+vim.opt.cmdheight = 2             -- more space in the neovim command line for displaying messages
 
-vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
+vim.opt.hidden = true             -- required to keep multiple buffers and open multiple buffers
 
 vim.opt.fileencoding = "utf-8"
 
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 
-vim.opt.splitbelow = true -- force all horizontal splits to go below current window
-vim.opt.splitright = true -- force all vertical splits to go to the right of current window
+vim.opt.splitbelow = true         -- force all horizontal splits to go below current window
+vim.opt.splitright = true         -- force all vertical splits to go to the right of current window
 
 vim.opt.scrolloff = 2
 vim.opt.sidescrolloff = 2
 
 vim.opt.timeoutlen = 500
-vim.opt.updatetime = 100 -- faster completion
+vim.opt.updatetime = 100          -- faster completion
 
 vim.opt.backspace = "indent,eol,start"
 

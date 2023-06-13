@@ -26,13 +26,6 @@ map("n", "k", "gk", mapping_options)
 map("n", "$", "g$", mapping_options)
 map("n", "^", "g^", mapping_options)
 
--- Navigation
-map("n", "<A-Up>", "<C-w><C-k>", mapping_options)
-map("n", "<A-Down>", "<C-w><C-j>", mapping_options)
-map("n", "<A-Left>", "<C-w><C-h>", mapping_options)
-map("n", "<A-Right>", "<C-w><C-l>", mapping_options)
-
-
 -- Navigate tab completion with <c-j> and <c-k>
 map("c", "<C-j>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true, silent = true })
 map("c", "<C-k>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true, silent = true })
