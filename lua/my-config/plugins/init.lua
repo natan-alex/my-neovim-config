@@ -125,39 +125,10 @@ local plugins = {
         config = function() require("my-config.plugins.telescope") end,
     },
 
-    -- Fzf to make telescope fuzzy finder faster
-    {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        cond = vim.fn.executable("make") == 1,
-        config = function() require("my-config.plugins.telescope-fzf-native") end
-    },
-
-    -- Telescope extension for clipboard remembering
-    {
-        "AckslD/nvim-neoclip.lua",
-        config = function() require("my-config.plugins.neoclip") end,
-    },
-
-    -- Git
-    { "sindrets/diffview.nvim" },
-
-    {
-        "TimUntersberger/neogit",
-        config = function() require("my-config.plugins.neogit") end,
-    },
-
     -- Show git modifications in code
     {
         "lewis6991/gitsigns.nvim",
         config = function() require("my-config.plugins.gitsigns") end,
-    },
-
-    -- Debugging
-    {
-        "puremourning/vimspector",
-        ft = { "cs", "rust" },
-        config = function() require("my-config.plugins.vimspector") end
     },
 
     -- Nice tabs
@@ -165,12 +136,6 @@ local plugins = {
         "akinsho/bufferline.nvim",
         version = "v3.*",
         config = function() require("my-config.plugins.bufferline") end,
-    },
-
-    -- Auto pairing things
-    {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup() end
     },
 
     -- Easy movementation in window
@@ -184,9 +149,6 @@ local plugins = {
         "lukas-reineke/indent-blankline.nvim",
         config = function() require("indent_blankline").setup() end,
     },
-
-    -- Repeat many things with dot
-    { "tpope/vim-repeat" },
 
     -- Show diagnostics in quickfix list and loclist
     {
@@ -217,12 +179,6 @@ local plugins = {
     {
         "rmagatti/auto-session",
         config = function() require("my-config.plugins.auto-session") end
-    },
-
-    -- Symbols explorer
-    {
-        "simrat39/symbols-outline.nvim",
-        config = function() require("my-config.plugins.symbols-outline") end
     },
 
     -- Notify with nice popups and redirect cmdline to top (really cool)
