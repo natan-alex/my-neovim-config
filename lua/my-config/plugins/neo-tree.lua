@@ -339,6 +339,7 @@ require("neo-tree").setup({
             },
             ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
+            ["o"] = "open",
             ["<esc>"] = "revert_preview",
             ["P"] = { "toggle_preview", config = { use_float = true } },
             ["l"] = "focus_preview",
