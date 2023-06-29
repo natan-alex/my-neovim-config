@@ -146,7 +146,7 @@ local plugins = {
 
     {
         "ggandor/flit.nvim",
-        config = function() require("flit").setup() end,
+        config = function() require("my-config.plugins.flit") end,
     },
 
     -- Nice indentation lines
