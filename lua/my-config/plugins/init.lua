@@ -189,6 +189,7 @@ local plugins = {
     -- Notify with nice popups and redirect cmdline to top (really cool)
     {
         "folke/noice.nvim",
+        event = "VeryLazy",
         config = function() require("my-config.plugins.noice") end,
         requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
     }
