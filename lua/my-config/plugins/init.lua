@@ -37,11 +37,15 @@ local plugins = {
     },
 
     -- File explorer
+    -- {
+    --     "nvim-neo-tree/neo-tree.nvim",
+    --     branch = "v2.x",
+    --     dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+    --     config = function() require("my-config.plugins.neo-tree") end
+    -- },
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
-        config = function() require("my-config.plugins.neo-tree") end
+        "nvim-tree/nvim-tree.lua",
+        config = function() require("my-config.plugins.nvim-tree") end,
     },
 
     -- Surround things
@@ -125,6 +129,13 @@ local plugins = {
         config = function() require("my-config.plugins.telescope") end,
     },
 
+    -- Git
+    {
+        "NeogitOrg/neogit",
+        config = function() require("my-config.plugins.neogit") end,
+        dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" }
+    },
+
     -- Show git modifications in code
     {
         "lewis6991/gitsigns.nvim",
@@ -191,7 +202,7 @@ local plugins = {
         "folke/noice.nvim",
         event = "VeryLazy",
         config = function() require("my-config.plugins.noice") end,
-        requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
+        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
     }
 }
 
