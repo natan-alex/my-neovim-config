@@ -110,8 +110,3 @@ nvim_tree.setup({
         map("n", "v", api.node.open.vertical, mapping_options, create_description("Open: Vertical Split"))
     end
 })
-
-local map = require("my-config.utils.mappings").map
-local mapping_options = { silent = true, noremap = true, nowait = true }
-
-map("n", "<Leader>e", "<CMD>NvimTreeToggle<CR>", mapping_options, "NvimTree toggle")
