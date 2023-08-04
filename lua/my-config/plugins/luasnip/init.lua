@@ -1,7 +1,7 @@
 local luasnip = require("luasnip")
 
 luasnip.config.set_config({
-    enable_autosnippets = true,
+    enable_autosnippets = true
 })
 
 local map = require("my-config.utils.mappings").map
