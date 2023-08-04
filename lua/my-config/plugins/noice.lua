@@ -24,16 +24,16 @@ require("noice").setup({
         -- NOTE: If you enable messages, then the cmdline is enabled automatically.
         -- This is a current Neovim limitation.
         enabled = true,              -- enables the Noice messages UI
-        view = "notify",             -- default view for messages
-        view_error = "notify",       -- view for errors
-        view_warn = "notify",        -- view for warnings
+        view = "mini",             -- default view for messages
+        view_error = "mini",       -- view for errors
+        view_warn = "mini",        -- view for warnings
         view_history = "messages",   -- view for :messages
         view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
     },
     popupmenu = {
         enabled = true,  -- enables the Noice popupmenu UI
         ---@type 'nui'|'cmp'
-        backend = "nui", -- backend to use to show regular cmdline completions
+        backend = "cmp", -- backend to use to show regular cmdline completions
         ---@type NoicePopupmenuItemKind|false
         -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
         kind_icons = {}, -- set to `false` to disable icons
@@ -80,7 +80,7 @@ require("noice").setup({
         -- :Noice errors
         errors = {
             -- options for the message history that you get with `:Noice`
-            view = "popup",
+            view = "mini",
             opts = { enter = true, format = "details" },
             filter = { error = true },
             filter_opts = { reverse = true },
@@ -93,7 +93,7 @@ require("noice").setup({
         -- The default routes will forward notifications to nvim-notify
         -- Benefit of using Noice for this is the routing and consistent history view
         enabled = true,
-        view = "notify",
+        view = "mini",
     },
     lsp = {
         progress = {
@@ -137,7 +137,7 @@ require("noice").setup({
         message = {
             -- Messages shown by lsp servers
             enabled = true,
-            view = "notify",
+            view = "mini",
             opts = {},
         },
         -- defaults for hover and signature help
@@ -199,10 +199,10 @@ require("noice").setup({
 })
 
 
-require("telescope").load_extension("noice")
+-- require("telescope").load_extension("noice")
 
 
-local map = require("my-config.utils.mappings").map
-local mapping_options = { silent = true, noremap = true }
-
-map("n", "<Leader>nm", "<CMD>Noice telescope<CR>", mapping_options, "Noice open last messages with telescope")
+-- local map = require("my-config.utils.mappings").map
+-- local mapping_options = { silent = true, noremap = true }
+--
+-- map("n", "<Leader>nm", "<CMD>Noice telescope<CR>", mapping_options, "Noice open last messages with telescope")

@@ -25,8 +25,6 @@ set ignorecase smartcase
 
 " Break line at predefined characters
 set linebreak
-" Character to show before the lines that have been soft-wrapped
-set showbreak=↪
 
 " change fillchars for folding, vertical split, end of buffer, and message separator
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
@@ -112,7 +110,6 @@ set mousescroll=ver:3,hor:10
 " lastmod time is drawn from https://stackoverflow.com/q/8426736/6064933
 set title
 set titlestring=
-set titlestring=%{utils#Get_titlestr()}
 
 " Do not show "match xx of xx" and other messages during auto-completion
 set shortmess+=c

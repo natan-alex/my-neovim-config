@@ -1,6 +1,8 @@
 local paths = require("my-config.utils.paths")
 local files = require("my-config.utils.files")
 
+local plugins_path = paths.join(vim.fn.stdpath("config"), "lua", "my-config", "plugins")
+
 local lazypath = paths.join(vim.fn.stdpath("data"), "lazy", "lazy.nvim")
 
 if not vim.loop.fs_stat(lazypath) then
@@ -35,6 +37,7 @@ local plugins = {
     -- Floating menus with mappings
     {
         "folke/which-key.nvim",
+        event = "VimEnter",
         config = function() require("which-key").setup() end
     },
 
@@ -52,11 +55,13 @@ local plugins = {
     },
 
     -- Surround things
-    { "tpope/vim-surround" },
+    -- {
+    --     "tpope/vim-surround",
+    --     event = "InsertEnter"
+    -- },
+    { "machakann/vim-sandwich",   event = "BufEnter" },
 
     -- Lsp related
-    { "neovim/nvim-lspconfig" },
-
     {
         "williamboman/mason.nvim",
         event = "VimEnter",
@@ -66,6 +71,7 @@ local plugins = {
     {
         "williamboman/mason-lspconfig.nvim",
         after = "mason.nvim",
+        dependencies = { "neovim/nvim-lspconfig" },
         config = function() require("my-config.plugins.mason-lspconfig") end,
     },
 
@@ -78,10 +84,9 @@ local plugins = {
     -- Multiple cursors
     {
         "mg979/vim-visual-multi",
-        event = "VimEnter",
+        event = "BufEnter",
         config = function()
-            local path = vim.fn.stdpath("config")
-            path = paths.join(path, "lua", "my-config", "plugins", "vim-visual-multi.vim")
+            local path = paths.join(plugins_path, "vim-visual-multi.vim")
             vim.cmd("source " .. path)
         end,
     },
@@ -96,12 +101,15 @@ local plugins = {
     -- Comment code
     {
         "numToStr/Comment.nvim",
-        event = "VimEnter",
+        event = "BufEnter",
         config = function() require("my-config.plugins.comment") end,
     },
 
     -- Snippets
-    { "rafamadriz/friendly-snippets", event = "InsertEnter" },
+    {
+        "rafamadriz/friendly-snippets",
+        event = "InsertEnter"
+    },
 
     {
         "L3MON4D3/LuaSnip",
@@ -110,14 +118,14 @@ local plugins = {
     },
 
     -- Completion plugins
-    { "hrsh7th/cmp-path",             after = "nvim-cmp" },
-    { "hrsh7th/cmp-buffer",           after = "nvim-cmp" },
-    { "hrsh7th/cmp-nvim-lsp",         after = "nvim-cmp" },
-    { "saadparwaiz1/cmp_luasnip",     after = { "nvim-cmp", "LuaSnip" } },
+    { "hrsh7th/cmp-path",         after = "nvim-cmp" },
+    { "hrsh7th/cmp-buffer",       after = "nvim-cmp" },
+    { "hrsh7th/cmp-nvim-lsp",     after = "nvim-cmp" },
+    { "saadparwaiz1/cmp_luasnip", after = { "nvim-cmp", "LuaSnip" } },
 
     {
         "hrsh7th/nvim-cmp",
-        event = "VimEnter",
+        event = "InsertEnter",
         config = function() require("my-config.plugins.cmp") end,
     },
 
@@ -134,17 +142,17 @@ local plugins = {
         config = function() require("my-config.plugins.treesitter") end,
     },
 
-    -- Telescope, my friend, just telescope
-    {
-        "nvim-telescope/telescope.nvim",
-        cmd = "Telescope",
-        config = function() require("my-config.plugins.telescope") end,
-    },
+    -- -- Telescope, my friend, just telescope
+    -- {
+    --     "nvim-telescope/telescope.nvim",
+    --     cmd = "Telescope",
+    --     config = function() require("my-config.plugins.telescope") end,
+    -- },
 
     -- Git
     {
         "NeogitOrg/neogit",
-        event = "VimEnter",
+        cmd = "Neogit",
         cond = files.inside_git_repo,
         config = function() require("my-config.plugins.neogit") end,
         dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" }
@@ -153,7 +161,7 @@ local plugins = {
     -- Show git modifications in code
     {
         "lewis6991/gitsigns.nvim",
-        event = "VimEnter",
+        event = "BufEnter",
         cond = files.inside_git_repo,
         config = function() require("my-config.plugins.gitsigns") end,
     },
@@ -162,15 +170,15 @@ local plugins = {
     {
         "akinsho/bufferline.nvim",
         version = "v3.*",
-        event = "VimEnter",
+        event = "BufEnter",
         config = function() require("my-config.plugins.bufferline") end,
     },
 
     -- Easy movementation in window
     {
         "ggandor/leap.nvim",
-        event = "VimEnter",
-        config = function() require("leap").add_default_mappings() end,
+        event = "BufEnter",
+        config = function() require("my-config.plugins.leap") end,
     },
 
     {
@@ -182,27 +190,28 @@ local plugins = {
     -- Nice indentation lines
     {
         "lukas-reineke/indent-blankline.nvim",
-        event = "VimEnter",
+        event = "BufEnter",
         config = function() require("indent_blankline").setup() end,
     },
 
     -- Show diagnostics in quickfix list and loclist
     {
         "folke/trouble.nvim",
+        event = "BufEnter",
         config = function() require("my-config.plugins.trouble") end,
     },
 
     -- Highlight words under cursor
     {
         "RRethy/vim-illuminate",
-        event = "VimEnter",
+        event = "BufEnter",
         config = function() require("my-config.plugins.vim-illuminate") end
     },
 
     -- "Breadcrumbs"
     {
         "utilyre/barbecue.nvim",
-        event = "VimEnter",
+        event = "BufEnter",
         dependencies = { "neovim/nvim-lspconfig", "smiteshp/nvim-navic" },
         config = function() require("barbecue").setup() end,
     },
@@ -210,8 +219,9 @@ local plugins = {
     -- Auto close and rename tags
     {
         "windwp/nvim-ts-autotag",
+        event = "BufEnter",
         ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "html" },
-        config = function() require("nvim-ts-autotag").setup() end
+        config = function() require("my-config.plugins.nvim-ts-autotag") end
     },
 
     -- Session management
@@ -227,6 +237,51 @@ local plugins = {
         event = "VeryLazy",
         config = function() require("my-config.plugins.noice") end,
         dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
+    },
+
+    -- Show match number and index for searching
+    {
+        "kevinhwang91/nvim-hlslens",
+        branch = "main",
+        event = "BufEnter",
+        keys = { { "n", "*" }, { "n", "#" }, { "n", "n" }, { "n", "N" } },
+        config = function() require("my-config.plugins.nvim-hlslens") end
+    },
+
+    -- File search, tag search and more
+    {
+        "Yggdroot/LeaderF",
+        cmd = "Leaderf",
+        run = ":LeaderfInstallCExtension",
+        config = function()
+            local path = paths.join(plugins_path, "leaderF.vim")
+            vim.cmd("source " .. path)
+        end
+    },
+
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function() require("my-config.plugins.nvim-autopairs") end
+    },
+
+    -- Modern matchit implementation
+    { "andymass/vim-matchup", event = "BufEnter" },
+
+    {
+        "gelguy/wilder.nvim",
+        opt = true,
+        event = "VimEnter",
+        config = function()
+            local path = paths.join(plugins_path, "wilder.vim")
+            vim.cmd("source " .. path)
+        end
+    },
+
+    {
+        "folke/zen-mode.nvim",
+        cmd = "ZenMode",
+        config = function() require("my-config.plugins.zen-mode") end
     }
 }
 

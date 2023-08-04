@@ -65,9 +65,6 @@ map("n", "C", '"_C')
 map("n", "cc", '"_cc')
 map("x", "c", '"_c')
 
--- Always use very magic mode for searching
-map("n", "/", [[/\v]])
-
 -- Do not move my cursor when joining lines.
 map("n", "J", function()
     vim.cmd([[
