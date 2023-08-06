@@ -37,5 +37,6 @@ require("luasnip/loaders/from_vscode").lazy_load({ paths = friendly_snippets_pat
 
 -- CUSTOM SNIPPETS
 require("my-config.plugins.luasnip.cs-snippets")
+require("my-config.plugins.luasnip.css-snippets")
 require("my-config.plugins.luasnip.java-snippets")
 require("my-config.plugins.luasnip.js-ts-snippets")
