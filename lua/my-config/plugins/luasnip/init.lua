@@ -4,29 +4,14 @@ luasnip.config.set_config({
     enable_autosnippets = true
 })
 
-local map = require("my-config.utils.mappings").map
-local mapping_options = { silent = true, noremap = true, }
+vim.keymap.set({ "i", "s" }, "<C-j>", function() luasnip.jump(1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-k>", function() luasnip.jump(-1) end, { silent = true })
 
-map({ "i", "s" }, "<C-h>",
-    function()
-        if luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-        end
-    end,
-    mapping_options,
-    ""
-)
-map({ "i", "s" }, "<C-l>",
-    function()
-        if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-        elseif luasnip.choice_active() then
-            luasnip.change_choice(1)
-        end
-    end,
-    mapping_options,
-    ""
-)
+vim.keymap.set({ "i", "s" }, "<C-i>", function()
+    if luasnip.choice_active() then
+        luasnip.change_choice(1)
+    end
+end, { silent = true })
 
 -- To use existing vs-code style snippets from a plugin
 local paths = require("my-config.utils.paths")
@@ -36,7 +21,19 @@ require("luasnip/loaders/from_vscode").lazy_load({ paths = friendly_snippets_pat
 
 
 -- CUSTOM SNIPPETS
-require("my-config.plugins.luasnip.cs-snippets")
-require("my-config.plugins.luasnip.css-snippets")
-require("my-config.plugins.luasnip.java-snippets")
-require("my-config.plugins.luasnip.js-ts-snippets")
+local snippets_module_prefix = "my-config.plugins.luasnip.snippets."
+local my_config_path = paths.join(vim.fn.stdpath("config"), "lua", "my-config")
+local snippets_folder_path = paths.join(my_config_path, "plugins", "luasnip", "snippets")
+local files = vim.split(vim.fn.glob(snippets_folder_path .. paths.path_separator .. "*"), "\n")
+
+for _, file in pairs(files) do
+    local pieces = vim.split(file, paths.path_separator)
+    local file_name = pieces[#pieces]
+
+    if vim.endswith(file_name, ".lua") then
+        local without_extension = string.gsub(file_name, "%.lua", "")
+        local module, _ = snippets_module_prefix .. without_extension
+        package.loaded[module] = nil
+        require(module)
+    end
+end
