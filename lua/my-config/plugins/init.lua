@@ -219,7 +219,7 @@ local plugins = {
     -- Auto close and rename tags
     {
         "windwp/nvim-ts-autotag",
-        event = "BufEnter",
+        event = "InsertEnter",
         ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "html" },
         config = function() require("my-config.plugins.nvim-ts-autotag") end
     },
