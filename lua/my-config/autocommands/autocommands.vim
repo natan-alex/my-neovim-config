@@ -54,15 +54,19 @@ augroup END
 
 " ref: https://vi.stackexchange.com/a/169/15292
 function! s:handle_large_file() abort
-  let g:large_file = 10485760 " 10MB
   let f = expand("<afile>")
+
+  let g:large_file = 10485760 " 10MB
 
   if getfsize(f) > g:large_file || getfsize(f) == -2
     set eventignore+=all
-    set norelativenumber
     set nocursorline
-    setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1
+    set norelativenumber
+    setlocal noswapfile 
+    setlocal undolevels=5
+    setlocal bufhidden=unload 
   else
-    set eventignore-=all relativenumber
+    set eventignore-=all
+    set relativenumber
   endif
 endfunction
