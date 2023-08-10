@@ -4,14 +4,8 @@ luasnip.config.set_config({
     enable_autosnippets = true
 })
 
-vim.keymap.set({ "i", "s" }, "<C-j>", function() luasnip.jump(1) end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-k>", function() luasnip.jump(-1) end, { silent = true })
-
-vim.keymap.set({ "i", "s" }, "<C-i>", function()
-    if luasnip.choice_active() then
-        luasnip.change_choice(1)
-    end
-end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<A-j>", function() luasnip.jump(1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<A-k>", function() luasnip.jump(-1) end, { silent = true })
 
 -- To use existing vs-code style snippets from a plugin
 local paths = require("my-config.utils.paths")

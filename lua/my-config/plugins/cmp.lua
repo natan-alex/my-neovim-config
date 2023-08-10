@@ -13,9 +13,9 @@ cmp.setup({
     },
     mapping = {
         ["<C-p>"]  = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-        -- ["<C-k>"]  = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
         ["<C-n>"]  = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-        -- ["<C-j>"]  = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+        ["<C-k>"]  = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+        ["<C-j>"]  = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
         ["<C-l>"]  = cmp.mapping(cmp.mapping.complete(), { "i" }),
         ["<Up>"]   = cmp.mapping.scroll_docs(-1),
         ["<Down>"] = cmp.mapping.scroll_docs(1),
