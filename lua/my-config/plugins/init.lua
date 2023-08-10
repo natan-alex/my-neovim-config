@@ -142,11 +142,33 @@ local plugins = {
         config = function() require("my-config.plugins.treesitter") end,
     },
 
-    -- -- Telescope, my friend, just telescope
+    -- Fuzzy finders
+    {
+        "nvim-telescope/telescope.nvim",
+        cmd = "Telescope",
+        after = "nvim-telescope/telescope-fzf-native.nvim",
+        config = function() require("my-config.plugins.telescope") end,
+        dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" }
+    },
+    {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = function()
+            if vim.g.is_linux or vim.g.is_mac then
+                return "make"
+            end
+
+            return
+            "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+        end
+    },
     -- {
-    --     "nvim-telescope/telescope.nvim",
-    --     cmd = "Telescope",
-    --     config = function() require("my-config.plugins.telescope") end,
+    --     "Yggdroot/LeaderF",
+    --     cmd = "Leaderf",
+    --     build = ":LeaderfInstallCExtension",
+    --     config = function()
+    --         local path = paths.join(plugins_path, "leaderF.vim")
+    --         vim.cmd("source " .. path)
+    --     end
     -- },
 
     -- Git
@@ -246,17 +268,6 @@ local plugins = {
         event = "BufEnter",
         keys = { { "n", "*" }, { "n", "#" }, { "n", "n" }, { "n", "N" } },
         config = function() require("my-config.plugins.nvim-hlslens") end
-    },
-
-    -- File search, tag search and more
-    {
-        "Yggdroot/LeaderF",
-        cmd = "Leaderf",
-        run = ":LeaderfInstallCExtension",
-        config = function()
-            local path = paths.join(plugins_path, "leaderF.vim")
-            vim.cmd("source " .. path)
-        end
     },
 
     {
