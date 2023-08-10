@@ -1,3 +1,5 @@
+local paths = require("my-config.utils.paths")
+
 -- Leader
 vim.g.mapleader = ","
 
@@ -43,3 +45,7 @@ vim.g.loaded_matchparen = 1
 
 -- Disable sql omni completion, it is broken.
 vim.g.loaded_sql_completion = 1
+
+vim.g.lua_folder_path = paths.join(vim.fn.stdpath("config"), "lua")
+vim.g.my_config_folder_path = paths.join(vim.g.lua_folder_path, "my-config")
+vim.g.plugins_folder_path = paths.join(vim.g.my_config_folder_path, "plugins")
