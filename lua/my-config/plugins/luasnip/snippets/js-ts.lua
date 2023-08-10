@@ -9,7 +9,15 @@ local snippets = {
     create_snippet("cl", format([[console.log("{}");]], { insert_node(1) })),
     create_snippet("log", format([[console.log("{}");]], { insert_node(1) })),
     create_snippet("ce", format([[console.error("{}");]], { insert_node(1) })),
-    create_snippet("idx", format([[export {{ default }} from './{}';]], { insert_node(1) })),
+
+    create_snippet("expd",
+        format([[export {{ default }} from './{}';]],
+            { insert_node(1, "file") })),
+
+    create_snippet("exp",
+        format([[export {} from './{}';]],
+            { insert_node(1, "things"), insert_node(2, "file") })),
+
     create_snippet(
         "fn",
         format([[
@@ -17,9 +25,12 @@ local snippets = {
             {}
         }}
         ]],
-        { insert_node(1), insert_node(2), insert_node(3) })
+            {
+                insert_node(1, "name"),
+                insert_node(2, "params"),
+                insert_node(3, "body")
+            })
     ),
-    create_snippet("afn", format([[() => {{{}}}]], { insert_node(1) })),
 }
 
 luasnip.add_snippets("javascript", snippets)
