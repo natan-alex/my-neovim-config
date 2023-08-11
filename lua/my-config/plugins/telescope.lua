@@ -4,6 +4,12 @@ local builtin = require("telescope.builtin")
 
 telescope.setup({
     defaults = {
+        layout_strategy = "vertical",
+        layout_config = {
+            width = 0.8,
+            height = 0.95,
+            prompt_position = "top",
+        },
         vimgrep_arguments = {
             "rg",
             "--color=never",
