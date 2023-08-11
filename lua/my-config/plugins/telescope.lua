@@ -66,6 +66,8 @@ telescope.setup({
     },
 })
 
+telescope.load_extension("fzf")
+
 -- mappings
 local map = require("my-config.utils.mappings").map
 local mapping_options = { silent = true, noremap = true, }
@@ -83,4 +85,3 @@ map("n", "<Leader>fB", builtin.builtin,               mapping_options, "Telescop
 map("n", "<Leader>fr", builtin.lsp_references,        mapping_options, "Telescope Lsp references")
 map("n", "<Leader>fS", builtin.lsp_document_symbols,  mapping_options, "Telescope Lsp document symbols")
 map("n", "<Leader>fw", builtin.lsp_workspace_symbols, mapping_options, "Telescope Lsp workspace symbols")
-telescope.load_extension("fzf")
