@@ -4,7 +4,10 @@ local builtin = require("telescope.builtin")
 
 telescope.setup({
     defaults = {
+        prompt_prefix = "🔭  ",
+        selection_caret = "»  ",
         layout_strategy = "vertical",
+        sorting_strategy = "ascending",
         layout_config = {
             width = 0.8,
             height = 0.95,
@@ -20,8 +23,6 @@ telescope.setup({
             "--smart-case",
             "--trim"
         },
-        prompt_prefix = "🔭  ",
-        selection_caret = "»  ",
         mappings = {
             i = {
                 ["<C-n>"]  = actions.move_selection_next,
