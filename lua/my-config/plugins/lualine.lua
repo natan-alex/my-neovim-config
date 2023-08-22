@@ -8,11 +8,11 @@ function M.setup_with_theme(theme)
         },
         sections = {
             lualine_a = { "mode" },
-            lualine_b = { "filename", "location" },
-            lualine_c = { "filetype" },
-            lualine_x = { "diagnostics" },
-            lualine_y = { "branch" },
-            lualine_z = { "diff" },
+            lualine_b = { "branch" },
+            lualine_c = { "diff" },
+            lualine_x = { "filetype" },
+            lualine_y = { "diagnostics" },
+            lualine_z = { "location" },
         }
     })
 end
