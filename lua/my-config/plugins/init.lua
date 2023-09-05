@@ -23,7 +23,6 @@ local plugins = {
     { "nvim-lua/plenary.nvim" },
 
     -- Themes
-    { "catppuccin/nvim",       lazy = true },
     { "folke/tokyonight.nvim", lazy = true },
     { "navarasu/onedark.nvim", lazy = true },
 
@@ -55,11 +54,8 @@ local plugins = {
     },
 
     -- Surround things
-    -- {
-    --     "tpope/vim-surround",
-    --     event = "InsertEnter"
-    -- },
-    { "machakann/vim-sandwich",   event = "BufEnter" },
+    { "tpope/vim-surround", event = "InsertEnter" },
+    -- { "machakann/vim-sandwich",   event = "BufEnter" },
 
     -- Lsp related
     {
@@ -172,13 +168,13 @@ local plugins = {
     -- },
 
     -- Git
-    {
-        "NeogitOrg/neogit",
-        cmd = "Neogit",
-        cond = files.inside_git_repo,
-        config = function() require("my-config.plugins.neogit") end,
-        dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" }
-    },
+    -- {
+    --     "NeogitOrg/neogit",
+    --     cmd = "Neogit",
+    --     cond = files.inside_git_repo,
+    --     config = function() require("my-config.plugins.neogit") end,
+    --     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" }
+    -- },
 
     -- Show git modifications in code
     {
@@ -203,11 +199,11 @@ local plugins = {
         config = function() require("my-config.plugins.leap") end,
     },
 
-    {
-        "ggandor/flit.nvim",
-        after = "leap.nvim",
-        config = function() require("my-config.plugins.flit") end,
-    },
+    -- {
+    --     "ggandor/flit.nvim",
+    --     after = "leap.nvim",
+    --     config = function() require("my-config.plugins.flit") end,
+    -- },
 
     -- Nice indentation lines
     {
@@ -254,12 +250,12 @@ local plugins = {
     },
 
     -- Notify with nice popups and redirect cmdline to top (really cool)
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        config = function() require("my-config.plugins.noice") end,
-        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
-    },
+    -- {
+    --     "folke/noice.nvim",
+    --     event = "VeryLazy",
+    --     config = function() require("my-config.plugins.noice") end,
+    --     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
+    -- },
 
     -- Show match number and index for searching
     {
@@ -280,7 +276,6 @@ local plugins = {
 
     {
         "gelguy/wilder.nvim",
-        opt = true,
         event = "VimEnter",
         config = function()
             local path = paths.join(plugins_path, "wilder.vim")
@@ -288,11 +283,11 @@ local plugins = {
         end
     },
 
-    {
-        "folke/zen-mode.nvim",
-        cmd = "ZenMode",
-        config = function() require("my-config.plugins.zen-mode") end
-    }
+    -- {
+    --     "folke/zen-mode.nvim",
+    --     cmd = "ZenMode",
+    --     config = function() require("my-config.plugins.zen-mode") end
+    -- }
 }
 
 require("lazy").setup(plugins, {
