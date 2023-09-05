@@ -54,7 +54,7 @@ local plugins = {
     },
 
     -- Surround things
-    { "tpope/vim-surround", event = "InsertEnter" },
+    { "tpope/vim-surround", event = "BufEnter" },
     -- { "machakann/vim-sandwich",   event = "BufEnter" },
 
     -- Lsp related
@@ -63,7 +63,6 @@ local plugins = {
         event = "VimEnter",
         config = function() require("my-config.plugins.mason") end,
     },
-
     {
         "williamboman/mason-lspconfig.nvim",
         after = "mason.nvim",
@@ -75,6 +74,16 @@ local plugins = {
         "jose-elias-alvarez/null-ls.nvim",
         event = "VimEnter",
         config = function() require("my-config.plugins.null-ls") end,
+    },
+    {
+        "jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "jose-elias-alvarez/null-ls.nvim",
+        },
+        after = { "mason.nvim", "null-ls" },
+        config = function() require("mason-null-ls").setup() end,
     },
 
     -- Multiple cursors
