@@ -1,27 +1,20 @@
 local null_ls = require("null-ls")
 
-local root_has_file = function(files)
-    return function(utils)
-        return utils.root_has_file(files)
-    end
-end
-
 local eslint_root_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.json" }
 local prettier_root_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.json" }
 
 local opts = {
     eslint_formatting = {
         condition = function(utils)
-            local has_eslint_file = root_has_file(eslint_root_files)(utils)
-            local has_prettier_file = root_has_file(prettier_root_files)(utils)
+            local has_eslint_file = utils.root_has_file(eslint_root_files)
+            local has_prettier_file = utils.root_has_file(prettier_root_files)
             return has_eslint_file and not has_prettier_file
         end,
     },
     eslint_diagnostics = {
-        condition = root_has_file(eslint_root_files),
-    },
-    prettier_formatting = {
-        condition = root_has_file(prettier_root_files),
+        condition = function(utils)
+            utils.root_has_file(eslint_root_files)
+        end
     },
 }
 
@@ -33,10 +26,11 @@ local function on_attach(client, _)
 end
 
 null_ls.setup({
+    -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
     sources = {
-        null_ls.builtins.diagnostics.eslint_d.with(opts.eslint_diagnostics),
+        null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.eslint_d.with(opts.eslint_formatting),
-        null_ls.builtins.formatting.prettier.with(opts.prettier_formatting),
+        null_ls.builtins.diagnostics.eslint_d.with(opts.eslint_diagnostics),
         null_ls.builtins.code_actions.eslint_d.with(opts.eslint_diagnostics),
     },
     on_attach = on_attach,
