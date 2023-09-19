@@ -23,9 +23,9 @@ gitsigns.setup {
         map("n", "<Leader>hl", gitsigns.toggle_current_line_blame, mapping_options, "Gitsigns toggle current line blame")
         map(
             "n",
-            "]c",
+            "]h",
             function()
-                if vim.wo.diff then return "]c" end
+                if vim.wo.diff then return "]h" end
                 vim.schedule(function() gitsigns.next_hunk() end)
                 return "<Ignore>"
             end,
@@ -34,9 +34,9 @@ gitsigns.setup {
         )
         map(
             "n",
-            "[c",
+            "[h",
             function()
-                if vim.wo.diff then return "[c" end
+                if vim.wo.diff then return "[h" end
                 vim.schedule(function() gitsigns.prev_hunk() end)
                 return "<Ignore>"
             end,
