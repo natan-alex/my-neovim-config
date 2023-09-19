@@ -8,6 +8,7 @@ telescope.setup({
         selection_caret = "»  ",
         layout_strategy = "vertical",
         sorting_strategy = "ascending",
+        path_display = { "truncate " },
         layout_config = {
             width = 0.8,
             height = 0.95,
