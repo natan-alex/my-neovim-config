@@ -1,42 +1,11 @@
-local hlslens = require("hlslens")
+require("hlslens").setup()
 
-hlslens.setup({
-    calm_down = true,
-    nearest_only = true,
-})
+local mapping_options = { silent = true, noremap = true }
 
-local activate_hlslens = function(key)
-    local cmd = string.format("normal! %s%szzzv", vim.v.count1, key)
-    local status, msg = pcall(vim.cmd, cmd)
+vim.api.nvim_set_keymap('n', 'n', [[<CMD>execute('normal! ' . v:count1 . 'n')<CR><CMD>lua require('hlslens').start()<CR>]], mapping_options)
 
-    if not status then
-        -- 13 is the index where real error message starts
-        msg = msg:sub(13)
-        vim.api.nvim_err_writeln(msg)
-        return
-    end
+vim.api.nvim_set_keymap('n', 'N', [[<CMD>execute('normal! ' . v:count1 . 'N')<CR><CMD>lua require('hlslens').start()<CR>]], mapping_options)
 
-    hlslens.start()
-end
+vim.api.nvim_set_keymap('n', '*', [[*<CMD>lua require('hlslens').start()<CR>]], mapping_options)
 
-vim.keymap.set("n", "n", "", {
-    callback = function() activate_hlslens("n") end,
-})
-
-vim.keymap.set("n", "N", "", {
-    callback = function() activate_hlslens("N") end,
-})
-
-vim.keymap.set("n", "*", "", {
-    callback = function()
-        vim.fn.execute("normal! *N")
-        hlslens.start()
-    end,
-})
-
-vim.keymap.set("n", "#", "", {
-    callback = function()
-        vim.fn.execute("normal! #N")
-        hlslens.start()
-    end,
-})
+vim.api.nvim_set_keymap('n', '<Leader>q', '<CMD>noh<CR>', mapping_options)
