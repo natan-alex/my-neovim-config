@@ -10,7 +10,7 @@ local map = require("my-config.utils.mappings").map
 local mapping_options = { silent = true, noremap = true, nowait = true }
 
 map("n", "<C-I>", vim.lsp.buf.format, mapping_options, "Lsp format buffer")
-map("n", "<C-k>", vim.lsp.buf.signature_help, mapping_options, "Lsp signature help")
+map({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, mapping_options, "Lsp signature help")
 
 map("n", "K", "<CMD>Lspsaga hover_doc<CR>", mapping_options, "Lspsaga hover")
 
