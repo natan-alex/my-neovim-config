@@ -268,7 +268,6 @@ local plugins = {
     -- Show match number and index for searching
     {
         "kevinhwang91/nvim-hlslens",
-        branch = "main",
         event = "BufEnter",
         config = function() require("my-config.plugins.nvim-hlslens") end
     },
