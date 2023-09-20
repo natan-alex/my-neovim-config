@@ -254,7 +254,6 @@ local plugins = {
     -- Session management
     {
         "rmagatti/auto-session",
-        event = "VimEnter",
         config = function() require("my-config.plugins.auto-session") end
     },
 
