@@ -17,7 +17,7 @@ for _, file_name in ipairs(core_config_files) do
         vim.cmd("source " .. path)
     else
         local file_name_without_extension = string.gsub(file_name, "%.lua", "")
-        local module, _ = "my-config." .. file_name_without_extension
+        local module = "my-config." .. file_name_without_extension
         package.loaded[module] = nil
         require(module)
     end
