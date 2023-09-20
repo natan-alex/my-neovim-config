@@ -295,6 +295,16 @@ local plugins = {
     --     cmd = "ZenMode",
     --     config = function() require("my-config.plugins.zen-mode") end
     -- }
+
+    {
+        "nvimdev/lspsaga.nvim",
+        event = "LspAttach",
+        config = function() require("my-config.plugins.lspsaga") end,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+            "nvim-treesitter/nvim-treesitter",
+        }
+    },
 }
 
 require("lazy").setup(plugins, {
