@@ -305,6 +305,12 @@ local plugins = {
             "nvim-treesitter/nvim-treesitter",
         }
     },
+    -- Edit file system like if it was a normal buffer
+    {
+        "stevearc/oil.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function() require("my-config.plugins.oil") end
+    }
 }
 
 require("lazy").setup(plugins, {
