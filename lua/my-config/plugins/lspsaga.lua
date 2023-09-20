@@ -1,6 +1,33 @@
 local lspsaga = require("lspsaga")
 
 lspsaga.setup({
+    code_action = {
+        extend_gitsigns = true,
+    },
+    definition = {
+        keys = {
+            edit = "o",
+        }
+    },
+    finder = {
+        keys = {
+            quit = { "<C-c>", "<ESC>", "q" },
+            toggle_or_open = { "o", "<CR>" }
+        }
+    },
+    outline = {
+        close_after_jump = true,
+        keys = {
+            quit = { "<C-c>", "<ESC>", "q" },
+            toggle_or_jump = { "o", "<CR>" }
+        }
+    },
+    rename = {
+        in_select = false,
+        keys = {
+            quit = { "<C-c>", "<ESC>" }
+        }
+    },
     symbol_in_winbar = {
         enable = false
     }
@@ -15,8 +42,8 @@ map({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, mapping_options, "Lsp sig
 map("n", "K", "<CMD>Lspsaga hover_doc<CR>", mapping_options, "Lspsaga hover")
 
 map("n", "gr", "<CMD>Lspsaga finder<CR>", mapping_options, "Lspsaga finder")
-map("n", "gd", "<CMD>Lspsaga goto_type_definition<CR>", mapping_options, "Lspsaga go to type definition")
-map("n", "gD", "<CMD>Lspsaga goto_definition<CR>", mapping_options, "Lspsaga go to variable definition")
+map("n", "gd", "<CMD>Lspsaga goto_definition<CR>", mapping_options, "Lspsaga go to definition")
+map("n", "gt", "<CMD>Lspsaga goto_type_definition<CR>", mapping_options, "Lspsaga go to type definition")
 
 map("n", "[d", "<CMD>Lspsaga diagnostic_jump_prev<CR>", mapping_options, "Lspsaga go to previous diagnostic")
 map("n", "]d", "<CMD>Lspsaga diagnostic_jump_next<CR>", mapping_options, "Lspsaga go to next diagnostic")
