@@ -23,8 +23,12 @@ local plugins = {
     { "nvim-lua/plenary.nvim" },
 
     -- Themes
-    { "folke/tokyonight.nvim", lazy = true },
-    { "navarasu/onedark.nvim", lazy = true },
+    { "sainnhe/sonokai",             lazy = true },
+    { "catppuccin/nvim",             lazy = true },
+    { "folke/tokyonight.nvim",       lazy = true },
+    { "navarasu/onedark.nvim",       lazy = true },
+    { "tomasiser/vim-code-dark",     lazy = true },
+    { "dasupradyumna/midnight.nvim", lazy = true },
 
     -- Icons
     {

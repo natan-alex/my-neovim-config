@@ -4,21 +4,30 @@ local files = require("my-config.utils.files")
 local theme_file_path = paths.join(vim.fn.stdpath("data"), "theme.txt")
 
 local themes = {
+    SONOKAI = "sonokai",
     ONEDARK = "onedark",
+    MIDNIGHT = "midnight",
     CATPPUCCIN = "catppuccin",
-    TOKYONIGHT = "tokyonight"
+    TOKYONIGHT = "tokyonight",
+    VIM_CODE_DARK = "vim-code-dark",
 }
 
 local themes_and_corresponding_configs = {
+    [themes.SONOKAI] = "my-config.plugins.themes.sonokai",
     [themes.ONEDARK] = "my-config.plugins.themes.onedark",
+    [themes.MIDNIGHT] = "my-config.plugins.themes.midnight",
     [themes.CATPPUCCIN] = "my-config.plugins.themes.catppuccin",
     [themes.TOKYONIGHT] = "my-config.plugins.themes.tokyonight",
+    [themes.VIM_CODE_DARK] = "my-config.plugins.themes.vim-code-dark",
 }
 
 local themes_and_their_flavours = {
-    [themes.ONEDARK] = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
+    [themes.MIDNIGHT] = {},
+    [themes.VIM_CODE_DARK] = {},
+    [themes.TOKYONIGHT] = { "storm", "moon", "night", "day" },
     [themes.CATPPUCCIN] = { "macchiato", "latte", "frappe", "mocha" },
-    [themes.TOKYONIGHT] = { "storm", "moon", "night", "day" }
+    [themes.ONEDARK] = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
+    [themes.SONOKAI] = { "default", "atlantis", "andromeda", "shusia", "maia", "espresso" },
 }
 
 local theme_being_used = ""
@@ -58,7 +67,7 @@ local function load_theme_or_default(default_theme, default_flavour)
 
         if split ~= nil and split[1] ~= nil and split[2] ~= nil then
             theme = split[1]
-            flavour = split[2]
+            flavour = split[2] or ""
         end
     end
 
@@ -71,7 +80,7 @@ local function ask_for_new_theme()
     local new_theme
 
     vim.ui.select(theme_names, { prompt = "New Theme: " }, function(choice)
-	new_theme = choice
+        new_theme = choice
     end)
 
     return new_theme
@@ -80,10 +89,12 @@ end
 local function ask_for_new_flavour(theme)
     local flavours = themes_and_their_flavours[theme]
 
+    if #flavours == 0 then return end
+
     local new_flavour
 
     vim.ui.select(flavours, { prompt = "\nFlavour: " }, function(choice)
-	new_flavour = choice
+        new_flavour = choice
     end)
 
     return new_flavour
@@ -98,16 +109,16 @@ local function change_theme()
 
     local new_flavour = ask_for_new_flavour(new_theme)
 
-    if new_flavour == nil then return end
+    new_flavour = new_flavour or ""
 
     apply_theme(new_theme, new_flavour)
 
     files.create_and_write_to_file(
-	    theme_file_path,
+        theme_file_path,
         join_theme_and_flavour(new_theme, new_flavour)
     )
 end
 
 vim.api.nvim_create_user_command("ChangeTheme", change_theme, { nargs = 0 })
 
-load_theme_or_default(themes.ONEDARK, themes_and_their_flavours[themes.ONEDARK][1])
+load_theme_or_default(themes.VSCODE, nil)
