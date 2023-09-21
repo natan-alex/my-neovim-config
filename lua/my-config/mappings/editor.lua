@@ -22,10 +22,6 @@ map("x", "$", "g_")
 
 map("n", "^", "g^")
 
--- Go to start or end of line easier
-map({ "n", "x" }, "<Space>h", "^")
-map({ "n", "x" }, "<Space>l", "g_")
-
 -- Continuous visual shifting (does not exit Visual mode), `gv` means
 -- to reselect previous visual area, see https://superuser.com/q/310417/736190
 map("x", "<", "<gv")
@@ -47,16 +43,6 @@ map("c", "<C-k>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true })
 
 -- Keep cursor position after yanking
 map("n", "y", "myy")
-
--- Go to the beginning and end of current line in insert mode quickly
-map("i", "<C-A>", "<HOME>")
-map("i", "<C-S>", "<END>")
-
--- Go to beginning of command in command-line mode
-map("c", "<C-A>", "<HOME>")
-
--- Delete the character to the right of the cursor
-map("i", "<C-D>", "<DEL>")
 
 -- Change text without putting it into the vim register,
 -- see https://stackoverflow.com/q/54255/6064933
