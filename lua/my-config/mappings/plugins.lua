@@ -8,6 +8,6 @@ map("n", "<Leader>ff", "<CMD>Telescope<CR>", mapping_options, "Telescope")
 
 map({ "n", "t" }, "<Leader>t", "<CMD>ToggleTerm<CR>", mapping_options, "ToggleTerm toggle")
 
-map("n", "<Leader>z", "<CMD>ZenMode<CR>", mapping_options, "ZenMode")
+-- map("n", "<Leader>z", "<CMD>ZenMode<CR>", mapping_options, "ZenMode")
 
-map("n", "<Leader>gg", "<CMD>Neogit<CR>", mapping_options, "Toggle neogit")
+-- map("n", "<Leader>gg", "<CMD>Neogit<CR>", mapping_options, "Toggle neogit")
