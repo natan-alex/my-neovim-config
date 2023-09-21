@@ -296,6 +296,7 @@ local plugins = {
     --     config = function() require("my-config.plugins.zen-mode") end
     -- }
 
+    -- Better lsp stuff
     {
         "nvimdev/lspsaga.nvim",
         event = "LspAttach",
@@ -310,6 +311,12 @@ local plugins = {
         "stevearc/oil.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function() require("my-config.plugins.oil") end
+    },
+
+    -- Workspaces management
+    {
+        "natecraddock/workspaces.nvim",
+        config = function() require("my-config.plugins.workspaces") end
     }
 }
 

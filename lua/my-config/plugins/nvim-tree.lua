@@ -8,6 +8,8 @@ nvim_tree.setup({
     sort_by = "name",
     disable_netrw = true,
     hijack_cursor = true,
+    respect_buf_cwd = true,
+    sync_root_with_cwd = true,
     modified = {
         enable = true,
         show_on_dirs = true,
