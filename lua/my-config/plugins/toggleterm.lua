@@ -1,22 +1,36 @@
 require("toggleterm").setup({
-    size = 75,
-    open_mapping = nil,
+    size = 70,
+
+    autochdir = true,
     hide_numbers = true,
-    shade_filetypes = {},
-    shade_terminals = true,
-    shading_factor = 2,
+    persist_size = true,
+    close_on_exit = true,
     start_in_insert = true,
     insert_mappings = true,
-    persist_size = true,
+
     direction = "float",
-    close_on_exit = true,
-    shell = vim.o.shell,
-    float_opts = {
-        border = "curved",
-        winblend = 0,
-        highlights = {
-            border = "Normal",
-            background = "Normal",
-        },
-    },
+    float_opts = { border = "curved" },
 })
+
+local Terminal = require("toggleterm.terminal").Terminal
+
+local map = require("my-config.utils.mappings").map
+local mapping_options = { silent = true, noremap = true }
+
+
+local lazygit = Terminal:new({
+    cmd = "lazygit",
+
+    hidden = true,
+    hide_numbers = true,
+    start_in_insert = true,
+
+    on_open = function(term)
+        mapping_options.buffer = term.bufnr
+        map("n", "q", "<CMD>close<CR>", mapping_options, "")
+    end,
+})
+
+map("n", "<leader>lg", function()
+    lazygit:toggle()
+end, mapping_options, "Toggleterm open with lazygit")
