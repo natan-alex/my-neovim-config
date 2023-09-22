@@ -8,6 +8,8 @@ require("toggleterm").setup({
     start_in_insert = true,
     insert_mappings = true,
 
+    shell = vim.o.shell,
+
     direction = "float",
     float_opts = { border = "curved" },
 })
