@@ -41,14 +41,15 @@ local function apply_theme(theme, flavour)
     local config = require(themes_and_corresponding_configs[theme])
     local lualine_config = require("my-config.plugins.lualine")
 
-    config.apply_theme(flavour)
-    lualine_config.setup_with_theme(theme)
+    pcall(config.apply_theme, flavour)
+    pcall(lualine_config.setup_with_theme, theme)
 
     theme_being_used = theme
     flavour_being_used = flavour
 end
 
 local function join_theme_and_flavour(theme, flavour)
+    flavour = flavour or ""
     return theme .. ";" .. flavour
 end
 
@@ -67,7 +68,7 @@ local function load_theme_or_default(default_theme, default_flavour)
 
         if split ~= nil and split[1] ~= nil and split[2] ~= nil then
             theme = split[1]
-            flavour = split[2] or ""
+            flavour = split[2]
         end
     end
 
@@ -77,7 +78,7 @@ end
 local function ask_for_new_theme()
     local theme_names = vim.tbl_values(themes)
 
-    local new_theme
+    local new_theme = nil
 
     vim.ui.select(theme_names, { prompt = "New Theme: " }, function(choice)
         new_theme = choice
@@ -89,9 +90,11 @@ end
 local function ask_for_new_flavour(theme)
     local flavours = themes_and_their_flavours[theme]
 
-    if #flavours == 0 then return end
+    local new_flavour = nil
 
-    local new_flavour
+    if #flavours == 0 then
+        return new_flavour
+    end
 
     vim.ui.select(flavours, { prompt = "\nFlavour: " }, function(choice)
         new_flavour = choice
@@ -109,8 +112,6 @@ local function change_theme()
 
     local new_flavour = ask_for_new_flavour(new_theme)
 
-    new_flavour = new_flavour or ""
-
     apply_theme(new_theme, new_flavour)
 
     files.create_and_write_to_file(
@@ -121,4 +122,4 @@ end
 
 vim.api.nvim_create_user_command("ChangeTheme", change_theme, { nargs = 0 })
 
-load_theme_or_default(themes.VSCODE, nil)
+load_theme_or_default(themes.VIM_CODE_DARK, nil)
