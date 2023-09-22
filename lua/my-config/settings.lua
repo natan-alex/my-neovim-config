@@ -114,6 +114,8 @@ vim.opt.shortmess:append("I")
 -- Ignore certain files and folders when globing
 vim.opt.wildignorecase = true -- ignore file and dir name cases in cmd-completion
 vim.opt.wildignore:append("*.DS_Store")
+vim.opt.wildignore:append("*/target/*")
+vim.opt.wildignore:append("*/node_modules/*")
 vim.opt.wildignore:append("*.pyc,*.pkl")
 vim.opt.wildignore:append("*.o,*.obj,*.dylib,*.bin,*.dll,*.exe")
 vim.opt.wildignore:append("*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**")
