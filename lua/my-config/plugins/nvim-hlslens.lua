@@ -8,4 +8,4 @@ vim.api.nvim_set_keymap('n', 'N', [[<CMD>execute('normal! ' . v:count1 . 'N')<CR
 
 vim.api.nvim_set_keymap('n', '*', [[*<CMD>lua require('hlslens').start()<CR>]], mapping_options)
 
-vim.api.nvim_set_keymap('n', '<Leader>q', '<CMD>noh<CR>', mapping_options)
+vim.api.nvim_set_keymap('n', '<Leader>hh', '<CMD>noh<CR>', mapping_options)
