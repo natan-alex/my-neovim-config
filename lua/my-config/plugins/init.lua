@@ -200,7 +200,7 @@ local plugins = {
     -- Nice tabs
     {
         "akinsho/bufferline.nvim",
-        version = "v3.*",
+        version = "*",
         event = "BufEnter",
         config = function() require("my-config.plugins.bufferline") end,
     },
