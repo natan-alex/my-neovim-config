@@ -39,11 +39,11 @@ vim.g.loaded_tarPlugin = 1
 -- Do not load the tutor plugin
 vim.g.loaded_tutor_mode_plugin = 1
 
--- Do not use builtin matchit.vim and matchparen.vim since we use vim-matchup
+-- Do not use builtin matchit.vim and matchparen.vim
 vim.g.loaded_matchit = 1
 vim.g.loaded_matchparen = 1
 
--- Disable sql omni completion, it is broken.
+-- Disable sql omni completion
 vim.g.loaded_sql_completion = 1
 
 vim.g.lua_folder_path = paths.join(vim.fn.stdpath("config"), "lua")
