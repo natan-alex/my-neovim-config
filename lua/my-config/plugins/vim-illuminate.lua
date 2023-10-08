@@ -1,6 +1,6 @@
 return {
     "RRethy/vim-illuminate",
-    event = "BufEnter",
+    event = "VimEnter",
     config = function()
         local illuminate = require("illuminate")
 

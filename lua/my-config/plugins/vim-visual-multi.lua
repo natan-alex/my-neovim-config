@@ -1,6 +1,6 @@
 return {
     "mg979/vim-visual-multi",
-    event = "BufEnter",
+    event = "VimEnter",
     config = function()
         local leader = "\\"
 

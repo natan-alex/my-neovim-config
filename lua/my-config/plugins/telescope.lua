@@ -13,6 +13,7 @@ return {
 
     {
         "nvim-telescope/telescope.nvim",
+        lazy = true,
         after = "nvim-telescope/telescope-fzf-native.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
         config = function()

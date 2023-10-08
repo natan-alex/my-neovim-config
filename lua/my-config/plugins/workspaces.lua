@@ -1,5 +1,6 @@
 return {
     "natecraddock/workspaces.nvim",
+    event = "VimEnter",
     config = function()
         require("workspaces").setup({
             hooks = {
@@ -14,6 +15,6 @@ return {
         local map = require("my-config.utils.mappings").map
         local mapping_options = { noremap = true, silent = true, nowait = true }
 
-        map("n", "<Leader>fw", "<CMD>Telescope workspaces<CR>", mapping_options, "Telescope workspaces")
+        map("n", "<Leader>ww", "<CMD>Telescope workspaces<CR>", mapping_options, "Telescope workspaces")
     end
 }

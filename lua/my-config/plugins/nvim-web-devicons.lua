@@ -1,6 +1,6 @@
 return {
     "nvim-tree/nvim-web-devicons",
-    event = "VimEnter",
+    lazy = true,
     config = function()
         require("nvim-web-devicons").setup()
     end,

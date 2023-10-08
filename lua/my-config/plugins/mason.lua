@@ -1,7 +1,7 @@
 return {
     {
         "williamboman/mason.nvim",
-        event = "VimEnter",
+        cmd = "Mason",
         config = function()
             require("mason").setup({
                 ui = {
