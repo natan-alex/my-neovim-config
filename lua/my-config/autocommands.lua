@@ -1,4 +1,4 @@
-local utils = require("my-config.utils.files")
+local files = require("my-config.utils.files")
 
 -- Display a message when the current file is not in utf-8 format.
 -- Note that we need to use `unsilent` command here because of this issue:
@@ -17,12 +17,12 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
     end,
 })
 
--- highlight yanked region, see `:h lua-highlight`
+-- Highlight yanked region, see `:h lua-highlight`
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     pattern = "*",
     group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
     callback = function()
-        vim.highlight.on_yank { timeout = 250 }
+        vim.highlight.on_yank({ timeout = 100 })
     end,
 })
 
@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
     callback = function(ctx)
         local dir = vim.fn.fnamemodify(ctx.file, ":p:h")
-        utils.create_dir_if_does_not_exist(dir)
+        files.create_dir_if_does_not_exist(dir)
     end,
 })
 
@@ -53,6 +53,7 @@ vim.api.nvim_create_autocmd({ "FileChangedShellPost" }, {
     end,
 })
 
+-- Check for file changes
 vim.api.nvim_create_autocmd({ "FocusGained", "CursorHold" }, {
     pattern = "*",
     group = "auto_read",
@@ -68,4 +69,30 @@ vim.api.nvim_create_autocmd("VimResized", {
     group = vim.api.nvim_create_augroup("win_autoresize", { clear = true }),
     desc = "autoresize windows on resizing operation",
     command = "wincmd =",
+})
+
+-- Handle large files
+-- ref: https://vi.stackexchange.com/a/169/15292
+vim.api.nvim_create_autocmd("BufReadPre", {
+    pattern = "*",
+    group = vim.api.nvim_create_augroup("large_file", { clear = true }),
+    callback = function()
+        local file = vim.fn.expand("<afile>")
+
+        local large_file_size = 10485760 -- 10MB
+
+        local file_size = vim.fn.getfsize(file)
+
+        if file_size > large_file_size or file_size == -2 then
+            vim.opt.eventignore:append("all")
+            vim.opt.cursorline = false
+            vim.opt.relativenumber = false
+            vim.opt.swapfile = false
+            vim.opt.undolevels = 5
+            vim.opt.bufhidden = "unload"
+        else
+            vim.opt.eventignore:remove("all")
+            vim.opt.relativenumber = true
+        end
+    end,
 })

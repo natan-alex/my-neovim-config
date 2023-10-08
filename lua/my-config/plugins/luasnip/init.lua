@@ -1,22 +1,30 @@
-local luasnip = require("luasnip")
+return {
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    build = "make install_jsregexp",
+    config = function()
+        local luasnip = require("luasnip")
 
-luasnip.config.set_config({
-    enable_autosnippets = true
-})
+        luasnip.config.set_config({
+            enable_autosnippets = true
+        })
 
-vim.keymap.set({ "i", "s" }, "<A-j>", function() luasnip.jump(1) end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<A-k>", function() luasnip.jump(-1) end, { silent = true })
+        local map = require("my-config.utils.mappings").map
+        local mapping_options = { silent = true }
 
--- To use existing vs-code style snippets from a plugin
-local paths = require("my-config.utils.paths")
+        map({ "i", "s" }, "<A-j>", function() luasnip.jump(1) end, mapping_options)
+        map({ "i", "s" }, "<A-k>", function() luasnip.jump(-1) end, mapping_options)
 
-local friendly_snippets_path = paths.join(vim.fn.stdpath("data"), "lazy", "friendly-snippets")
+        local paths = require("my-config.utils.paths")
 
-require("luasnip.loaders.from_vscode").lazy_load({ paths = friendly_snippets_path })
+        -- To use existing vs-code style snippets from a plugin
+        local friendly_snippets_path = paths.join(vim.fn.stdpath("data"), "lazy", "friendly-snippets")
 
--- CUSTOM SNIPPETS
-local modules = require("my-config.utils.modules")
+        require("luasnip.loaders.from_vscode").lazy_load({ paths = friendly_snippets_path })
 
-local snippets_folder_path = paths.join(vim.g.plugins_folder_path, "luasnip", "snippets")
+        -- CUSTOM SNIPPETS
+        local custom_snippets_path = paths.join(vim.fn.getcwd(), "custom-snippets")
 
-modules.load_modules_in_folder(snippets_folder_path)
+        require("luasnip.loaders.from_lua").load({ paths = custom_snippets_path })
+    end
+}
