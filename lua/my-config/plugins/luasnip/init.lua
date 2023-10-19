@@ -15,10 +15,14 @@ return {
         })
 
         local map = require("my-config.utils.mappings").map
-        local mapping_options = { silent = true }
 
-        map({ "i", "s" }, "<A-j>", function() luasnip.jump(1) end, mapping_options)
-        map({ "i", "s" }, "<A-k>", function() luasnip.jump(-1) end, mapping_options)
+        map("i", "<TAB>", function()
+            print("tab on insert")
+            return luasnip.jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+        end, { silent = true, expr = true })
+
+        map("s", "<TAB>", function() luasnip.jump(1) end, { silent = true})
+        map("s", "<S-TAB>", function() luasnip.jump(-1) end, { silent = true})
 
         local paths = require("my-config.utils.paths")
 
