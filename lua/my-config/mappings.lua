@@ -51,6 +51,9 @@ map("n", "C", '"_C')
 map("n", "cc", '"_cc')
 map("x", "c", '"_c')
 
+-- Clear search with <esc>
+map({ "i", "n" }, "<ESC>", "<CMD>noh<CR><ESC>")
+
 -- Do not move my cursor when joining lines.
 map("n", "J", function()
     vim.cmd([[
