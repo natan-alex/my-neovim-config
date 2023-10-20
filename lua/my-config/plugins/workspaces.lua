@@ -19,8 +19,5 @@ return {
 		})
 
 		require("telescope").load_extension("workspaces")
-
-		local map = require("my-config.utils.mappings").map
-		local mapping_options = { noremap = true, silent = true, nowait = true }
 	end,
 }
