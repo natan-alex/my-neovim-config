@@ -1,1 +1,1 @@
-return { "tpope/vim-surround", event = "VimEnter" }
+return { "tpope/vim-surround", event = "VeryLazy" }

@@ -1,8 +1,18 @@
 return {
-    "ggandor/leap.nvim",
-    event = "VimEnter",
-    config = function()
-        vim.keymap.set({ "n", "x" }, "sf", "<Plug>(leap-forward-to)")
-        vim.keymap.set({ "n", "x" }, "sb", "<Plug>(leap-backward-to)")
-    end,
+	"ggandor/leap.nvim",
+	event = "VeryLazy",
+	keys = {
+		{
+			"sf",
+			"<Plug>(leap-forward-to)",
+			mode = { "n", "x" },
+			desc = "Leap jump forward",
+		},
+		{
+			"sb",
+			"<Plug>(leap-backward-to)",
+			mode = { "n", "x" },
+			desc = "Leap jump backward",
+		},
+	},
 }
