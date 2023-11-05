@@ -70,6 +70,11 @@ return {
 					},
 				},
 			},
+
+			matchup = {
+				enable = true,
+				disable = {},
+			},
 		})
 
 		require("nvim-treesitter.install").compilers = { "clang" }
