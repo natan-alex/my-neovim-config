@@ -1,6 +1,5 @@
 return {
 	"natecraddock/workspaces.nvim",
-	event = "VeryLazy",
 	keys = {
 		{
 			"<Leader>ww",

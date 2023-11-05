@@ -2,7 +2,6 @@ local files = require("my-config.utils.files")
 
 return {
 	"lewis6991/gitsigns.nvim",
-	event = "VeryLazy",
 	cond = files.inside_git_repo,
 	config = function()
 		local gitsigns = require("gitsigns")

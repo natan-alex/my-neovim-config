@@ -1,6 +1,5 @@
 return {
 	"ggandor/leap.nvim",
-	event = "VeryLazy",
 	keys = {
 		{
 			"sf",
