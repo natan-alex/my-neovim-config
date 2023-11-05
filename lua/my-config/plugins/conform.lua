@@ -30,6 +30,8 @@ return {
 				typescript = { { "biome", "prettierd", "prettier" } },
 				javascriptreact = { { "biome", "prettierd", "prettier" } },
 				typescriptreact = { { "biome", "prettierd", "prettier" } },
+                csharp = { "csharpier" },
+                python = { { "autopep8", "black" } },
 			},
 		})
 	end,
