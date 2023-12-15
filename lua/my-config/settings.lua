@@ -22,7 +22,7 @@ vim.opt.showmode = false
 vim.opt.confirm = true
 
 -- Tilde (~) is an operator, thus must be followed by motions like `e` or `w`.
-vim.opt.tildeop = true
+vim.opt.tildeop = false
 
 -- Enable true color support. Do not options.this option if your terminal does not
 -- support true colors! For a comprehensive list of terminals supporting true
