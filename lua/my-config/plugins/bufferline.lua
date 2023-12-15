@@ -10,9 +10,6 @@ return {
 		{ "<A-L>", "<CMD>BufferLineMoveNext<CR>", mode = "n", desc = "Bufferline move buffer right" },
 		{ "<A-H>", "<CMD>BufferLineMovePrev<CR>", mode = "n", desc = "Bufferline move buffer left" },
 
-		-- Pin/unpin buffer
-		{ "<A-P>", "<CMD>BufferLineTogglePin<CR>", mode = "n", desc = "Bufferline toggle pin current buffer" },
-
 		-- Close buffers
 		{ "<A-Left>", "<CMD>BufferLineCloseLeft<CR>", mode = "n", desc = "Bufferline close all buffers to the left" },
 		{
@@ -22,33 +19,8 @@ return {
 			desc = "Bufferline close all buffers to the right",
 		},
 
-		-- Pick a buffer
-		{ "<A-b>", "<CMD>BufferLinePick<CR>", mode = "n", desc = "Bufferline pick a buffer" },
-		{ "<A-B>", "<CMD>BufferLinePickClose<CR>", mode = "n", desc = "Bufferline close buffer pick" },
-
 		-- Delete a buffer
 		{ "<A-d>", "<CMD>bdelete<CR>", mode = "n", desc = "Delete buffer" },
-
-		-- Sort buffers
-		{ "<A-s><A-n>", "<CMD>BufferLineSortByTabs<CR>", mode = "n", desc = "Bufferline sort buffers by tabs" },
-		{
-			"<A-s><A-d>",
-			"<CMD>BufferLineSortByDirectory<CR>",
-			mode = "n",
-			desc = "Bufferline sort buffers by directory",
-		},
-		{
-			"<A-s><A-w>",
-			"<CMD>BufferLineSortByRelativeDirectory<CR>",
-			mode = "n",
-			desc = "Bufferline sort buffers by relative directory",
-		},
-		{
-			"<A-s><A-l>",
-			"<CMD>BufferLineSortByExtension<CR>",
-			mode = "n",
-			desc = "Bufferline sort buffers by extension",
-		},
 	},
 	config = function()
 		require("bufferline").setup({
