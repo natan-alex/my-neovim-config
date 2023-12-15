@@ -22,11 +22,6 @@ map("x", "$", "g_")
 
 map("n", "^", "g^")
 
--- Continuous visual shifting (does not exit Visual mode), `gv` means
--- to reselect previous visual area, see https://superuser.com/q/310417/736190
-map("x", "<", "<gv")
-map("x", ">", ">gv")
-
 -- Resize windows with arrows
 map("n", "<C-S-Up>", "<CMD>resize +2<CR>")
 map("n", "<C-S-Down>", "<CMD>resize -2<CR>")
@@ -53,19 +48,3 @@ map("x", "c", '"_c')
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<ESC>", "<CMD>noh<CR><ESC>")
-
--- Do not move my cursor when joining lines.
-map("n", "J", function()
-    vim.cmd([[
-        normal! mzJ`z
-        delmarks z
-    ]])
-end, { desc = "join line" })
-
-map("n", "gJ", function()
-    -- we must use `normal!`, otherwise it will trigger recursive mapping
-    vim.cmd([[
-        normal! zmgJ`z
-        delmarks z
-    ]])
-end, { desc = "join visual lines" })
