@@ -21,7 +21,7 @@ return {
 				extra = true,
 				---Extended mapping
 				---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-				extended = true,
+				extended = false,
 			},
 			toggler = {
 				---Line-comment toggle keymap
