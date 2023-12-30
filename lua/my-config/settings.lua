@@ -72,9 +72,9 @@ vim.opt.timeoutlen = 500
 vim.opt.updatetime = 200 -- For CursorHold events
 
 -- General tab settings
-vim.opt.tabstop = 4    -- number of visual spaces per TAB
-vim.opt.softtabstop = 4    -- number of spaces in tab when editing
-vim.opt.shiftwidth = 4    -- number of spaces to use for autoindent
+vim.opt.tabstop = 4 -- number of visual spaces per TAB
+vim.opt.softtabstop = 4 -- number of spaces in tab when editing
+vim.opt.shiftwidth = 4 -- number of spaces to use for autoindent
 vim.opt.expandtab = true -- expand tab to spaces so that tabs are spaces
 
 -- Disable backup file
@@ -92,8 +92,10 @@ vim.opt.virtualedit = "block"
 -- Display column on the left with signs (for things like gitsigns)
 vim.opt.signcolumn = "yes:1"
 
+vim.opt.backspace = "indent,eol,start"
+
 -- Use mouse to select and resize windows, etc.
-vim.opt.mouse = "a"     -- Enable mouse in several mode
+vim.opt.mouse = "a" -- Enable mouse in several mode
 vim.opt.mousemodel = "popup" -- options.the behaviour of mouse
 vim.opt.mousescroll = "ver:3,hor:10"
 
@@ -124,6 +126,6 @@ vim.opt.wildignore:append("*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex
 
 -- Use rg for "greping"
 if vim.fn.executable("rg") then
-    vim.opt.grepprg = [[rg --vimgrep --no-heading --smart-case]]
-    vim.opt.grepformat = [[%f:%l:%c:%m]]
+	vim.opt.grepprg = [[rg --vimgrep --no-heading --smart-case]]
+	vim.opt.grepformat = [[%f:%l:%c:%m]]
 end
