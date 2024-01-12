@@ -26,6 +26,7 @@ return {
 				map("n", "<Leader>hD", gitsigns.toggle_deleted, mapping_options, "Gitsigns toggle deleted")
 				map("n", "<Leader>hs", gitsigns.stage_hunk, mapping_options, "Gitsigns stage hunk")
 				map("n", "<Leader>hr", gitsigns.reset_hunk, mapping_options, "Gitsigns reset hunk")
+
 				map(
 					"n",
 					"<Leader>hl",
@@ -33,6 +34,7 @@ return {
 					mapping_options,
 					"Gitsigns toggle current line blame"
 				)
+
 				map("n", "]h", function()
 					if vim.wo.diff then
 						return "]h"
@@ -42,6 +44,7 @@ return {
 					end)
 					return "<Ignore>"
 				end, mapping_options, "Gitsigns go to next hunk")
+
 				map("n", "[h", function()
 					if vim.wo.diff then
 						return "[h"
