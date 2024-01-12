@@ -26,17 +26,16 @@ return {
 
 		local map = require("my-config.utils.mappings").map
 
-		map("i", "<TAB>", function()
-			print("tab on insert")
-			return luasnip.jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-		end, { silent = true, expr = true })
-
-		map("s", "<TAB>", function()
-			luasnip.jump(1)
+		map({ "i", "s" }, "<TAB>", function()
+			if luasnip.jumpable(1) then
+				luasnip.jump(1)
+			end
 		end, { silent = true })
 
-		map("s", "<S-TAB>", function()
-			luasnip.jump(-1)
+		map({ "i", "s" }, "<S-TAB>", function()
+			if luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			end
 		end, { silent = true })
 
 		-- CUSTOM SNIPPETS
