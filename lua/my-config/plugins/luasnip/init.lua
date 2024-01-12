@@ -13,7 +13,7 @@ return {
 		if vim.fn.executable("make") == 1 then
 			vim.cmd("make install_jsregexp")
 		else
-            local message = "Make not installed, could not install jsregexp"
+			local message = "Make not installed, could not install jsregexp"
 			vim.notify(message, vim.log.levels.WARN, {})
 		end
 	end,
