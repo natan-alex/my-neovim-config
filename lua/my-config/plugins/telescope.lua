@@ -5,6 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
+			after = { "nvim-telescope/telescope.nvim" },
 			build = function()
 				if vim.fn.executable("make") == 1 then
 					vim.cmd("make")
