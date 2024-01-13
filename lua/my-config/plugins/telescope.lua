@@ -1,7 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	cmd = "Telescope",
-	after = "nvim-telescope/telescope-fzf-native.nvim",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{
@@ -13,9 +12,6 @@ return {
 					local message = "Make not installed, could not build telescope fzf native"
 					vim.notify(message, vim.log.levels.WARN, {})
 				end
-			end,
-			config = function()
-				require("telescope").load_extension("fzf")
 			end,
 		},
 	},
@@ -33,6 +29,9 @@ return {
 		{ "<Leader>fr", "<CMD>Telescope lsp_references<CR>", "Telescope Lsp references", mode = "n" },
 		{ "<Leader>fS", "<CMD>Telescope lsp_document_symbols<CR>", "Telescope Lsp document symbols", mode = "n" },
 		{ "<Leader>fw", "<CMD>Telescope lsp_workspace_symbols<CR>", "Telescope Lsp workspace symbols", mode = "n" },
+		{ "<Leader>fc", "<CMD>Telescope command_history<CR>", "Telescope show Command History", mode = "n" },
+		{ "<Leader>f/", "<CMD>Telescope search_history<CR>", "Telescope show Search History", mode = "n" },
+		{ "<Leader>fgb", "<CMD>Telescope git_branches<CR>", "Telescope show git branches", mode = "n" },
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -42,14 +41,9 @@ return {
 			defaults = {
 				prompt_prefix = "🔭  ",
 				selection_caret = "»  ",
-				layout_strategy = "vertical",
-				sorting_strategy = "ascending",
-				path_display = { "truncate " },
-				layout_config = {
-					width = 0.8,
-					height = 0.95,
-					prompt_position = "top",
-				},
+				selection_strategy = "reset",
+				path_display = { "smart" },
+				color_devicons = true,
 				vimgrep_arguments = {
 					"rg",
 					"--color=never",
@@ -59,6 +53,8 @@ return {
 					"--column",
 					"--smart-case",
 					"--trim",
+					"--hidden",
+					"--glob=!.git/",
 				},
 				mappings = {
 					i = {
@@ -94,6 +90,39 @@ return {
 					},
 				},
 			},
+			pickers = {
+				live_grep = {
+					theme = "dropdown",
+				},
+
+				grep_string = {
+					theme = "dropdown",
+				},
+
+				find_files = {
+					theme = "dropdown",
+					previewer = false,
+				},
+
+				buffers = {
+					theme = "dropdown",
+					previewer = false,
+					initial_mode = "normal",
+					mappings = {
+						i = { ["<C-d>"] = actions.delete_buffer },
+						n = { ["dd"] = actions.delete_buffer },
+					},
+				},
+
+				colorscheme = {
+					enable_preview = true,
+				},
+
+				lsp_references = {
+					theme = "dropdown",
+					initial_mode = "normal",
+				},
+			},
 			extensions = {
 				fzf = {
 					fuzzy = true, -- false will only do exact matching
@@ -103,5 +132,7 @@ return {
 				},
 			},
 		})
+
+		telescope.load_extension("fzf")
 	end,
 }
