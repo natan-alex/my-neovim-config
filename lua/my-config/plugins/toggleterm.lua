@@ -4,8 +4,26 @@ return {
 		{
 			"<Leader>t",
 			"<CMD>ToggleTerm<CR>",
-			mode = { "n", "t" },
+			mode = "t",
 			desc = "ToggleTerm toggle",
+		},
+		{
+			"<Leader>tf",
+			"<CMD>ToggleTerm direction=float size=70<CR>",
+			mode = "n",
+			desc = "ToggleTerm open float terminal",
+		},
+		{
+			"<Leader>th",
+			"<CMD>ToggleTerm direction=horizontal size=15<CR>",
+			mode = "n",
+			desc = "ToggleTerm open horizontal terminal",
+		},
+		{
+			"<Leader>tv",
+			"<CMD>ToggleTerm direction=vertical size=55<CR>",
+			mode = "n",
+			desc = "ToggleTerm open vertical terminal",
 		},
 	},
 	config = function()
