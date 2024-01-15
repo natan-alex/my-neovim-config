@@ -1,5 +1,6 @@
 return {
 	"akinsho/bufferline.nvim",
+    event = "VimEnter",
 	keys = {
 		-- Move to previous/next
 		{ "<A-l>", "<CMD>BufferLineCycleNext<CR>", mode = "n", desc = "Bufferline go to next buffer" },
@@ -59,7 +60,7 @@ return {
 				persist_buffer_sort = false,
 				separator_style = "thin",
 				enforce_regular_tabs = true,
-				always_show_bufferline = true,
+				always_show_bufferline = false,
 				hover = { enabled = false },
 				sort_by = "id",
 			},
