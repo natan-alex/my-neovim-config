@@ -13,7 +13,12 @@ return {
 		-- { "gt", "<CMD>Lspsaga goto_type_definition<CR>", mode = "n", desc = "Lspsaga go to type definition" },
 		-- { "gT", "<CMD>Lspsaga peek_type_definition<CR>", mode = "n", desc = "Lspsaga peek type definition" },
 		{ "gr", "<CMD>Lspsaga finder<CR>", mode = "n", desc = "Lspsaga open finder" },
-		{ "[d", "<CMD>Lspsaga diagnostic_jump_prev<CR>", mode = "n", desc = "Lspsaga go to previous diagnostic" },
+		{
+			"[d",
+			"<CMD>Lspsaga diagnostic_jump_prev<CR>",
+			mode = "n",
+			desc = "Lspsaga go to previous diagnostic",
+		},
 		{ "]d", "<CMD>Lspsaga diagnostic_jump_next<CR>", mode = "n", desc = "Lspsaga go to next diagnostic" },
 		{ "<Leader>rn", "<CMD>Lspsaga rename<CR>", mode = "n", desc = "Lspsaga rename" },
 		{ "<Leader>ca", "<CMD>Lspsaga code_action<CR>", mode = "n", desc = "Lspsaga show code actions" },
@@ -24,20 +29,33 @@ return {
 			code_action = {
 				extend_gitsigns = true,
 			},
-			finder = {
+			definition = {
 				keys = {
-					close = "<C-c>",
+					edit = "o",
 				},
 			},
-            outline = {
-                close_after_jump = true,
-            },
-            rename = {
-                in_select = false,
-                keys = {
-					close = "<C-c>",
-                },
-            },
+			finder = {
+				keys = {
+					quit = { "<C-c>", "<ESC>", "q" },
+					toggle_or_open = { "o", "<CR>" },
+				},
+			},
+			outline = {
+				close_after_jump = true,
+				keys = {
+					quit = { "<C-c>", "<ESC>", "q" },
+					toggle_or_jump = { "o", "<CR>" },
+				},
+			},
+			rename = {
+				in_select = false,
+				keys = {
+					quit = { "<C-c>", "<ESC>" },
+				},
+			},
+			symbol_in_winbar = {
+				enable = false,
+			},
 		})
 	end,
 }
