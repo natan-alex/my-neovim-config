@@ -42,10 +42,16 @@ return {
 				["<C-l>"] = cmp.mapping(cmp.mapping.complete(), { "i" }),
 				["<Up>"] = cmp.mapping.scroll_docs(-1),
 				["<Down>"] = cmp.mapping.scroll_docs(1),
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
-				["<Tab>"] = cmp.mapping.confirm({ select = true }),
 				["<C-e>"] = cmp.mapping.abort(),
 				["<C-c>"] = cmp.mapping.abort(),
+				["<CR>"] = cmp.mapping.confirm(),
+				["<Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.confirm({ select = true })
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
 			},
 		})
 
