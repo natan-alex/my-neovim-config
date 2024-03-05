@@ -12,7 +12,7 @@ return {
 		-- { "gD", "<CMD>Lspsaga peek_definition<CR>", mode = "n", desc = "Lspsaga peek definition" },
 		-- { "gt", "<CMD>Lspsaga goto_type_definition<CR>", mode = "n", desc = "Lspsaga go to type definition" },
 		-- { "gT", "<CMD>Lspsaga peek_type_definition<CR>", mode = "n", desc = "Lspsaga peek type definition" },
-		{ "gr", "<CMD>Lspsaga finder<CR>", mode = "n", desc = "Lspsaga open finder" },
+		-- { "gr", "<CMD>Lspsaga finder<CR>", mode = "n", desc = "Lspsaga open finder" },
 		{
 			"[d",
 			"<CMD>Lspsaga diagnostic_jump_prev<CR>",

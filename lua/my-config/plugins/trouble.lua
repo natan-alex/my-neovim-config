@@ -3,10 +3,10 @@ return {
 	cmd = { "TroubleToggle", "Trouble" },
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
-		{ "gR", "<CMD>Trouble lsp_references<CR>", mode = "n", desc = "Trouble show lsp references" },
-		-- { "gd", "<CMD>Trouble lsp_definitions<CR>", mode = "n", desc = "Trouble show lsp definitions" },
-		-- { "gi", "<CMD>Trouble lsp_implementations<CR>", mode = "n", desc = "Trouble show lsp implementations" },
-		-- { "gt", "<CMD>Trouble lsp_type_definitions<CR>", mode = "n", desc = "Trouble show lsp type definitions" },
+		{ "gr", "<CMD>Trouble lsp_references<CR>", mode = "n", desc = "Trouble show lsp references" },
+		{ "gd", "<CMD>Trouble lsp_definitions<CR>", mode = "n", desc = "Trouble show lsp definitions" },
+		{ "gi", "<CMD>Trouble lsp_implementations<CR>", mode = "n", desc = "Trouble show lsp implementations" },
+		{ "gt", "<CMD>Trouble lsp_type_definitions<CR>", mode = "n", desc = "Trouble show lsp type definitions" },
 
 		{ "<leader>xx", "<CMD>TroubleToggle<CR>", mode = "n", desc = "Trouble toggle" },
 		{
