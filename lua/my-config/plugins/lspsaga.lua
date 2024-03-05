@@ -36,7 +36,7 @@ return {
 			},
 			finder = {
 				keys = {
-					quit = { "<C-c>", "<ESC>", "q" },
+					quit = { "<C-c>", "<ESC>" },
 					toggle_or_open = { "o", "<CR>" },
 				},
 			},
