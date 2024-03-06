@@ -25,10 +25,10 @@ return {
             },
 
             renderer = {
-                highlight_git = "all",
-                highlight_modified = "all",
-                highlight_clipboard = "all",
-                highlight_diagnostics = "all",
+                highlight_git = "none",
+                highlight_modified = "icon",
+                highlight_clipboard = "name",
+                highlight_diagnostics = "name",
                 highlight_opened_files = "name",
                 icons = {
                     web_devicons = {
