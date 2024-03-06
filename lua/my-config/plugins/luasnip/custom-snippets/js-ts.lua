@@ -14,7 +14,7 @@ local snippets = {
         format([[export {{ default }} from './{}';]],
             { insert_node(1, "file") })),
 
-    create_snippet("exp",
+    create_snippet("expf",
         format([[export {} from './{}';]],
             { insert_node(1, "things"), insert_node(2, "file") })),
 
