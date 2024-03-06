@@ -13,9 +13,6 @@ map({ "n", "x" }, "x", "\"_x")
 -- Clipboard related
 map({ "n", "x" }, "<A-y>", "\"+y")
 
--- Shortcut for faster save and quit
-map("n", "<Leader>w", "<CMD>update<CR>", { silent = true, desc = "Save" })
-
 -- Do not include white space characters when using $ in visual mode,
 -- see https://vi.stackexchange.com/q/12607/15292
 map("x", "$", "g_")
