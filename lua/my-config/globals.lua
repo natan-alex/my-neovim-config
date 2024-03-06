@@ -1,15 +1,6 @@
 -- Leader
 vim.g.mapleader = ","
 
-local function feature_exists(feature)
-    return vim.fn.has(feature) == 1
-end
-
-vim.g.is_mac   = feature_exists("macunix")
-vim.g.is_win   = feature_exists("win32") or feature_exists("win64")
-vim.g.is_linux = feature_exists("unix") and not feature_exists("macunix")
-
-
 -- Disable loading certain plugins
 -- Whether to load netrw by default, see https://github.com/bling/dotvim/issues/4
 vim.g.loaded_netrw             = 1
