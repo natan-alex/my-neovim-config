@@ -6,14 +6,7 @@ return {
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			after = { "nvim-telescope/telescope.nvim" },
-			build = function()
-				if vim.fn.executable("make") == 1 then
-					vim.cmd("make")
-				else
-					local message = "Make not installed, could not build telescope fzf native"
-					vim.notify(message, vim.log.levels.WARN, {})
-				end
-			end,
+			build = "make",
 		},
 	},
 	keys = {
