@@ -23,7 +23,7 @@ return {
 		map({ "i", "s" }, "<C-h>", "<CMD>lua require('luasnip').jump(-1)<CR>", { silent = true })
 
 		-- CUSTOM SNIPPETS
-		local custom_snippets_path = paths.join(vim.fn.getcwd(), "custom-snippets")
+		local custom_snippets_path = paths.join(paths.script_path(), "custom-snippets")
 
 		require("luasnip.loaders.from_lua").load({ paths = custom_snippets_path })
 	end,
