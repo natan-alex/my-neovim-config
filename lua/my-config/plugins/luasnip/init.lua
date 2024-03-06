@@ -9,14 +9,7 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load({ paths = path })
 		end,
 	},
-	build = function()
-		if vim.fn.executable("make") == 1 then
-			vim.cmd("make install_jsregexp")
-		else
-			local message = "Make not installed, could not install jsregexp"
-			vim.notify(message, vim.log.levels.WARN, {})
-		end
-	end,
+	build = "make install_jsregexp",
 	config = function()
 		local luasnip = require("luasnip")
 
