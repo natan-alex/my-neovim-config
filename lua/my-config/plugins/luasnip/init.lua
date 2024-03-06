@@ -26,21 +26,8 @@ return {
 
 		local map = require("my-config.utils.mappings").map
 
-        map("i", "<TAB>", function()
-            return luasnip.jumpable(1) and "<CMD>lua require('luasnip').jump(1)<CR>" or "<TAB>"
-        end, { silent = true, expr = true })
-
-        map("s", "<TAB>", function()
-            if luasnip.jumpable(1) then
-                luasnip.jump(1)
-            end
-        end, { silent = true })
-
-        map({ "i", "s" }, "<S-TAB>", function()
-            if luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            end
-        end, { silent = true })
+		map({ "i", "s" }, "<C-l>", "<CMD>lua require('luasnip').jump(1)<CR>", { silent = true })
+		map({ "i", "s" }, "<C-h>", "<CMD>lua require('luasnip').jump(-1)<CR>", { silent = true })
 
 		-- CUSTOM SNIPPETS
 		local custom_snippets_path = paths.join(vim.fn.getcwd(), "custom-snippets")
