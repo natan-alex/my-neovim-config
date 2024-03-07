@@ -35,6 +35,24 @@ return {
 					capabilities = capabilities,
 				})
 			end,
+
+            ["quick_lint_js"] = function()
+                lspconfig["quick_lint_js"].setup({
+					capabilities = capabilities,
+                    filetypes = {
+                        "html",
+                        "javascript",
+                        "typescript",
+                        "javascriptreact",
+                        "typescriptreact",
+                        "svelte",
+                        "vue",
+                        "tsx",
+                        "jsx",
+                        "astro",
+                    },
+                })
+            end
 		})
 	end,
 }
