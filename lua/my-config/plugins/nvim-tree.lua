@@ -8,7 +8,6 @@ return {
 
         nvim_tree.setup({
             disable_netrw = true,
-            hijack_cursor = true,
             select_prompts = true,
             respect_buf_cwd = true,
             sync_root_with_cwd = true,
@@ -22,6 +21,11 @@ return {
                 cursorline = true,
                 debounce_delay = 100,
                 centralize_selection = true,
+
+                width = {
+                    min = "20%",
+                    max = "60%",
+                },
             },
 
             renderer = {
