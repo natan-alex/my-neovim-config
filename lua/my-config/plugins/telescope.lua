@@ -35,9 +35,12 @@ return {
 			defaults = {
 				prompt_prefix = "🔭  ",
 				selection_caret = "»  ",
-				selection_strategy = "reset",
-				path_display = { "smart" },
-				color_devicons = true,
+				path_display = { "truncate" },
+                set_env = { ["COLORTERM"] = "truecolor" },
+
+                file_sorter = require("telescope.sorters").get_fuzzy_file,
+                generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+
 				vimgrep_arguments = {
 					"rg",
 					"--color=never",
