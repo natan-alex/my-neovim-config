@@ -36,6 +36,16 @@ return {
 				})
 			end,
 
+            ["tsserver"] = function()
+                lspconfig["tsserver"].setup({
+                    capabilities = capabilities,
+                    on_attach = function(client, _)
+                        client.server_capabilities.documentFormattingProvider = false
+                        client.server_capabilities.documentRangeFormattingProvider = false
+                    end
+                })
+            end,
+
             ["quick_lint_js"] = function()
                 lspconfig["quick_lint_js"].setup({
 					capabilities = capabilities,
