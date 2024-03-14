@@ -19,8 +19,17 @@ return {
 
 		local map = require("my-config.utils.mappings").map
 
-		map({ "i", "s" }, "<C-l>", "<CMD>lua require('luasnip').jump(1)<CR>", { silent = true })
-		map({ "i", "s" }, "<C-h>", "<CMD>lua require('luasnip').jump(-1)<CR>", { silent = true })
+        map({ "i", "s" }, "<C-l>", function()
+            if luasnip.expand_or_locally_jumpable() then
+                luasnip.expand_or_jump()
+            end
+        end, { silent = true })
+
+        map({ "i", "s" }, "<C-h>", function()
+            if luasnip.locally_jumpable(-1) then
+                luasnip.jump(-1)
+            end
+        end, { silent = true })
 
 		-- CUSTOM SNIPPETS
 		local custom_snippets_path = paths.join(paths.script_path(), "custom-snippets")
