@@ -22,7 +22,7 @@ return {
 		{ "]d", "<CMD>Lspsaga diagnostic_jump_next<CR>", mode = "n", desc = "Lspsaga go to next diagnostic" },
 		{ "<Leader>rn", "<CMD>Lspsaga rename<CR>", mode = "n", desc = "Lspsaga rename" },
 		{ "<Leader>ca", "<CMD>Lspsaga code_action<CR>", mode = "n", desc = "Lspsaga show code actions" },
-		{ "<Leader>o", "<CMD>Lspsaga outline<CR>", mode = "n", desc = "Lspsaga open outline" },
+		{ "<Leader>O", "<CMD>Lspsaga outline<CR>", mode = "n", desc = "Lspsaga open outline" },
 	},
 	config = function()
 		require("lspsaga").setup({
