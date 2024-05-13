@@ -44,6 +44,12 @@ return {
                 })
             end,
 
+            ["biome"] = function()
+                lspconfig["biome"].setup({
+                    capabilities = capabilities,
+                })
+            end,
+
             ["tsserver"] = function()
                 lspconfig["tsserver"].setup({
                     capabilities = capabilities,
