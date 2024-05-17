@@ -1,6 +1,6 @@
 return {
 	"akinsho/bufferline.nvim",
-    event = "VimEnter",
+    lazy = false,
 	keys = {
 		-- Move to previous/next
 		{ "<A-l>", "<CMD>BufferLineCycleNext<CR>", mode = "n", desc = "Bufferline go to next buffer" },

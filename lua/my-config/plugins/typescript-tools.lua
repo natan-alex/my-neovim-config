@@ -1,5 +1,24 @@
 return {
 	"pmizio/typescript-tools.nvim",
+    ft = {
+        "html",
+        "javascript",
+        "typescript",
+        "javascriptreact",
+        "typescriptreact",
+        "svelte",
+        "vue",
+        "tsx",
+        "jsx",
+        "rescript",
+        "xml",
+        "php",
+        "markdown",
+        "astro",
+        "glimmer",
+        "handlebars",
+        "hbs",
+    },
 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	config = function()
 		require("typescript-tools").setup({

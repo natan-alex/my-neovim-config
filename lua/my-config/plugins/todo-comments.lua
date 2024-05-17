@@ -1,6 +1,6 @@
 return {
     "folke/todo-comments.nvim",
-    event = "VimEnter",
+    lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
         {

@@ -1,5 +1,8 @@
+local files = require("my-config.utils.files")
+
 return {
     "NeogitOrg/neogit",
+	cond = files.inside_git_repo,
     dependencies = {
         "nvim-lua/plenary.nvim",
         "sindrets/diffview.nvim",
