@@ -8,7 +8,7 @@ return {
         { "hrsh7th/cmp-cmdline" },
         { "onsails/lspkind.nvim" },
         { "saadparwaiz1/cmp_luasnip" },
-        { "L3MON4D3/LuaSnip",        build = "make install_jsregexp" },
+        { "L3MON4D3/LuaSnip", build = "make" },
     },
     config = function()
         local lspkind = require("lspkind")

@@ -9,7 +9,7 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load({ paths = path })
 		end,
 	},
-	build = "make install_jsregexp",
+	build = "make",
 	config = function()
 		local luasnip = require("luasnip")
 
