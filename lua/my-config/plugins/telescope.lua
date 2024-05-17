@@ -56,9 +56,7 @@ return {
 				mappings = {
 					i = {
 						["<C-n>"] = actions.move_selection_next,
-						["<C-j>"] = actions.move_selection_next,
 						["<C-p>"] = actions.move_selection_previous,
-						["<C-k>"] = actions.move_selection_previous,
 
 						["<Up>"] = actions.cycle_history_prev,
 						["<Down>"] = actions.cycle_history_next,

@@ -29,10 +29,6 @@ map("n", "<C-S-Left>", "<CMD>vertical resize +2<CR>")
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
--- Navigate tab completion with <c-j> and <c-k>
-map("c", "<C-j>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true })
-map("c", "<C-k>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true })
-
 -- Keep cursor position after yanking
 map("n", "y", "myy")
 
