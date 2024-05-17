@@ -33,7 +33,5 @@ return {
                 disable = {},
             },
         })
-
-        require("nvim-treesitter.install").compilers = { "clang" }
     end,
 }
