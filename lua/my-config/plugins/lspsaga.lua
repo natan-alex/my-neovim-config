@@ -26,6 +26,9 @@ return {
 	},
 	config = function()
 		require("lspsaga").setup({
+			ui = {
+				border = "single",
+			},
 			code_action = {
 				extend_gitsigns = true,
 			},
