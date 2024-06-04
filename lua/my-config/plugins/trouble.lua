@@ -1,27 +1,63 @@
 return {
-	"folke/trouble.nvim",
-	cmd = { "TroubleToggle", "Trouble" },
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	keys = {
-		{ "gr", "<CMD>Trouble lsp_references<CR>", mode = "n", desc = "Trouble show lsp references" },
-		{ "gd", "<CMD>Trouble lsp_definitions<CR>", mode = "n", desc = "Trouble show lsp definitions" },
-		{ "gi", "<CMD>Trouble lsp_implementations<CR>", mode = "n", desc = "Trouble show lsp implementations" },
-		{ "gt", "<CMD>Trouble lsp_type_definitions<CR>", mode = "n", desc = "Trouble show lsp type definitions" },
-
-		{ "<leader>xx", "<CMD>TroubleToggle<CR>", mode = "n", desc = "Trouble toggle" },
-		{
-			"<leader>xw",
-			"<CMD>Trouble workspace_diagnostics<CR>",
-			mode = "n",
-			desc = "Trouble show workspace diagnostics",
-		},
-		{
-			"<leader>xd",
-			"<CMD>Trouble document_diagnostics<CR>",
-			mode = "n",
-			desc = "Trouble show document diagnostics",
-		},
-		{ "<leader>xq", "<CMD>Trouble quickfix<CR>", mode = "n", desc = "Trouble show quickfix list" },
-		{ "<leader>xl", "<CMD>Trouble loclist<CR>", mode = "n", desc = "Trouble show loclist" },
-	},
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+        {
+            "gr",
+            "<CMD>Trouble lsp_references toggle focus=true auto_close=true<CR>",
+            mode = "n",
+            desc = "Trouble show lsp references",
+        },
+        {
+            "gd",
+            "<CMD>Trouble lsp_definitions focus=true auto_close=true<CR>",
+            mode = "n",
+            desc = "Trouble toggle lsp definitions",
+        },
+        {
+            "gi",
+            "<CMD>Trouble lsp_implementations focus=true auto_close=true<CR>",
+            mode = "n",
+            desc = "Trouble toggle lsp implementations",
+        },
+        {
+            "gt",
+            "<CMD>Trouble lsp_type_definitions focus=true auto_close=true<CR>",
+            mode = "n",
+            desc = "Trouble toggle type definitions",
+        },
+        {
+            "<leader>xd",
+            "<CMD>Trouble diagnostics toggle focus=true<CR>",
+            mode = "n",
+            desc = "Trouble toggle diagnostics",
+        },
+        {
+            "<leader>xD",
+            "<CMD>Trouble diagnostics toggle filter.buf=0<CR>",
+            mode = "n",
+            desc = "Trouble toggle buffer diagnostics",
+        },
+        {
+            "<leader>xq",
+            "<CMD>Trouble quickfix toggle focus=true<CR>",
+            mode = "n",
+            desc = "Trouble toggle quickfix",
+        },
+        {
+            "<leader>xl",
+            "<CMD>Trouble loclist toggle focus=true<CR>",
+            mode = "n",
+            desc = "Trouble loclist toggle",
+        },
+        {
+            "<leader>xx",
+            "<CMD>Trouble lsp toggle focus=false win.position=right<CR>",
+            desc = "Trouble lsp definitions / references / ...",
+        },
+    },
+    config = function()
+        require("trouble").setup({})
+    end,
 }
