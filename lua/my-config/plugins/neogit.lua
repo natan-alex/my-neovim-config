@@ -21,6 +21,5 @@ return {
         local options = { noremap = true, silent = true }
 
         map("n", "<Leader>gg", "<CMD>Neogit<CR>", options, "Open Neogit")
-        map("n", "<space>n", function() require("neogit").open { "commit" } end, options, "Neogit commit")
     end
 }
