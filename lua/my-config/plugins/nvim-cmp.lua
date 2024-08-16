@@ -52,6 +52,7 @@ return {
                 ["<C-n>"] = cmp.mapping.select_next_item({
                     behavior = cmp.SelectBehavior.Insert
                 }),
+                ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
                     if cmp.visible() then
