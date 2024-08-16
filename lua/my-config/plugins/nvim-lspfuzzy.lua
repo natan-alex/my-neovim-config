@@ -7,13 +7,13 @@ return {
 	},
     keys = {
 		{
-			"<Leader>fz",
+			"<Leader>da",
 			"<CMD>LspDiagnosticsAll<CR>",
 			mode = "n",
 			desc = "Lsp Fuzzy show all diagnostics",
 		},
 		{
-			"<Leader>f.",
+			"<Leader>db",
 			"<CMD>LspDiagnostics 0<CR>",
 			mode = "n",
 			desc = "Lsp Fuzzy show diagnostics for current buffer",
