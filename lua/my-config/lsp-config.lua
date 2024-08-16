@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- map("n", "<Leader>rn", vim.lsp.buf.rename, options, "Lsp rename")
 		-- map("n", "<Leader>ca", vim.lsp.buf.code_action, options, "Lsp show code actions")
 		-- map("n", "<Leader>dq", vim.diagnostic.setloclist, options, "Lsp open loclist")
-		map("n", "<C-I>", format_buffer, options, "Lsp format buffer")
+		map("n", "<A-f>", format_buffer, options, "Lsp format buffer")
 		map({ "i", "n" }, "<C-k>", vim.lsp.buf.signature_help, options, "Lsp show signature help")
 		-- map("n", "[d", vim.diagnostic.goto_prev, options, "Lsp go to previous diagnostic")
 		-- map("n", "]d", vim.diagnostic.goto_next, options, "Lsp go to next diagnostic")
