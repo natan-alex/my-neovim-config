@@ -10,15 +10,6 @@ return {
 		{ "<A-L>", "<CMD>BufferLineMoveNext<CR>", mode = "n", desc = "Bufferline move buffer right" },
 		{ "<A-H>", "<CMD>BufferLineMovePrev<CR>", mode = "n", desc = "Bufferline move buffer left" },
 
-		-- Close buffers
-		{ "<A-Left>", "<CMD>BufferLineCloseLeft<CR>", mode = "n", desc = "Bufferline close all buffers to the left" },
-		{
-			"<A-Right>",
-			"<CMD>BufferLineCloseRight<CR>",
-			mode = "n",
-			desc = "Bufferline close all buffers to the right",
-		},
-
 		-- Delete a buffer
 		{ "<A-d>", "<CMD>bdelete<CR>", mode = "n", desc = "Delete buffer" },
 	},
