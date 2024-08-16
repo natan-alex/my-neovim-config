@@ -20,8 +20,8 @@ return {
 			desc = "Lspsaga go to previous diagnostic",
 		},
 		{ "]d", "<CMD>Lspsaga diagnostic_jump_next<CR>", mode = "n", desc = "Lspsaga go to next diagnostic" },
-		{ "<Leader>rn", "<CMD>Lspsaga rename<CR>", mode = "n", desc = "Lspsaga rename" },
-		{ "<Leader>ca", "<CMD>Lspsaga code_action<CR>", mode = "n", desc = "Lspsaga show code actions" },
+		{ "<Leader>r", "<CMD>Lspsaga rename<CR>", mode = "n", desc = "Lspsaga rename" },
+		{ "<Leader>a", "<CMD>Lspsaga code_action<CR>", mode = "n", desc = "Lspsaga show code actions" },
 		{ "<Leader>O", "<CMD>Lspsaga outline<CR>", mode = "n", desc = "Lspsaga open outline" },
 	},
 	config = function()
