@@ -16,18 +16,5 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
-    -- Colorscheme
-    {
-        "tomasiser/vim-code-dark",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            vim.cmd("colorscheme codedark")
-        end
-    },
-
-    -- Common for plugins
-    { "nvim-lua/plenary.nvim" },
-
     { import = "my-config.plugins" },
 }, {})
