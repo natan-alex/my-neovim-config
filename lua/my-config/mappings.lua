@@ -41,3 +41,6 @@ map("x", "c", '"_c')
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<ESC>", "<CMD>noh<CR><ESC>")
+
+-- Delete a buffer
+map("n", "<A-d>", "<CMD>bdelete<CR>")

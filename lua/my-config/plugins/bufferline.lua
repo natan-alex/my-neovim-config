@@ -9,9 +9,6 @@ return {
 		-- Re-order to previous/next
 		{ "<A-L>", "<CMD>BufferLineMoveNext<CR>", mode = "n", desc = "Bufferline move buffer right" },
 		{ "<A-H>", "<CMD>BufferLineMovePrev<CR>", mode = "n", desc = "Bufferline move buffer left" },
-
-		-- Delete a buffer
-		{ "<A-d>", "<CMD>bdelete<CR>", mode = "n", desc = "Delete buffer" },
 	},
 	config = function()
 		require("bufferline").setup({
