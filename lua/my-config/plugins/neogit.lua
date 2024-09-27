@@ -8,6 +8,9 @@ return {
         "sindrets/diffview.nvim",
         "nvim-telescope/telescope.nvim",
     },
+    keys = {
+        { "<Leader>gg", "<CMD>Neogit<CR>", mode = "n", desc = "Open Neogit" },
+    },
     config = function()
         require("neogit").setup({
             disable_commit_confirmation = true,
@@ -16,10 +19,5 @@ return {
                 diffview = true,
             },
         })
-
-        local map = require("my-config.utils.mappings").map
-        local options = { noremap = true, silent = true }
-
-        map("n", "<Leader>gg", "<CMD>Neogit<CR>", options, "Open Neogit")
-    end
+    end,
 }
