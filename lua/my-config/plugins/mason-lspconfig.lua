@@ -24,6 +24,7 @@ end
 
 return {
     "williamboman/mason-lspconfig.nvim",
+	event = "LspAttach",
     dependencies = { "neovim/nvim-lspconfig" },
     config = function()
         local mason_lspconfig = require("mason-lspconfig")

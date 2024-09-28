@@ -1,6 +1,6 @@
 return {
 	"RRethy/vim-illuminate",
-    lazy = false,
+    event = "VeryLazy",
 	keys = {
 		{
 			"<Leader>it",
