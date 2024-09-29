@@ -3,7 +3,7 @@ return {
     version = "*",
     keys = {
         {
-            "<Leader>e",
+            "<Leader>me",
             function()
                 require("mini.files").open()
             end,

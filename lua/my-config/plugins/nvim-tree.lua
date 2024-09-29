@@ -1,8 +1,7 @@
 return {
     "nvim-tree/nvim-tree.lua",
-    enabled = false,
     keys = {
-        { "<Leader>e", "<CMD>NvimTreeToggle<CR>", desc = "NvimTree toggle" },
+        { "<Leader>et", "<CMD>NvimTreeToggle<CR>", desc = "NvimTree toggle" },
     },
     config = function()
         local nvim_tree = require("nvim-tree")
