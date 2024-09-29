@@ -8,7 +8,6 @@ return {
 
         nvim_tree.setup({
             disable_netrw = true,
-            select_prompts = true,
             respect_buf_cwd = true,
             sync_root_with_cwd = true,
             hijack_unnamed_buffer_when_opening = true,
@@ -18,10 +17,6 @@ return {
             },
 
             view = {
-                cursorline = true,
-                debounce_delay = 100,
-                centralize_selection = true,
-
                 width = {
                     min = "20%",
                     max = "60%",
@@ -37,7 +32,7 @@ return {
                 icons = {
                     web_devicons = {
                         folder = {
-                            enable = true
+                            enable = true,
                         },
                     },
                 },
@@ -55,7 +50,6 @@ return {
 
             filters = {
                 git_ignored = false,
-                dotfiles = true,
             },
 
             actions = {
@@ -72,8 +66,17 @@ return {
 
                 api.config.mappings.default_on_attach(buffer)
 
+                vim.keymap.del("n", "H", { buffer = buffer })
+                vim.keymap.del("n", "L", { buffer = buffer })
+                vim.keymap.del("n", "gy", { buffer = buffer })
+                vim.keymap.del("n", "ge", { buffer = buffer })
+
                 map("n", "?", api.tree.toggle_help, options, "NvimTree show help")
                 map("n", "C", api.tree.change_root_to_node, options, "NvimTree change cwd")
+                map("n", "<C-h>", api.tree.toggle_hidden_filter, options, "NvimTree toggle show dotfiles")
+                map("n", "gp", api.fs.copy.absolute_path, options, "NvimTree copy absolute path")
+                map("n", "gn", api.fs.copy.basename, options, "NvimTree copy basename")
+                map("n", "ge", api.node.open.toggle_group_empty, options, "NvimTree toggle group empty")
             end,
         })
     end,
