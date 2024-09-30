@@ -17,10 +17,10 @@ return {
             -- Use `''` (empty string) to not create one.
             mappings = {
                 close = "q",
-                go_in = ">",
-                go_in_plus = "<CR>",
-                go_out = "<",
-                go_out_plus = "-",
+                go_in = "",
+                go_in_plus = "<A-l>",
+                go_out = "",
+                go_out_plus = "<A-h>",
                 mark_goto = "'",
                 mark_set = "m",
                 reset = "<BS>",
