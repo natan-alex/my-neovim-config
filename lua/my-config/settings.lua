@@ -29,6 +29,8 @@ vim.opt.tildeop = false
 -- colors, see https://github.com/termstandard/colors and https://gist.github.com/XVilka/8346728.
 vim.opt.termguicolors = true
 
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 -- Do not use visual and errorbells
 vim.opt.visualbell = false
 vim.opt.errorbells = false
