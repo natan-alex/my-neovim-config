@@ -107,7 +107,6 @@ return {
             ["ts_ls"] = function()
                 lspconfig["ts_ls"].setup({
                     capabilities = capabilities,
-                    root_dir = lspconfig_util.root_pattern(".git"),
                     on_attach = function(client, _)
                         client.server_capabilities.documentFormattingProvider = false
                         client.server_capabilities.documentRangeFormattingProvider = false
@@ -118,7 +117,6 @@ return {
             ["vtsls"] = function()
                 lspconfig["vtsls"].setup({
                     capabilities = capabilities,
-                    root_dir = lspconfig_util.root_pattern(".git"),
                     on_attach = function(client, _)
                         client.server_capabilities.documentFormattingProvider = false
                         client.server_capabilities.documentRangeFormattingProvider = false
