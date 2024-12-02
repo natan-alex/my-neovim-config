@@ -24,10 +24,9 @@ end
 
 return {
 	"williamboman/mason.nvim",
-	cmd = "Mason",
     dependencies = {
+        "neovim/nvim-lspconfig",
         "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig"
     },
 	config = function()
 		require("mason").setup({
