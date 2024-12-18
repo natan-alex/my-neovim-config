@@ -1,25 +1,17 @@
 return {
-	"echasnovski/mini.trailspace",
-	version = "*",
-	keys = {
-		{
-			"<Leader>mts",
-			function()
-				require("mini.trailspace").trim()
-			end,
-			mode = "n",
-			desc = "Mini trailspace trim spaces",
-		},
-		{
-			"<Leader>mtl",
-			function()
-				require("mini.trailspace").trim_last_lines()
-			end,
-			mode = "n",
-			desc = "Mini trailspace trim empty lines",
-		},
-	},
-	config = function()
-		require("mini.trailspace").setup({})
-	end,
+    "echasnovski/mini.trailspace",
+    version = "*",
+    config = function()
+        require("mini.trailspace").setup({})
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = vim.api.nvim_create_augroup(
+                "remove-trailing-spaces",
+                { clear = true }
+            ),
+            callback = function()
+                require("mini.trailspace").trim()
+            end,
+        })
+    end,
 }
