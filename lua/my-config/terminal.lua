@@ -6,8 +6,8 @@ map("n", "<Leader>tt", "<CMD>terminal<CR>", options)
 vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("custom-terminal", { clear = true }),
   callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
     vim.cmd(":startinsert")
   end,
 })
