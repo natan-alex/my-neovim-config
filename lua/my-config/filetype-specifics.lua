@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "typescriptreact",
     "css",
     "html",
+    "lua",
   },
   group = vim.api.nvim_create_augroup("indent_sizes", { clear = true }),
   callback = function()
