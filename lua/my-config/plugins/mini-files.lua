@@ -3,12 +3,22 @@ return {
     version = "*",
     keys = {
         {
-            "<Leader>me",
+            "-",
             function()
-                require("mini.files").open()
+                local mini_files = require("mini.files")
+
+                if mini_files.close() then return end
+
+                local path = vim.api.nvim_buf_get_name(0)
+
+                if vim.fn.filereadable(path) == 1 then
+                    mini_files.open(path, false)
+                else
+                    mini_files.open()
+                end
             end,
             mode = "n",
-            desc = "Open Mini.Files",
+            desc = "Toggle Mini.Files",
         },
     },
     config = function()
@@ -24,7 +34,7 @@ return {
                 mark_goto = "'",
                 mark_set = "m",
                 reset = "<BS>",
-                reveal_cwd = "@",
+                reveal_cwd = "<space>",
                 show_help = "g?",
                 synchronize = "=",
                 trim_left = "<C-h>",
