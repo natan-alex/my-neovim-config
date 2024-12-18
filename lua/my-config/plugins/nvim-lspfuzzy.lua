@@ -1,6 +1,7 @@
 -- https://github.com/ojroques/nvim-lspfuzzy
 return {
 	"ojroques/nvim-lspfuzzy",
+    enabled = false,
 	dependencies = {
 		{ "junegunn/fzf" },
 		{ "junegunn/fzf.vim" }, -- to enable preview (optional)
