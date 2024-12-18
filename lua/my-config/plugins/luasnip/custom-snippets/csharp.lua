@@ -6,11 +6,14 @@ local insert_node = luasnip.insert_node
 -- local repeat_node = require("luasnip.extras").rep
 
 luasnip.add_snippets("cs", {
-    create_snippet("cws", format([[Console.WriteLine("{}");]], { insert_node(1) })),
-    create_snippet(
-        "controller",
-        format(
-        [[
+  create_snippet(
+    "cws",
+    format([[Console.WriteLine("{}");]], { insert_node(1) })
+  ),
+  create_snippet(
+    "controller",
+    format(
+      [[
         using Microsoft.AspNetCore.Mvc;
 
         namespace {};
@@ -20,6 +23,7 @@ luasnip.add_snippets("cs", {
             {}
         }}
         ]],
-        { insert_node(1), insert_node(2), insert_node(3) })
-    ),
+      { insert_node(1), insert_node(2), insert_node(3) }
+    )
+  ),
 })

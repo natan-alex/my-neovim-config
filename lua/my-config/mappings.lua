@@ -8,10 +8,10 @@ map("i", "kj", "<ESC>")
 map({ "n", "x" }, ";", ":")
 
 -- Delete without changing registers
-map({ "n", "x" }, "x", "\"_x")
+map({ "n", "x" }, "x", '"_x')
 
 -- Clipboard related
-map({ "n", "x" }, "<A-y>", "\"+y")
+map({ "n", "x" }, "<A-y>", '"+y')
 
 -- Do not include white space characters when using $ in visual mode,
 -- see https://vi.stackexchange.com/q/12607/15292

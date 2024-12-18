@@ -6,5 +6,8 @@ local insert_node = luasnip.insert_node
 -- local repeat_node = require("luasnip.extras").rep
 
 luasnip.add_snippets("java", {
-    create_snippet("sout", format([[System.out.println("{}");]], { insert_node(1) })),
+  create_snippet(
+    "sout",
+    format([[System.out.println("{}");]], { insert_node(1) })
+  ),
 })

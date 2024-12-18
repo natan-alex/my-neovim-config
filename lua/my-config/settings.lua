@@ -29,7 +29,8 @@ vim.opt.tildeop = false
 -- colors, see https://github.com/termstandard/colors and https://gist.github.com/XVilka/8346728.
 vim.opt.termguicolors = true
 
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions =
+  "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Do not use visual and errorbells
 vim.opt.visualbell = false
@@ -124,10 +125,12 @@ vim.opt.wildignore:append("*.pyc,*.pkl")
 vim.opt.wildignore:append("*.o,*.obj,*.dylib,*.bin,*.dll,*.exe")
 vim.opt.wildignore:append("*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**")
 vim.opt.wildignore:append("*.jpg,*.png,*.jpeg,*.bmp,*.gif,*.tiff,*.svg,*.ico")
-vim.opt.wildignore:append("*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.xdv")
+vim.opt.wildignore:append(
+  "*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.xdv"
+)
 
 -- Use rg for "greping"
 if vim.fn.executable("rg") then
-	vim.opt.grepprg = [[rg --vimgrep --no-heading --smart-case]]
-	vim.opt.grepformat = [[%f:%l:%c:%m]]
+  vim.opt.grepprg = [[rg --vimgrep --no-heading --smart-case]]
+  vim.opt.grepformat = [[%f:%l:%c:%m]]
 end

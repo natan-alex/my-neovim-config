@@ -6,11 +6,17 @@ local insert_node = luasnip.insert_node
 -- local repeat_node = require("luasnip.extras").rep
 
 luasnip.add_snippets("css", {
-    create_snippet("flex-center", format([[
+  create_snippet(
+    "flex-center",
+    format(
+      [[
         {} {{
           display: flex;
           align-items: center;
           justify-content: center;
         }}
-    ]], { insert_node(1) })),
+    ]],
+      { insert_node(1) }
+    )
+  ),
 })

@@ -6,31 +6,38 @@ local insert_node = luasnip.insert_node
 -- local repeat_node = require("luasnip.extras").rep
 
 local snippets = {
-    create_snippet("cl", format([[console.log("{}");]], { insert_node(1) })),
-    create_snippet("log", format([[console.log("{}");]], { insert_node(1) })),
-    create_snippet("ce", format([[console.error("{}");]], { insert_node(1) })),
+  create_snippet("cl", format([[console.log("{}");]], { insert_node(1) })),
+  create_snippet("log", format([[console.log("{}");]], { insert_node(1) })),
+  create_snippet("ce", format([[console.error("{}");]], { insert_node(1) })),
 
-    create_snippet("expd",
-        format([[export {{ default }} from './{}';]],
-            { insert_node(1, "file") })),
+  create_snippet(
+    "expd",
+    format([[export {{ default }} from './{}';]], { insert_node(1, "file") })
+  ),
 
-    create_snippet("expf",
-        format([[export {} from './{}';]],
-            { insert_node(2, "things"), insert_node(1, "file") })),
+  create_snippet(
+    "expf",
+    format(
+      [[export {} from './{}';]],
+      { insert_node(2, "things"), insert_node(1, "file") }
+    )
+  ),
 
-    create_snippet(
-        "fn",
-        format([[
+  create_snippet(
+    "fn",
+    format(
+      [[
         function {}({}) {{
             {}
         }}
         ]],
-            {
-                insert_node(1, "name"),
-                insert_node(2, "params"),
-                insert_node(3, "body")
-            })
-    ),
+      {
+        insert_node(1, "name"),
+        insert_node(2, "params"),
+        insert_node(3, "body"),
+      }
+    )
+  ),
 }
 
 luasnip.add_snippets("javascript", snippets)
