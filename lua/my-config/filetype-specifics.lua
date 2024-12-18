@@ -1,17 +1,17 @@
 vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("indent-sizes", { clear = true }),
   pattern = {
+    "lua",
+    "html",
+    "css",
     "javascript",
     "typescript",
     "javascriptreact",
     "typescriptreact",
-    "css",
-    "html",
-    "lua",
   },
-  group = vim.api.nvim_create_augroup("indent_sizes", { clear = true }),
   callback = function()
-    vim.opt.tabstop = 2
-    vim.opt.softtabstop = 2
-    vim.opt.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
   end,
 })
