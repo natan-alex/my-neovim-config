@@ -48,7 +48,7 @@ return {
 
     mason_lspconfig.setup_handlers({
       -- default handler (optional)
-      function (server_name)
+      function(server_name)
         lspconfig[server_name].setup({
           capabilities = capabilities,
         })
