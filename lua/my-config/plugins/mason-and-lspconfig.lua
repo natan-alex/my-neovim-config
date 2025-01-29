@@ -66,6 +66,30 @@ return {
         })
       end,
 
+      ["denols"] = function()
+        lspconfig["denols"].setup({
+          single_file_support = true,
+          root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+          on_attach = function()
+            vim.g.markdown_fenced_languages = { "ts=typescript" }
+          end,
+          flags = {
+            debounce_text_changes = 150,
+          },
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+          },
+          init_options = {
+            lint = true,
+          },
+        })
+      end,
+
       ["eslint"] = function()
         lspconfig["eslint"].setup({
           capabilities = capabilities,
@@ -142,6 +166,8 @@ return {
       ["ts_ls"] = function()
         lspconfig["ts_ls"].setup({
           capabilities = capabilities,
+          single_file_support = false,
+          root_dir = lspconfig.util.root_pattern("package.json"),
           on_attach = function(client, _)
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
@@ -152,6 +178,8 @@ return {
       ["vtsls"] = function()
         lspconfig["vtsls"].setup({
           capabilities = capabilities,
+          single_file_support = false,
+          root_dir = lspconfig.util.root_pattern("package.json"),
           on_attach = function(client, _)
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
