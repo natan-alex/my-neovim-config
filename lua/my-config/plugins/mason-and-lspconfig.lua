@@ -47,6 +47,13 @@ return {
     local capabilities = server_capabilities()
 
     mason_lspconfig.setup_handlers({
+      -- default handler (optional)
+      function (server_name)
+        lspconfig[server_name].setup({
+          capabilities = capabilities,
+        })
+      end,
+
       ["csharp_ls"] = function()
         lspconfig["csharp_ls"].setup({
           capabilities = capabilities,
