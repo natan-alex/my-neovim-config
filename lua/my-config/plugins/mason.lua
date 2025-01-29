@@ -72,6 +72,12 @@ return {
         })
       end,
 
+      ["gopls"] = function()
+        lspconfig["gopls"].setup({
+          capabilities = capabilities,
+        })
+      end,
+
       ["html"] = function()
         lspconfig["html"].setup({
           capabilities = capabilities,
