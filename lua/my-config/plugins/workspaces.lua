@@ -1,6 +1,7 @@
 return {
   "natecraddock/workspaces.nvim",
   lazy = false,
+  enabled = false,
   after = { "nvim-telescope/telescope.nvim" },
   dependencies = { "nvim-telescope/telescope.nvim" },
   keys = {
