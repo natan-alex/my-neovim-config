@@ -65,7 +65,7 @@ vim.opt.scrolloff = 1
 vim.opt.sidescrolloff = 1
 
 -- Height of cmdline space
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 -- Maximum number of items to show in popup menu
 vim.opt.pumheight = 15
 
