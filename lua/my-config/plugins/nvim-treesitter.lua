@@ -23,7 +23,7 @@ return {
           init_selection = "<Leader>s",
           node_incremental = "<TAB>",
           node_decremental = "<S-TAB>",
-          scope_incremental = "<Leader><TAB>",
+          scope_incremental = "<Space>",
         },
       },
 
