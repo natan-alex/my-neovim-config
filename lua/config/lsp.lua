@@ -15,24 +15,6 @@ vim.lsp.enable(lsp_names)
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
-    local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
-
-    -- Enable auto-completion
-    if client:supports_method("textDocument/completion") then
-      -- Trigger autocompletion on EVERY keypress
-      local chars = {};
-
-      for i = 32, 126 do
-        table.insert(chars, string.char(i))
-      end
-
-      client.server_capabilities.completionProvider.triggerCharacters = chars
-
-      vim.lsp.completion.enable(true, client.id, event.buf, {
-        autotrigger = true,
-      })
-    end
-
     ---- Keymaps
     local options = require("config.utils.mappings").options({
       buffer = event.buf,
@@ -91,25 +73,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<A-f>", function()
       vim.lsp.buf.format({ timeout_ms = 300 })
     end, options())
-
-    -- Completion
-    vim.keymap.set("i", "<C-space>", "<C-x><C-o>", options())
-
-    vim.keymap.set("i", "<Tab>", function()
-      if vim.fn.pumvisible() == 1 then
-        return "<C-y>"
-      else
-        return "<Tab>"
-      end
-    end, options({ expr = true }))
-
-    vim.keymap.set("i", "<S-Tab>", function()
-      if vim.fn.pumvisible() == 1 then
-        return "<C-p>"
-      else
-        return "<S-Tab>"
-      end
-    end, options({ expr = true }))
   end,
 })
 
