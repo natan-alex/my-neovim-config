@@ -10,9 +10,9 @@ return {
       mappings = {
         close = "q",
         go_in = "",
-        go_in_plus = ">",
+        go_in_plus = "<A-l>",
         go_out = "",
-        go_out_plus = "<",
+        go_out_plus = "<A-h>",
         mark_goto = "'",
         mark_set = "m",
         reset = "<bs>",
