@@ -17,13 +17,13 @@ return {
       enable_autosnippets = true,
     })
 
-    vim.keymap.set({ "i", "s" }, "<C-n>", function()
+    vim.keymap.set({ "i", "s" }, "<A-l>", function()
       if luasnip.locally_jumpable(1) then
         luasnip.jump(1)
       end
     end, {})
 
-    vim.keymap.set({ "i", "s" }, "<C-p>", function()
+    vim.keymap.set({ "i", "s" }, "<A-h>", function()
       if luasnip.locally_jumpable(-1) then
         luasnip.jump(-1)
       end
