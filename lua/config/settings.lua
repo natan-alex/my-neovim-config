@@ -31,6 +31,8 @@ vim.opt.ruler = false
 vim.opt.visualbell = false
 vim.opt.errorbells = false
 
+vim.opt.confirm = true
+
 vim.opt.shortmess:append("I") -- Do not show neovim intro screen
 
 vim.opt.termguicolors = true  -- Enable true colors
