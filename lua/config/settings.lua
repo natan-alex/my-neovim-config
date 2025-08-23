@@ -92,7 +92,7 @@ vim.opt.maxmempattern = 20000
 vim.opt.showtabline = 1 -- Show tabline when there are multiple tabs
 
 -- Undoing
-local undodir_path = vim.fn.expand(vim.fn.stdpath("data") .. "undo")
+local undodir_path = vim.fs.joinpath(vim.fn.stdpath("data"), "undo")
 
 vim.opt.undofile = true -- Persistent undo
 vim.opt.undodir = undodir_path
