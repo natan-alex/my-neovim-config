@@ -1,8 +1,13 @@
 local options = require("config.utils.mappings").options({
-  nowait = true
+  nowait = true,
 })
 
-vim.keymap.set("n", "<leader>tt", "<cmd>terminal<cr>", options())
+vim.keymap.set(
+  "n",
+  "<leader>tt",
+  "<cmd>terminal<cr>",
+  options({ desc = "Terminal: open window" })
+)
 
 vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("custom-terminal", {}),

@@ -15,21 +15,21 @@ vim.keymap.set("n", "<C-S-Down>", "<cmd>resize -2<cr>", options())
 vim.keymap.set("n", "<C-S-Left>", "<cmd>vertical resize -2<cr>", options())
 vim.keymap.set("n", "<C-S-Right>", "<cmd>vertical resize +2<cr>", options())
 
--- Move lines up/down
-vim.keymap.set("n", "<A-j>", ":m .+1<cr>==", options())
-vim.keymap.set("n", "<A-k>", ":m .-2<cr>==", options())
-vim.keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", options())
-vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", options())
-
 -- Better indenting in visual mode
 vim.keymap.set("v", "<", "<gv", options())
 vim.keymap.set("v", ">", ">gv", options())
 
--- Tab moving
-vim.keymap.set("n", "<leader>tl", "<cmd>tabmove +1<cr>", options())
-vim.keymap.set("n", "<leader>th", "<cmd>tabmove -1<cr>", options())
-
 -- Buffers
-vim.keymap.set("n", "<A-d>", "<cmd>bdelete!<cr>", options())
-vim.keymap.set("n", "<A-n>", "<cmd>bnext<cr>", options())
-vim.keymap.set("n", "<A-p>", "<cmd>bprevious<cr>", options())
+vim.keymap.set(
+  "n",
+  "gn",
+  "<cmd>bnext<cr>",
+  options({ desc = "Go to next buffer" })
+)
+
+vim.keymap.set(
+  "n",
+  "gp",
+  "<cmd>bprevious<cr>",
+  options({ desc = "Go to previous buffer" })
+)

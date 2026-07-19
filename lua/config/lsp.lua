@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Enable auto-completion
     if client:supports_method("textDocument/completion") then
       -- Trigger autocompletion on EVERY keypress
-      local chars = {};
+      local chars = {}
 
       for i = 32, 126 do
         table.insert(chars, string.char(i))
@@ -41,51 +41,85 @@ vim.api.nvim_create_autocmd("LspAttach", {
     })
 
     -- Navigation
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, options())
-    vim.keymap.set("n", "gs", vim.lsp.buf.declaration, options())
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, options())
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, options())
+    vim.keymap.set(
+      "n",
+      "gd",
+      vim.lsp.buf.definition,
+      options({ desc = "LSP: go to definition" })
+    )
+
+    vim.keymap.set(
+      "n",
+      "gs",
+      vim.lsp.buf.declaration,
+      options({ desc = "LSP: go to declaration" })
+    )
+
+    vim.keymap.set(
+      "n",
+      "gr",
+      vim.lsp.buf.references,
+      options({ desc = "LSP: go to references" })
+    )
+
+    vim.keymap.set(
+      "n",
+      "gi",
+      vim.lsp.buf.implementation,
+      options({ desc = "LSP: go to implementation" })
+    )
 
     vim.keymap.set("n", "]d", function()
       vim.diagnostic.jump({
         count = 1,
         float = true,
       })
-    end, options())
+    end, options({ desc = "LSP: jump to next diagnostic" }))
 
     vim.keymap.set("n", "[d", function()
       vim.diagnostic.jump({
         count = -1,
         float = true,
       })
-    end, options())
+    end, options({ desc = "LSP: jump to previous diagnostic" }))
 
     -- Information
     vim.keymap.set("n", "K", vim.lsp.buf.hover, options())
     vim.keymap.set({ "i", "n" }, "<C-k>", vim.lsp.buf.signature_help, options())
 
     -- Code actions
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, options())
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, options())
+    vim.keymap.set(
+      "n",
+      "<leader>ca",
+      vim.lsp.buf.code_action,
+      options({ desc = "LSP: show code actions" })
+    )
+
+    vim.keymap.set(
+      "n",
+      "<leader>rn",
+      vim.lsp.buf.rename,
+      options({ desc = "LSP: rename" })
+    )
 
     -- Diagnostics
     vim.keymap.set("n", "<leader>df", function()
       vim.diagnostic.open_float({
         scope = "buffer",
       })
-    end, options())
+    end, options({ desc = "LSP: show diagnostics" }))
 
     vim.keymap.set("n", "<leader>dl", function()
       vim.diagnostic.open_float({
         scope = "line",
       })
-    end, options())
+    end, options({ desc = "LSP: show line diagnostics" }))
 
     vim.keymap.set("n", "<leader>dd", function()
       vim.diagnostic.setloclist({
         title = "Here we go...",
       })
-    end, options())
+    end, options({ desc = "LSP: show diagnostics on loclist" }))
 
     -- Formatting
     vim.keymap.set("n", "<A-f>", function()
@@ -94,6 +128,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Completion
     vim.keymap.set("i", "<C-space>", "<C-x><C-o>", options())
+    vim.keymap.set("i", "<C-.>", "<C-x><C-o>", options())
 
     vim.keymap.set("i", "<Tab>", function()
       if vim.fn.pumvisible() == 1 then
@@ -124,8 +159,8 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.WARN] = "⚠",
       [vim.diagnostic.severity.INFO] = "ℹ",
       [vim.diagnostic.severity.HINT] = "💡",
-    }
-  }
+    },
+  },
 })
 
 local nvim_open_floating_preview = vim.lsp.util.open_floating_preview
