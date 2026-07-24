@@ -149,8 +149,7 @@ return {
           previewer = false,
           initial_mode = "normal",
           mappings = {
-            i = { ["<C-d>"] = actions.delete_buffer },
-            n = { ["dd"] = actions.delete_buffer },
+            n = { ["d"] = actions.delete_buffer },
           },
         },
 

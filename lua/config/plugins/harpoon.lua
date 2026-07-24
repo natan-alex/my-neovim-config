@@ -36,20 +36,12 @@ return {
       end,
     })
 
-    vim.keymap.set("n", "<leader>a", function()
+    vim.keymap.set("n", "gla", function()
       harpoon:list():add()
     end)
 
-    vim.keymap.set("n", "<C-e>", function()
+    vim.keymap.set("n", "g<Space>", function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
-    end)
-
-    vim.keymap.set("n", "<leader>lp", function()
-      harpoon:list():prev()
-    end)
-
-    vim.keymap.set("n", "<leader>ln", function()
-      harpoon:list():next()
     end)
   end
 }

@@ -10,9 +10,9 @@ return {
       mappings = {
         close = "q",
         go_in = "",
-        go_in_plus = "<A-l>",
+        go_in_plus = "gl",
         go_out = "",
-        go_out_plus = "<A-h>",
+        go_out_plus = "gh",
         mark_goto = "'",
         mark_set = "m",
         reset = "<bs>",
@@ -24,18 +24,21 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<leader>e", function()
-        if mini_files.close() then return end
+    local function toggle_mini()
+      if mini_files.close() then
+        return
+      end
 
-        local path = vim.api.nvim_buf_get_name(0)
+      local path = vim.api.nvim_buf_get_name(0)
 
-        if vim.fn.filereadable(path) == 1 then
-          mini_files.open(path, false)
-        else
-          mini_files.open()
-        end
-      end,
-      { desc = "Toggle Mini.Files", }
-    )
+      if vim.fn.filereadable(path) == 1 then
+        mini_files.open(path, false)
+      else
+        mini_files.open()
+      end
+    end
+
+    vim.keymap.set("n", "<leader>e", toggle_mini, { desc = "Toggle Mini.Files" })
+    vim.keymap.set("n", "ge", toggle_mini, { desc = "Toggle Mini.Files" })
   end,
 }
